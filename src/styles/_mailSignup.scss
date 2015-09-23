@@ -1,0 +1,29 @@
+.mailSignup {
+  @include S-flex-rowWrap;
+}
+.mailSignup--contained {
+  max-width: 40em;
+}
+.mailSignup--centered {
+  margin: 0 auto;
+}
+  .mailSignup__title {
+    @include S-flexItem-full;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  .mailSignup__input {
+    @include S-flexItem-share;
+    margin-right: 0.5em;
+  }
+  .mailSignup__submit {
+    @include S-flexItem-noFlex;
+  }
+
+@include r-media(l) {
+  .mailSignup__title {
+    @include S-flexItem-noFlex;
+    margin: 0 1.5em 0 0;
+    align-self: center;
+  }
+}

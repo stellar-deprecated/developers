@@ -1,0 +1,77 @@
+.friendbot4__console {
+  background: $s-color-dark1;
+  color: $s-color-light3;
+}
+.friendbot4__console__input {
+  @include S-flex-row;
+  align-items: center;
+  color: $s-color-light3;
+  border-bottom: 1px solid $s-color-dark4;
+  padding: 1em;
+}
+.friendbot4__console__result {
+  padding: 1em;
+  margin: 0;
+}
+.friendbot4__console__input__text {
+  @include S-flexItem-share;
+  word-break: break-all;
+  margin-right: 2em;
+}
+.friendbot4__console__input__button {
+  @include S-flexItem-noFlex;
+}
+.friendbot4__console__results {
+  color: $s-color-light3;
+  border-bottom: 1px solid $s-color-dark4;
+  padding: 1em;
+}
+.friendbot4__nav {
+  @include S-flex-row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1em;
+}
+.friendbot4__nav__minimize {
+  font-size: $s-scale-5;
+}
+
+.friendbot4__bot__image {
+  text-align: center;
+}
+.friendbot4__bot__input {
+  margin-right: 0.5em;
+}
+
+.friendbot4__info {
+  padding: 1em;
+}
+.friendbot4__bot__button__status {
+  text-align: center;
+  font-size: $s-scale-2;
+  padding-top: 1em;
+}
+.friendbot4-step0 {
+  padding: 1em;
+}
+.friendbot4-step0__code {
+  color: $s-color-light3;
+}
+.friendbot4-step4__key {
+  text-align: center;
+}
+
+.friendbot4-stepIntro {
+  padding: 1.5em 1em 0.5em 1em;
+}
+.friendbot4-stepOutro {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.friendbot4-stepIntro a,
+.friendbot4-stepOutro a {
+  color: $s-color-primary4;
+}
+.friendbot4-initialHide {
+  display: none;
+}
