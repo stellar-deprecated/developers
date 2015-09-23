@@ -27,6 +27,11 @@ gulp.task('build', ['symlink-src'], done => {
 		}))
 		.use(pickLayout)
 		.use($m.markdown())
+		.use($m.inPlace({
+			engine: "handlebars",
+			partials: "partials",
+			pattern: "*.html"
+		}))
 		.use($m.layouts({
 			engine: "handlebars",
 			partials: "partials",
@@ -103,16 +108,18 @@ function buildProjectIndex(files, metalsmith, done) {
 	})
 }
 
-// x converts markdown to html
-// rewrites links
-// x renders header
-// renders sidebar
-//  
-// x pick layout based on category
-// pick sidebar based on project
-// x pick project based on path
-// concats js
-// x sass process
-// conact/fingerprint assets
-//
+
+
+// TODO:
+//   de-monkeypath readdir-recursive lfstat => fstat fix
+//   rewrite link engine
+//   example system
+//   import templates from hugo system
+//   concat vendor.js
+//   concat app.js
+//   autoprefix css
+//   fingerprint assets
+//   sidebar nav/file indexes
+//   copy graphics files from solar module
+//   run tests for link processor
 
