@@ -19,11 +19,8 @@
 					{{#eachFile "horizon/learn/*.html"}}
 						<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
 					{{/eachFile}}
-					{{#sidebarSubMenu "Tutorials"}}
-						{{#eachFile "horizon/learn/tutorials/*.html"}}
-							<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
-						{{/eachFile}}
-					{{/sidebarSubMenu}}
+
+					{{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
 				{{/sidebarSubMenu}}
 
 				{{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.html"}}
