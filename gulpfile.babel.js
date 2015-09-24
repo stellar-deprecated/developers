@@ -4,7 +4,7 @@ import Metalsmith from 'metalsmith';
 import _ from 'lodash';
 import util from 'util';
 import fs from 'fs';
-import {setFileList, helpers} from "./helpers";
+import hbars from './gulp/handlebars';
 
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
@@ -31,30 +31,21 @@ gulp.task('symlink-src', () => {
 })
 
 gulp.task('build', ['symlink-src'], done => {
-	
 
 	let templateOptions = {
 		engine: "handlebars",
 		partials: "partials",
-		helpers,
+		helpers: hbars.helpers,
 	};
 
 	Metalsmith(__dirname)
-		.metadata({
-			host: "localhost:8000",
-		})
-		.use($m.metadata({
-      sections: "sections.yaml",
-    }))
+		.metadata({ host: "localhost:8000" })
 		.use((f,m,d) => {
-			setFileList(f);
+			hbars.setFileList(f);
 			d();
 		})
-		.use(addProject)
-		.use(addSection)
-		.use(addLayout)
-		.use(addDefaultTitles)
-		.use(addExamples)
+		.use(require("./gulp/enhance"))
+		.use(log(f => f.repoURL))
 		.use($m.sass({
 			outputStyle: "expanded",
 			includePaths: [ "./node_modules", "./bower_components" ]
@@ -80,78 +71,12 @@ function repoToSrc(file) {
 	return path.join("src", project);
 }
 
-function addProject(files, metalsmith, done) {
-	_.each(files, (f,p) => {
-		let parts = p.split(path.sep);
-		if (parts.length > 1) {
-			f.project = parts[0]
-		}
-	})
-	done();
-}
-
-function addLayout(files, metalsmith, done) {
-	_.each(files, f => {
-		if ("section" in f) {
-			f.layout = f.section + ".handlebars";
-		}
-	})
-	done();
-}
-
-function addDefaultTitles(files, metalsmith, done) {
-	_.each(files, (f,p) => {
-		if ("title" in f) return;
-		console.log(`warn: ${p} has no title`);
-		f.title = path.basename(p);
-	})
-	done();
-}
-
 function renameReadme(files, metalsmith, done) {
 	let toReplace = _(files).keys().filter(p => path.basename(p) === "readme.md").value();
 	_.each(toReplace, p => {
 		let newPath = path.join(path.dirname(p), "index.md");
 		files[newPath] = files[p];
 		delete files[p];
-	});
-	done();
-}
-
-
-
-
-
-function addExamples(files, metalsmith, done) {
-	//TODO: populate the examples metadata by parsing horizon-examples directory in each docs repo
-	done();
-}
-
-function addSection(files, metalsmith, done) {
-	_.each(files, (f,p) => {
-		if (path.extname(p) !== ".md") {
-			return;
-		}
-
-		let parts = p.split(path.sep);
-		switch(parts[0]) {
-			case "learn":
-			case "reference":
-			case "tools":
-			case "beyond-code":
-				f.section = parts[0];
-				break;
-			default:
-				// if we're dealing with a document inside a project's /docs folder, don't assign a layout
-				if (parts.length == 2) {
-					return;
-				}
-				// if not one of the above cases, then we are dealing with a project-specific
-				// file (i.e. horizon, js-stellar-sdk).  In this case, we determine layout
-				// based upon the nesting undernearth the project name.
-				f.section = parts[1];
-				break;
-		}
 	});
 	done();
 }
@@ -165,17 +90,6 @@ function log(fn) {
 		done();
 	};
 }
-
-function buildProjectIndex(files, metalsmith, done) {
-	
-	var index = {}
-	_.each(files, (f,p) => {
-
-	})
-}
-
-
-
 
 
 // TODO:

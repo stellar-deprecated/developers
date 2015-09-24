@@ -1,0 +1,10 @@
+{
+	"docs" : {
+		"githubURL": "https://github.com/stellar/docs"
+	},
+
+	"horizon" : {
+		"githubURL": "https://github.com/stellar/horizon"
+	}
+
+}

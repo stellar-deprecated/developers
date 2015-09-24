@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 let allFiles = {}
 
-export let helpers = {
+module.exports.helpers = {
 	equal(lvalue, rvalue, options) {
 		if (arguments.length < 3)
 			throw new Error("Handlebars Helper equal needs 2 parameters");
@@ -45,7 +45,7 @@ export let helpers = {
 }
 
 
-export function setFileList(files) {
+module.exports.setFileList = function(files) {
 	allFiles = files
 }
 
