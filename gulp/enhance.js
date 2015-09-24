@@ -43,8 +43,9 @@ function addRepoInfo(f, p) {
 
 	if (!f.repo) return;
 
-	let repo = repos[f.repo]
-	f.repoURL = repo.githubURL + "/blob/master/" + f.repoPath;
+	let repo = repos[f.repo];
+	f.repoURL = repo.githubURL;
+	f.repoBlobURL = repo.githubURL + "/blob/master/" + f.repoPath;
 }
 
 

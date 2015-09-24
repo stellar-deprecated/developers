@@ -11,9 +11,10 @@ module.exports.rewrite = function(files, metalsmith, done) {
 		let $ = cheerio.load(f.contents);
 
 		
-		$('a').each(function(i, elem) {
+		$('[link-process-md] a').each(function(i, elem) {
 			//re-write relative .md links to .html
-			mdToHtml($, elem);
+			mdToHtml($, elem, f, p);
+			rootRelativeToGithub($, elem, f, p);
 		});
 
 		f.contents = $.html();
@@ -30,12 +31,12 @@ module.exports.rewrite = function(files, metalsmith, done) {
 	done();
 }
 
+// All .md links that are relative should point to the rendered output
 function mdToHtml($, elem) {
 	let href = $(elem).attr('href');
 	if (!href) return;
 
 	let u = url.parse(href);
-
 	if(!u.pathname) return;
 
 	var isMarkdown = u.pathname.match(/\.md$/) !== null;
@@ -44,8 +45,18 @@ function mdToHtml($, elem) {
 	if (!(isMarkdown && isRelative)) return;
 
 	u.pathname = u.pathname.replace(/\.md$/, ".html");
-	console.log(u);
-	console.log(url.format(u));
 	$(elem).attr('href', url.format(u));
+}
+
+// All root-relative links in content should link to github in the rendered output.
+function rootRelativeToGithub($, elem, f, p) {
+	let href = $(elem).attr('href');
+	if (!href) return;
+	if (!f.repoURL) return;
+
+	var isRootRelative = href.charAt(0) === '/';
+	if (!isRootRelative) return;
+	
+	$(elem).attr('href', f.repoURL + "/blob/master" + href);
 }
 

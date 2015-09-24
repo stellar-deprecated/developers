@@ -2,7 +2,9 @@
 	"docs" : {
 		"githubURL": "https://github.com/stellar/docs"
 	},
-
+	"stellar-core" : {
+		"githubURL": "https://github.com/stellar/stellar-core"
+	},
 	"horizon" : {
 		"githubURL": "https://github.com/stellar/horizon"
 	}
