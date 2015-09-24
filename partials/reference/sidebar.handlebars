@@ -7,6 +7,17 @@
     </div>
     <div class="spu-borderTop-1 spu-borderColor-light2 spu-padTop-20">
 
+			<ul class="pageNavList">
+
+				{{>sidebarSubMenu title="Errors" glob="horizon/reference/errors/*.html"}}
+				{{>sidebarSubMenu title="Resources" glob="horizon/reference/resources/*.html"}}
+
+				{{#eachFile "horizon/reference/*.html"}}
+					<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
+				{{/eachFile}}
+			
+			</ul>
+
     </div>
   </div>
 
