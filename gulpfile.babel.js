@@ -8,6 +8,7 @@ import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
 import links from "./gulp/links";
 
+let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
 
@@ -41,7 +42,7 @@ gulp.task('build', ['symlink-src'], done => {
 	};
 
 	Metalsmith(__dirname)
-		.metadata({ host: "localhost:8000" })
+		.metadata({ pathPrefix: argv.pathPrefix || "" })
 		.use((f,m,d) => {
 			hbars.setFileList(f);
 			d();
