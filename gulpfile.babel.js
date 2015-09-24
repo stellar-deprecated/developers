@@ -12,6 +12,9 @@ let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
 
+// add the git related gulp tasks
+import "./gulp/git";
+
 gulp.task("default", ["build"]);
 
 gulp.task('src:symlink-repos', () => {
