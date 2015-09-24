@@ -5,6 +5,7 @@ import _ from 'lodash';
 import util from 'util';
 import fs from 'fs';
 import hbars from './gulp/handlebars';
+import extract from "./gulp/extract";
 
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
@@ -45,6 +46,7 @@ gulp.task('build', ['symlink-src'], done => {
 			d();
 		})
 		.use(require("./gulp/enhance"))
+		.use(extract.examples)
 		.use($m.sass({
 			outputStyle: "expanded",
 			includePaths: [ "./node_modules", "./bower_components" ]
