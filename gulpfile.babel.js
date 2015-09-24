@@ -6,6 +6,7 @@ import util from 'util';
 import fs from 'fs';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
+import links from "./gulp/links";
 
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
@@ -56,6 +57,7 @@ gulp.task('build', ['symlink-src'], done => {
 		.use($m.markdown())
 		.use($m.inPlace(templateOptions))
 		.use($m.layouts(templateOptions))
+		.use(links.rewrite)
 		.build(done);
 });
 
@@ -94,14 +96,12 @@ function log(fn) {
 
 
 // TODO:
-//   de-monkeypath readdir-recursive lfstat => fstat fix
 //   live reload
 //   rewrite link engine
 //   example system
 //   concat vendor.js
 //   concat app.js
 //   fingerprint assets
-//   sidebar nav/file indexes
 //   copy graphics files from solar module
 //   run tests for link processor
 //   
