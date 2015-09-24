@@ -1,16 +1,18 @@
 import _ from "lodash";
 import path from "path";
+import minimatch from "minimatch";
 
 let repos = require("../repos.json");
 
 // The enhance middleware populates a bunch of metadata fields on the files.
 export default function enhance(files, metalsmith, done) {
-	_.each(files, (f,p) => {
-		addRepoInfo(f,p);
-		addProject(f,p);
-		addSection(f,p);
-		addLayout(f,p);
-		addDefaultTitles(f,p);
+	_.each(files, (f, p) => {
+		addRepoInfo(f, p, metalsmith);
+		addProject(f, p, metalsmith);
+		addSection(f, p, metalsmith);
+		addLayout(f, p, metalsmith);
+		addDefaultTitles(f, p, metalsmith);
+		addExamples(f, p, metalsmith);
 	})
 	done();
 }
@@ -88,6 +90,18 @@ function addDefaultTitles(f, p) {
 	console.log(`warn: ${p} has no title`);
 	f.title = path.basename(p);
 }
+
+function addExamples(f, p, metalsmith) {
+	if(!minimatch(p, "horizon/reference/*.*")) return;
+	let examples = metalsmith.metadata().examples;
+	let ext = path.extname(p);
+	let endpoint = path.basename(p).slice(0,-ext.length);
+	
+	if(!(endpoint in examples)) return;
+
+	f.examples = examples[endpoint];
+}
+
 
 
 

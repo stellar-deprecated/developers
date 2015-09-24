@@ -19,7 +19,8 @@ module.exports.examples = function(files, metalsmith, done) {
 	let metadata = metalsmith.metadata();
 	let exampleFiles = glob(files, "**/horizon-examples/*.*")
 
-	metadata.examples = {}
+	let results = {};
+	metadata.examples = results;
 
 	_.each(exampleFiles, (f,p) => {
 		delete files[p];
@@ -30,8 +31,8 @@ module.exports.examples = function(files, metalsmith, done) {
 			console.log(`warn: no languageMap entry for ${ext}`);
 		}
 
-		metadata.examples[endpoint] = metadata.examples[endpoint] || {}
-		metadata.examples[endpoint][language] = f;
+		results[endpoint] = results[endpoint] || {}
+		results[endpoint][language] = f;
 	});
 
 	done();

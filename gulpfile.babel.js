@@ -45,8 +45,8 @@ gulp.task('build', ['symlink-src'], done => {
 			hbars.setFileList(f);
 			d();
 		})
-		.use(require("./gulp/enhance"))
 		.use(extract.examples)
+		.use(require("./gulp/enhance"))
 		.use($m.sass({
 			outputStyle: "expanded",
 			includePaths: [ "./node_modules", "./bower_components" ]
