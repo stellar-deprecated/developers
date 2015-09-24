@@ -1,6 +1,24 @@
 import url from 'url'
+import path from 'path'
+import cheerio from 'cheerio';
+import minimatch from 'minimatch';
+import _ from 'lodash';
 
 module.exports.rewrite = function(files, metalsmith, done) {
+	_.each(files, (f,p) => {
+		if (!minimatch(p, "**/*.html")) return;
+
+		let $ = cheerio.load(f.contents);
+
+		
+		$('a').each(function(i, elem) {
+			//re-write relative .md links to .html
+			mdToHtml($, elem);
+		});
+
+		f.contents = $.html();
+	});
+
 
 	// link re-targeting
 	// TODO: protocol relative links are left alone
@@ -11,3 +29,23 @@ module.exports.rewrite = function(files, metalsmith, done) {
 	// 
 	done();
 }
+
+function mdToHtml($, elem) {
+	let href = $(elem).attr('href');
+	if (!href) return;
+
+	let u = url.parse(href);
+
+	if(!u.pathname) return;
+
+	var isMarkdown = u.pathname.match(/\.md$/) !== null;
+	var isRelative = u.pathname.charAt(0) !== '/';
+
+	if (!(isMarkdown && isRelative)) return;
+
+	u.pathname = u.pathname.replace(/\.md$/, ".html");
+	console.log(u);
+	console.log(url.format(u));
+	$(elem).attr('href', url.format(u));
+}
+
