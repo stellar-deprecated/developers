@@ -2,7 +2,7 @@
 set -x
 
 # switch to jenkins user inside docker container
-useradd --uid ${JENKINS_UID:?"No JENKINS_UID set} jenkins
+useradd --uid ${JENKINS_UID:?"No JENKINS_UID set"} jenkins
 su jenkins
 
 time npm install --production
