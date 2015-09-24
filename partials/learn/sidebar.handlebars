@@ -8,18 +8,9 @@
     <div class="spu-borderTop-1 spu-borderColor-light2 spu-padTop-20">
 
 			<ul class="pageNavList">
-				{{#sidebarSubMenu "Get Started"}}
-					{{#eachFile }}
-						<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
-					{{/eachFile}}
-				{{/sidebarSubMenu}}
-
-				{{#sidebarSubMenu "Concepts"}}
-					{{#eachFile "learn/concepts/*.html"}}
-						<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
-					{{/eachFile}}
-				{{/sidebarSubMenu}}
-
+				{{>sidebarSubMenu title="Get Started" glob="learn/get-started/*.html"}}
+				{{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
+				
 				{{#sidebarSubMenu "Integration Guides"}}
 						<li class="pageNavList__item">TODO</li>
 				{{/sidebarSubMenu}}
