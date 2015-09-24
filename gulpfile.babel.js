@@ -17,7 +17,7 @@ import "./gulp/git";
 
 gulp.task("default", ["build"]);
 
-gulp.task('src:symlink-repos', () => {
+gulp.task('src:symlink-repos', ['git:clone'], () => {
 
 	let safeSym = (src, dest) => {
 		try {
