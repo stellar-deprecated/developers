@@ -53,11 +53,13 @@ gulp.task('build', ['symlink-src'], done => {
 			includePaths: [ "./node_modules", "./bower_components" ]
 		}))
 		.use($m.autoprefixer({ }))
+		.use($m.fingerprint({pattern: "styles/index.css"}))
 		.use(renameReadme)
 		.use($m.markdown())
 		.use($m.inPlace(templateOptions))
 		.use($m.layouts(templateOptions))
 		.use(links.rewrite)
+		
 		.build(done);
 });
 
