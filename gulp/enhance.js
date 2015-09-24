@@ -93,7 +93,7 @@ function addDefaultTitles(f, p) {
 
 function addExamples(f, p, metalsmith) {
 	if(!minimatch(p, "horizon/reference/*.*")) return;
-	let examples = metalsmith.metadata().examples;
+	let examples = metalsmith.metadata()._examples;
 	let ext = path.extname(p);
 	let endpoint = path.basename(p).slice(0,-ext.length);
 	

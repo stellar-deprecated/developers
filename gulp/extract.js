@@ -20,7 +20,7 @@ module.exports.examples = function(files, metalsmith, done) {
 	let exampleFiles = glob(files, "**/horizon-examples/*.*")
 
 	let results = {};
-	metadata.examples = results;
+	metadata._examples = results;
 
 	_.each(exampleFiles, (f,p) => {
 		delete files[p];
