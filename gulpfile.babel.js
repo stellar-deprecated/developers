@@ -12,7 +12,9 @@ let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
 
-gulp.task('symlink-src', () => {
+gulp.task("default", ["build"]);
+
+gulp.task('src:symlink-repos', () => {
 
 	let safeSym = (src, dest) => {
 		try {
@@ -33,7 +35,21 @@ gulp.task('symlink-src', () => {
 		.pipe($g.sym(repoToSrc, {force: true, relative: true}));
 })
 
-gulp.task('build', ['symlink-src'], done => {
+gulp.task('js:copy-vendor', function() {
+  return gulp.src([
+      // TODO: optimize and only load which ones are necessary
+      './bower_components/jquery/dist/jquery.min.js',
+      './bower_components/codemirror/lib/codemirror.js',
+      './bower_components/codemirror/addon/runmode/runmode.js',
+      './bower_components/codemirror/mode/javascript/javascript.js',
+      './bower_components/codemirror/mode/shell/shell.js',
+      './bower_components/stellar-sdk/stellar-sdk.min.js',
+    ])
+    .pipe($g.concat('vendor.js'))
+    .pipe(gulp.dest('./src/js'));
+});
+
+gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
 
 	let templateOptions = {
 		engine: "handlebars",
@@ -54,7 +70,16 @@ gulp.task('build', ['symlink-src'], done => {
 			includePaths: [ "./node_modules", "./bower_components" ]
 		}))
 		.use($m.autoprefixer({ }))
-		.use($m.fingerprint({pattern: "styles/index.css"}))
+		.use($m.concat({
+			files: [ "js/vendor.js", "js/!(vendor).js" ],
+			output: "js/app.js",
+		}))
+		.use($m.fingerprint({
+			pattern: [
+				"styles/index.css",
+				"js/app.js",
+			]
+		}))
 		.use(renameReadme)
 		.use($m.markdown())
 		.use($m.inPlace(templateOptions))
