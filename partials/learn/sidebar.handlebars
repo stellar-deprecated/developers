@@ -9,13 +9,13 @@
 
 			<ul class="pageNavList">
 				{{#sidebarSubMenu "Get Started"}}
-					{{#eachFile "learn" "get-started"}}
+					{{#eachFile }}
 						<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
 					{{/eachFile}}
 				{{/sidebarSubMenu}}
 
 				{{#sidebarSubMenu "Concepts"}}
-					{{#eachFile "learn" "concepts"}}
+					{{#eachFile "learn/concepts/*.html"}}
 						<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
 					{{/eachFile}}
 				{{/sidebarSubMenu}}
@@ -23,6 +23,16 @@
 				{{#sidebarSubMenu "Integration Guides"}}
 						<li class="pageNavList__item">TODO</li>
 				{{/sidebarSubMenu}}
+
+				{{#sidebarSubMenu "Horizon"}}
+						<li class="pageNavList__item">TODO</li>
+				{{/sidebarSubMenu}}
+
+				{{#sidebarSubMenu "Stellar Core"}}
+						<li class="pageNavList__item">TODO</li>
+				{{/sidebarSubMenu}}
+
+
 			</ul>
 			
     </div>

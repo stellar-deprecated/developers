@@ -45,7 +45,6 @@ gulp.task('build', ['symlink-src'], done => {
 			d();
 		})
 		.use(require("./gulp/enhance"))
-		.use(log(f => f.repoURL))
 		.use($m.sass({
 			outputStyle: "expanded",
 			includePaths: [ "./node_modules", "./bower_components" ]
@@ -95,7 +94,6 @@ function log(fn) {
 // TODO:
 //   de-monkeypath readdir-recursive lfstat => fstat fix
 //   live reload
-//   source reorganization
 //   rewrite link engine
 //   example system
 //   concat vendor.js

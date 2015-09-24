@@ -1,5 +1,6 @@
 import path from 'path';
 import _ from 'lodash';
+import minimatch from "minimatch";
 
 let allFiles = {}
 
@@ -17,14 +18,13 @@ module.exports.helpers = {
  eachFile() {
 		let args = Array.slice(arguments);
 		let options = _.last(args)
-			let parts = args.slice(0, args.length-1);
-		let filter = path.join(...parts);
+		let globs = args.slice(0, args.length-1);
 
 		let result = "";
 
 		_.each(allFiles, (f,p) => {
-			if (path.extname(p) !== ".html") return;
-			if (!_.startsWith(p, filter)) return;
+			let matches = _.any(globs, g => minimatch(p,g));
+			if (!matches) return
 
 			result += options.fn({path: p, file: f});
 		});
