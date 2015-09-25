@@ -26,7 +26,9 @@ module.exports.helpers = {
 			let matches = _.any(globs, g => minimatch(p,g));
 			if (!matches) return
 
-			result += options.fn({path: p, file: f});
+			let ctx = _.extend({}, this, {path: p, file: f})
+
+			result += options.fn(ctx);
 		});
 
 		return result;
