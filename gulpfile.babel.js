@@ -74,7 +74,13 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
     }))
     .use($m.autoprefixer({ }))
     .use($m.concat({
-      files: [ "js/vendor.js", "js/!(vendor).js" ],
+      files: [
+        "js/vendor.js",
+        "js/syntaxHighlight.js",
+        "js/endpointRef.js",
+        "js/friendbot4.js",
+        "js/linkCheck.js",
+      ],
       output: "js/app.js",
     }))
     .use($m.fingerprint({

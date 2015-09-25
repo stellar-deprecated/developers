@@ -1,0 +1,80 @@
+<div class="friendbot4 js-friendbot4">
+  <div class="friendbot4-step0" js-friendbot4-step="0">
+    <div class="S-flex-row S-flexUtil-alignItemsCenter">
+      <div class="S-flexItem-share">
+        <code class="friendbot4-step0__code">curl -X POST https://horizon-testnet.stellar.org/...</code>
+      </div>
+      <div class="S-flexItem-noFlex">
+        <button class="s-button js-friendbot4-step0__start">Start</button>
+      </div>
+    </div>
+  </div>
+  <div js-friendbot4-step="1" class="friendbot4-initialHide">
+    <p class="friendbot4-stepIntro">1. Use <a href="https://github.com/stellar/js-stellar-lib">js-stellar-lib</a> to generate the public/private keys for your Stellar account.</p>
+    <div class="friendbot4__console">
+      <div class="friendbot4__console__input">
+        <code class="friendbot4__console__input__text">
+          Generate Stellar testnet keys
+        </code>
+        <button class="s-button friendbot4__console__input__button js-friendbot4-step1-generate">
+          Generate
+        </button>
+      </div>
+      <pre class="friendbot4__console__result"><!--
+      --><code class="js-friendbot4-step1-result language-javascript"></code><!--
+      --></pre>
+    </div>
+  </div>
+  <div js-friendbot4-step="2" class="friendbot4-initialHide">
+    <p class="friendbot4-stepIntro">2. Using the address you generated, ask our friendly robot to send you some lumens:</p>
+    <div class="friendbot4__info">
+      <div class="friendbot4__bot__image">
+        <img src="https://www.stellar.org/wp-content/uploads/2014/07/friendbot.png" alt="stroopy" width="54" height="70" />
+      </div>
+      <div class="S-flex-row">
+        <input type="text" class="S-flexItem-share friendbot4__bot__input js-friendbot4__bot__input">
+        <button class="s-button S-flexItem-noFlex js-friendbot4__bot__button">Get lumens</button>
+      </div>
+      <p class="friendbot4__bot__button__status js-friendbot4__bot__button__status"></p>
+    </div>
+    <br />
+    <span class="js-friendbot4-step2-result"></span>
+  </div>
+  <div js-friendbot4-step="3" class="friendbot4-initialHide">
+    <p class="friendbot4-stepIntro">3. View your account using the <a href="https://github.com/stellar/horizon">Horizon API</a>. It should contain 10,000 lumens.
+    <div class="friendbot4__console">
+      <div class="friendbot4__console__input">
+        <div class="friendbot4__console__input__text">
+          <code class="js-friendbot4-step3-request language-shell"></code>
+        </div>
+        <button class="s-button friendbot4__console__input__button js-friendbot4-step3-run">
+          Run it
+        </button>
+      </div>
+      <pre class="friendbot4__console__result"><!--
+      --><code class="js-friendbot4-step3-result language-javascript"></code><!--
+      --></pre>
+    </div>
+  </div>
+  <div js-friendbot4-step="4" class="friendbot4-initialHide">
+    <p class="friendbot4-stepIntro">Your test account is all set!<br />Save your keys to make other API calls on the network.</p>
+    <p class="friendbot4-step4__key">
+      Test AccountID:
+      <br>
+      <span class="js-friendbot4-step4-address"></span>
+    </p>
+    <p class="friendbot4-step4__key">
+      Test Seed:
+      <br>
+      <span class="js-friendbot4-step4-seed"></span>
+    </p>
+    <p class="friendbot4-stepOutro">Explore more of the <a href="#check" target="_blank">Stellar architecture</a>.</p>
+  </div>
+  <div class="friendbot4-initialHide js-friendbot4__navWrapper">
+    <nav class="friendbot4__nav">
+      <button class="s-button js-friendbot4__nav__prev">Prev</button>
+      <!-- <a class="friendbot4__nav__minimize js-friendbot4__nav__minimize">minimize</a> -->
+      <button class="s-button js-friendbot4__nav__next">Next</button>
+    </nav>
+  </div>
+</div>
