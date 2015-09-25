@@ -11,15 +11,13 @@
 			<ul class="pageNavList">
 				{{>sidebarSubMenu title="Get Started" glob="learn/get-started/*.html"}}
 				{{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
-				
+
 				{{#sidebarSubMenu "Integration Guides"}}
 						<li class="pageNavList__item">TODO</li>
 				{{/sidebarSubMenu}}
 
 				{{#sidebarSubMenu "Horizon"}}
-					{{#eachFile "horizon/learn/*.html"}}
-						<li class="pageNavList__item"><a href="{{pathPrefix}}/{{path}}">{{file.title}}</a></li>
-					{{/eachFile}}
+          {{>sidebarSubItems glob="horizon/learn/*.html"}}
 
 					{{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
 				{{/sidebarSubMenu}}

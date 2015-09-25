@@ -9,10 +9,7 @@
 
 			<ul class="pageNavList">
 
-
-				{{#eachFile "horizon/reference/*.html"}}
-					<li class="pageNavList__item"><a href="{{pathPrefix}}/{{path}}">{{file.title}}</a></li>
-				{{/eachFile}}
+        {{>sidebarSubItems glob="horizon/reference/*.html"}}
 
         {{>sidebarSubMenu title="Resources" glob="horizon/reference/resources/*.html"}}
         {{>sidebarSubMenu title="Errors" glob="horizon/reference/errors/*.html"}}
