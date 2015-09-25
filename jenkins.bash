@@ -26,7 +26,8 @@ cat <<-EOS > build-node.bash
 	gulp --pathPrefix="/developers"
 
 	rm build-node.bash
-	chown -R ${UID} build
+	chown -R ${UID} ./build
+	chown -R ${UID} ./node_modules
 
 	trap - INT TERM EXIT ERR
 EOS
