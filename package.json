@@ -13,7 +13,7 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-sym": "0.0.14",
     "gulp-webserver": "^0.9.1",
-    "hamljs": "^0.6.2",
+    "handlebars": "^4.0.2",
     "load-metalsmith-plugins": "^0.1.1",
     "lodash": "^3.10.1",
     "metalsmith": "git+https://github.com/stellar/metalsmith.git",
