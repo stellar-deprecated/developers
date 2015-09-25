@@ -1,5 +1,5 @@
 {{#sidebarSubMenu title}}
 	{{#eachFile glob}}
-		<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
+		<li class="pageNavList__item"><a href="{{pathPrefix}}/{{path}}">{{file.title}}</a></li>
 	{{/eachFile}}
 {{/sidebarSubMenu}}

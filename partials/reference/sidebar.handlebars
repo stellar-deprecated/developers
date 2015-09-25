@@ -13,7 +13,7 @@
 				{{>sidebarSubMenu title="Resources" glob="horizon/reference/resources/*.html"}}
 
 				{{#eachFile "horizon/reference/*.html"}}
-					<li class="pageNavList__item"><a href="/{{path}}">{{file.title}}</a></li>
+					<li class="pageNavList__item"><a href="{{pathPrefix}}/{{path}}">{{file.title}}</a></li>
 				{{/eachFile}}
 			
 			</ul>
