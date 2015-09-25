@@ -1,15 +1,15 @@
 {
-	"docs" : {
-		"githubURL": "https://github.com/stellar/docs"
-	},
-	"stellar-core" : {
-		"githubURL": "https://github.com/stellar/stellar-core"
-	},
-	"js-stellar-sdk" : {
-		"githubURL": "https://github.com/stellar/js-stellar-sdk"
-	},
-	"horizon" : {
-		"githubURL": "https://github.com/stellar/horizon"
-	}
+  "docs" : {
+    "githubURL": "https://github.com/stellar/docs"
+  },
+  "stellar-core" : {
+    "githubURL": "https://github.com/stellar/stellar-core"
+  },
+  "js-stellar-sdk" : {
+    "githubURL": "https://github.com/stellar/js-stellar-sdk"
+  },
+  "horizon" : {
+    "githubURL": "https://github.com/stellar/horizon"
+  }
 
 }

@@ -9,19 +9,19 @@ let repos = require("../repos");
 let execAsync = Promise.promisify(exec);
 
 gulp.task("git:clone", done => {
-	let clones = _.map(repos, (data, name) => {
-		let dest = path.join("repos", name);
-		if (fs.existsSync(dest)) {
-			console.log(`info: ${dest} already cloned`);
-			return Promise.resolve();	
-		}
+  let clones = _.map(repos, (data, name) => {
+    let dest = path.join("repos", name);
+    if (fs.existsSync(dest)) {
+      console.log(`info: ${dest} already cloned`);
+      return Promise.resolve();
+    }
 
-		return execAsync(`git clone ${data.githubURL} ${dest}`)
-			.then(() => console.log(`info: cloned ${dest}`));
-	});
+    return execAsync(`git clone ${data.githubURL} ${dest}`)
+      .then(() => console.log(`info: cloned ${dest}`));
+  });
 
-	Promise.all(clones).then(
-		() => done(),
-		err => done(err)
-	);
+  Promise.all(clones).then(
+    () => done(),
+    err => done(err)
+  );
 });

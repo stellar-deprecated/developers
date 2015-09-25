@@ -8,28 +8,24 @@
     <div class="spu-borderTop-1 spu-borderColor-light2 spu-padTop-20">
 
 
-			<ul class="pageNavList">
-				{{>sidebarSubMenu title="Get Started" glob="learn/get-started/*.html"}}
-				{{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
-				
-				{{#sidebarSubMenu "Integration Guides"}}
-						<li class="pageNavList__item">TODO</li>
-				{{/sidebarSubMenu}}
+      <ul class="pageNavList">
+        {{>sidebarSubMenu title="Get Started" glob="learn/get-started/*.html"}}
+        {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
 
-				{{#sidebarSubMenu "Horizon"}}
-					{{#eachFile "horizon/learn/*.html"}}
-						<li class="pageNavList__item"><a href="{{pathPrefix}}/{{path}}">{{file.title}}</a></li>
-					{{/eachFile}}
+        {{#sidebarSubMenu "Integration Guides"}}
+            <li class="pageNavList__item">TODO</li>
+        {{/sidebarSubMenu}}
 
-					{{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
-				{{/sidebarSubMenu}}
+        {{#sidebarSubMenu "Horizon"}}
+          {{>sidebarSubItems glob="horizon/learn/*.html"}}
 
-				{{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.html"}}
+          {{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
+        {{/sidebarSubMenu}}
+
+        {{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.html"}}
 
 
-			</ul>
-			
+      </ul>
+
     </div>
   </div>
-
-
