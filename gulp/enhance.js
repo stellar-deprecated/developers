@@ -87,7 +87,9 @@ function addLayout(f, p) {
 }
 
 function addDefaultTitles(f, p) {
+	if (minimatch(p, "**/*.{scss,css,js,cfg}")) return;
 	if ("title" in f) return;
+
 	console.log(`warn: ${p} has no title`);
 	f.title = path.basename(p);
 }
