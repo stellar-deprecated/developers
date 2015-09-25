@@ -19,23 +19,23 @@ gulp.task("default", ["build"]);
 
 gulp.task('src:symlink-repos', ['git:clone'], () => {
 
-	let safeSym = (src, dest) => {
-		try {
-			fs.lstatSync(dest);
-		} catch(e) {
-			fs.symlinkSync(src,dest);
-		}
-	}
+  let safeSym = (src, dest) => {
+    try {
+      fs.lstatSync(dest);
+    } catch(e) {
+      fs.symlinkSync(src,dest);
+    }
+  }
 
-	// symlink the landing pages/custom content from the docs repo for each section
-	safeSym("../repos/docs/learn", "src/learn")
-	safeSym("../repos/docs/reference", "src/reference")
-	safeSym("../repos/docs/tools", "src/tools")
-	safeSym("../repos/docs/beyond-code", "src/beyond-code")
+  // symlink the landing pages/custom content from the docs repo for each section
+  safeSym("../repos/docs/learn", "src/learn")
+  safeSym("../repos/docs/reference", "src/reference")
+  safeSym("../repos/docs/tools", "src/tools")
+  safeSym("../repos/docs/beyond-code", "src/beyond-code")
 
-	// link up other repo's docs folder into the src structure
-	return gulp.src("./repos/*/docs/")
-		.pipe($g.sym(repoToSrc, {force: true, relative: true}));
+  // link up other repo's docs folder into the src structure
+  return gulp.src("./repos/*/docs/")
+    .pipe($g.sym(repoToSrc, {force: true, relative: true}));
 })
 
 gulp.task('js:copy-vendor', function() {
@@ -54,46 +54,46 @@ gulp.task('js:copy-vendor', function() {
 
 gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
 
-	let templateOptions = {
-		engine: "handlebars",
-		partials: "partials",
-		helpers: hbars.helpers,
-	};
+  let templateOptions = {
+    engine: "handlebars",
+    partials: "partials",
+    helpers: hbars.helpers,
+  };
 
-	Metalsmith(__dirname)
-		.metadata({ pathPrefix: argv.pathPrefix || "" })
-		.use((f,m,d) => {
-			hbars.setFileList(f);
-			d();
-		})
-		.use(extract.examples)
-		.use(require("./gulp/enhance"))
-		.use($m.sass({
-			outputStyle: "expanded",
-			includePaths: [ "./node_modules", "./bower_components" ]
-		}))
-		.use($m.autoprefixer({ }))
-		.use($m.concat({
-			files: [ "js/vendor.js", "js/!(vendor).js" ],
-			output: "js/app.js",
-		}))
-		.use($m.fingerprint({
-			pattern: [
-				"styles/index.css",
-				"js/app.js",
-			]
-		}))
-		.use(renameReadme)
-		.use($m.markdown())
-		.use($m.inPlace(templateOptions))
-		.use($m.layouts(templateOptions))
-		.use(links.rewrite)
-		
-		.build(done);
+  Metalsmith(__dirname)
+    .metadata({ pathPrefix: argv.pathPrefix || "" })
+    .use((f,m,d) => {
+      hbars.setFileList(f);
+      d();
+    })
+    .use(extract.examples)
+    .use(require("./gulp/enhance"))
+    .use($m.sass({
+      outputStyle: "expanded",
+      includePaths: [ "./node_modules", "./bower_components" ]
+    }))
+    .use($m.autoprefixer({ }))
+    .use($m.concat({
+      files: [ "js/vendor.js", "js/!(vendor).js" ],
+      output: "js/app.js",
+    }))
+    .use($m.fingerprint({
+      pattern: [
+        "styles/index.css",
+        "js/app.js",
+      ]
+    }))
+    .use(renameReadme)
+    .use($m.markdown())
+    .use($m.inPlace(templateOptions))
+    .use($m.layouts(templateOptions))
+    .use(links.rewrite)
+
+    .build(done);
 });
 
 gulp.task('serve', () => {
-	gulp.src('./build')
+  gulp.src('./build')
     .pipe($g.webserver({
       livereload: true,
       open: "index.html",
@@ -101,28 +101,28 @@ gulp.task('serve', () => {
 });
 
 function repoToSrc(file) {
-	let project = file.relative.split(path.sep)[0];
-	return path.join("src", project);
+  let project = file.relative.split(path.sep)[0];
+  return path.join("src", project);
 }
 
 function renameReadme(files, metalsmith, done) {
-	let toReplace = _(files).keys().filter(p => path.basename(p) === "readme.md").value();
-	_.each(toReplace, p => {
-		let newPath = path.join(path.dirname(p), "index.md");
-		files[newPath] = files[p];
-		delete files[p];
-	});
-	done();
+  let toReplace = _(files).keys().filter(p => path.basename(p) === "readme.md").value();
+  _.each(toReplace, p => {
+    let newPath = path.join(path.dirname(p), "index.md");
+    files[newPath] = files[p];
+    delete files[p];
+  });
+  done();
 }
 
 
 function log(fn) {
-	return function(files, metalsmith, done) {
-		_.each(files, (f,p) => {
-			console.log(`${p}: ${fn(f)}`);
-		})
-		done();
-	};
+  return function(files, metalsmith, done) {
+    _.each(files, (f,p) => {
+      console.log(`${p}: ${fn(f)}`);
+    })
+    done();
+  };
 }
 
 
@@ -135,7 +135,7 @@ function log(fn) {
 //   fingerprint assets
 //   copy graphics files from solar module
 //   run tests for link processor
-//   
+//
 
 
 // Example design
