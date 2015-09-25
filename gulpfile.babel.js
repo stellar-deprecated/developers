@@ -7,6 +7,7 @@ import fs from 'fs';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
 import links from "./gulp/links";
+import safeSymlink from './gulp/safeSymlink';
 
 let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
@@ -18,20 +19,11 @@ import "./gulp/git";
 gulp.task("default", ["build"]);
 
 gulp.task('src:symlink-repos', ['git:clone'], () => {
-
-  let safeSym = (src, dest) => {
-    try {
-      fs.lstatSync(dest);
-    } catch(e) {
-      fs.symlinkSync(src,dest);
-    }
-  }
-
   // symlink the landing pages/custom content from the docs repo for each section
-  safeSym("../repos/docs/learn", "src/learn")
-  safeSym("../repos/docs/reference", "src/reference")
-  safeSym("../repos/docs/tools", "src/tools")
-  safeSym("../repos/docs/beyond-code", "src/beyond-code")
+  safeSymlink("../repos/docs/learn", "src/learn")
+  safeSymlink("../repos/docs/reference", "src/reference")
+  safeSymlink("../repos/docs/tools", "src/tools")
+  safeSymlink("../repos/docs/beyond-code", "src/beyond-code")
 
   // link up other repo's docs folder into the src structure
   return gulp.src("./repos/*/docs/")
