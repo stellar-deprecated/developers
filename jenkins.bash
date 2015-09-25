@@ -16,7 +16,8 @@ cat <<-EOS > build-node.bash
 
 	trap rollback INT TERM EXIT ERR
 
-	npm install -q -g gulp
+	npm install -q -g gulp bower
+	bower install -q
 	npm install -q 
 	rm -rf ./repos/
 	gulp --pathPrefix="/developers"
