@@ -1,14 +1,35 @@
 #! /usr/bin/env bash
-set -x
+set -e
 
-# switch to jenkins user inside docker container
-useradd --uid ${JENKINS_UID:?"No JENKINS_UID set"} jenkins
-sudo -u jenkins bash << EOF
+cat <<-EOS > build-node.bash
+	set -e
+	cd "\$(dirname "\$0")"
+		
+	rollback() {
+		echo "rolling back"
+		set +e
+		rm -rf node_modules
+		rm -rf build 
+		rm -rf repos
+		rm build-node.bash
+	}
 
-time npm install --production
+	trap rollback INT TERM EXIT ERR
 
-time rm -rf ./repos/
-time ./node_modules/.bin/gulp --pathPrefix="/developers"
+	npm install -q -g gulp
+	npm install -q 
+	rm -rf ./repos/
+	gulp --pathPrefix="/developers"
 
-EOF
+	rm build-node.bash
+	chown -R ${UID} build
+
+	trap - INT TERM EXIT ERR
+EOS
+
+docker run \
+	--rm \
+	-v $(pwd):/app \
+	node:4 /bin/bash /app/build-node.bash 
+
 
