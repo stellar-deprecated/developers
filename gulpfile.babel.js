@@ -44,7 +44,11 @@ gulp.task('js:copy-vendor', function() {
     .pipe(gulp.dest('./src/js'));
 });
 
-gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
+gulp.task('css:symlink-graphics', function() {
+  safeSymlink("../../node_modules/solar-stellarorg/graphics/", "src/styles/graphics");
+})
+
+gulp.task('build', ['src:symlink-repos', "js:copy-vendor", 'css:symlink-graphics'], done => {
 
   let templateOptions = {
     engine: "handlebars",
