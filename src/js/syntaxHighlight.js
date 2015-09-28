@@ -18,14 +18,14 @@ window.syntaxHighlight = (function() {
     var $code = $(code);
     var $parent = $code.parent();
 
-    // see if this is a valid candidate for highlighting (has class starting with language-)
+    // see if this is a valid candidate for highlighting (has class starting with lang- or language-)
     if (typeof $code.attr('class') === 'undefined') {
       return;
     }
-    var classMatch = $code.attr('class').match(/language-([a-zA-Z]+)/);
+    var classMatch = $code.attr('class').match(/(lang|language)-([a-zA-Z]+)/);
 
-    if (classMatch !== null && classMatch.length == 2 && classMatch[1] in languageMap) {
-      CodeMirror.runMode($code.text(), languageMap[classMatch[1]], $code[0]);
+    if (classMatch !== null && classMatch.length == 3 && classMatch[2] in languageMap) {
+      CodeMirror.runMode($code.text(), languageMap[classMatch[2]], $code[0]);
       $parent.addClass('cm-s-monokai CodeMirror codeBlock codeBlock--syntaxHighlight');
     } else {
       $parent.addClass('cm-s-monokai CodeMirror codeBlock codeBlock--plain');
