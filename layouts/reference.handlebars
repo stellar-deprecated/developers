@@ -2,46 +2,7 @@
 
 <div class="S-flex-row">
   {{> reference/sidebar }}
-  <div class="S-flexItem-share">
-    <div class="so-siteHeader spu-padStart-30">
-      {{> mainNavMenu }}
-    </div>
-    <div class="spu-padSE-30">
-      <h1 class="mainSectionTitle">{{ title }}</h1>
-    </div>
-    <div class="S-flex-rowWrap spu-borderTop-1 spu-borderColor-light2">
-      <s-read-md class="S-flexItem-share readReference s-read-md--capped spu-padSE-30 spu-padTB-20 documentRead" link-process-md>
-        {{{ contents }}}
-      </s-read-md>
-
-      {{#if examples }}
-        <s-read-md class="endpointRef-exampleBar spu-background-dark2 spu-color-light4 js-endpointRef-exampleBar">
-
-          <nav class="s-navList js-endpointRef-menu">
-            {{#each examples}}
-            <button class="s-navList__item js-endpointRef-menu__item js-endpointRef-menuLang--{{@key}}" endpoint-ref-lang="{{@key}}">{{@key}}</button>
-            {{/each}}
-          </nav>
-
-          <div class="endpointRef-exampleRequest spu-padTop-20 js-endpointRef-exampleRequest">
-          {{#each examples}}
-            <div class="js-endpointRef-lang js-endpointRef-lang--{{@key}}">
-              <pre><code class="language-{{@key}}">{{request}}</code></pre>
-            </div>
-          {{/each}}
-          </div>
-
-          <div class="endpointRef-exampleResponse spu-padTop-20 js-endpointRef-exampleResponse">
-          {{#each examples}}
-            <div class="js-endpointRef-lang js-endpointRef-lang--{{@key}}">
-              <pre><code class="language-{{@key}}">{{request}}</code></pre>
-            </div>
-          {{/each}}
-          </div>
-        </s-read-md>
-      {{/if}}
-    </div>
-  </div>
+  {{> contentContainer }}
 </div>
 
 {{> footer }}
