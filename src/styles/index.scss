@@ -46,11 +46,15 @@ s-read-md .codeBlock {
 // API reference sidebar
 // Due to a bug in sass, 1.5*$s-scale-4 does not work. Instead, we just do 18*1.5 + px = 27px
 .endpointRef-exampleBar {
-  @include S-flexItem-full;
+  display: none;
   padding: 2em 27px 0 27px;
 }
+.endpointRef-exampleBar.is-available {
+  display: block;
+  @include S-flexItem-full;
+}
 @include r-media(3xl) {
-  .endpointRef-exampleBar {
+  .endpointRef-exampleBar.is-available {
     @include S-flexItem-share;
   }
 }
