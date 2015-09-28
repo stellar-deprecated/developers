@@ -15,11 +15,19 @@
   padding-top: 1em;
   padding-bottom: 1em;
   font-size: $s-scale-2;
+  color: $s-color-dark2;
+}
+.mainSidebar {
+  border-top: 1px solid $s-color-light2;
+  padding-top: 2em;
 }
 
 // gray sidebar on full width pages
 .siteSidebar {
+  @include S-flexItem-noFlex;
   width: 288px;
+  padding-left: 2em;
+  background: $s-color-light3;
 }
 
 // syntaxHighlight (.codeBlock is added automatically by syntaxHighlight.js)
