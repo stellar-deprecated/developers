@@ -1,20 +1,16 @@
-  <div class="siteSidebar S-flexItem-noFlex spu-background-light3 spu-padStart-20">
-    <div class="so-siteHeader">
-      {{> siteLogo  }}
-    </div>
-    <div>
-      <h2 class="mainSectionTitle spu-color-dark2">Reference</h2>
-    </div>
-    <div class="spu-borderTop-1 spu-borderColor-light2 spu-padTop-20">
-
-      <ul class="pageNavList">
-
-        {{>sidebarSubItems glob="horizon/reference/*.html"}}
-
-        {{>sidebarSubMenu title="Resources" glob="horizon/reference/resources/*.html"}}
-        {{>sidebarSubMenu title="Errors" glob="horizon/reference/errors/*.html"}}
-
-      </ul>
-
-    </div>
+<div class="siteSidebar">
+  <div class="so-siteHeader">
+    {{> siteLogo  }}
   </div>
+  <h2 class="mainSectionTitle">Reference</h2>
+  <div class="mainSidebar">
+    <ul class="pageNavList">
+
+      {{>sidebarSubItems glob="horizon/reference/*.html"}}
+
+      {{>sidebarSubMenu title="Resources" glob="horizon/reference/resources/*.html"}}
+      {{>sidebarSubMenu title="Errors" glob="horizon/reference/errors/*.html"}}
+
+    </ul>
+  </div>
+</div>

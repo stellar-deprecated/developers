@@ -15,11 +15,19 @@
   padding-top: 1em;
   padding-bottom: 1em;
   font-size: $s-scale-2;
+  color: $s-color-dark2;
+}
+.mainSidebar {
+  border-top: 1px solid $s-color-light2;
+  padding-top: 2em;
 }
 
 // gray sidebar on full width pages
 .siteSidebar {
+  @include S-flexItem-noFlex;
   width: 288px;
+  padding-left: 2em;
+  background: $s-color-light3;
 }
 
 // syntaxHighlight (.codeBlock is added automatically by syntaxHighlight.js)
@@ -38,11 +46,15 @@ s-read-md .codeBlock {
 // API reference sidebar
 // Due to a bug in sass, 1.5*$s-scale-4 does not work. Instead, we just do 18*1.5 + px = 27px
 .endpointRef-exampleBar {
-  @include S-flexItem-full;
+  display: none;
   padding: 2em 27px 0 27px;
 }
+.endpointRef-exampleBar.is-available {
+  display: block;
+  @include S-flexItem-full;
+}
 @include r-media(3xl) {
-  .endpointRef-exampleBar {
+  .endpointRef-exampleBar.is-available {
     @include S-flexItem-share;
   }
 }
@@ -65,11 +77,6 @@ s-read-md .codeBlock {
 }
 .endpointRef-exampleResponse pre:last-of-type {
   margin-bottom: 0;
-}
-
-// read column in reference pages
-.readReference {
-  max-width: 900px;
 }
 
 .pageNavList {

@@ -16,7 +16,23 @@ To build this project, you must have the following dependencies installed:
 git clone https://github.com/stellar/developers # or git@github.com:stellar/developers.git
 npm install
 bower install
+```
 
+## Docs repository cloning
+The developers site tool generates content pulled in from other repos. These repositories are configured in `repos.json` and stored in `repos/`. To clone all the required repositories, run:
+```
+node_modules/.bin/gulp git:clone
+```
+
+Keeping these repositories up to date is the responsibility of the person using this tool. Here is a simple bash command you can use to do a `git pull` on all the repos.
+
+```
+for dir in ./repos/*;
+do
+  if [[ -d $dir ]]; then
+    ( echo; cd "$dir"; pwd; git pull );
+  fi;
+done
 ```
 
 ## Development
