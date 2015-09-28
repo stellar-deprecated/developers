@@ -6,7 +6,7 @@
   'use strict';
 
   // init
-  var $endpointDocs = $('.js-endpointRef-doc');
+  var $endpointDocs = $('.mainContent');
   var $endpointBar = $('.js-endpointRef-exampleBar');
   if ($endpointDocs.length !== 1 && $endpointBar.length !== 1) {
     $endpointBar.remove();
