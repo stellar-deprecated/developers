@@ -1,31 +1,24 @@
-  <div class="siteSidebar S-flexItem-noFlex spu-background-light3 spu-padStart-20">
-    <div class="so-siteHeader">
-      {{> siteLogo }}
-    </div>
-    <div>
-      <h2 class="mainSectionTitle spu-color-dark2">Learn</h2>
-    </div>
-    <div class="spu-borderTop-1 spu-borderColor-light2 spu-padTop-20">
-
-
-      <ul class="pageNavList">
-        {{>sidebarSubMenu title="Get Started" glob="learn/get-started/*.html"}}
-        {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
-
-        {{#sidebarSubMenu "Integration Guides"}}
-            <li class="pageNavList__item">TODO</li>
-        {{/sidebarSubMenu}}
-
-        {{#sidebarSubMenu "Horizon"}}
-          {{>sidebarSubItems glob="horizon/learn/*.html"}}
-
-          {{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
-        {{/sidebarSubMenu}}
-
-        {{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.html"}}
-
-
-      </ul>
-
-    </div>
+<div class="siteSidebar">
+  <div class="so-siteHeader">
+    {{> siteLogo  }}
   </div>
+  <h2 class="mainSectionTitle">Tools</h2>
+  <div class="mainSidebar">
+    <ul class="pageNavList">
+      {{>sidebarSubMenu title="Get Started" glob="learn/get-started/*.html"}}
+
+      {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
+
+      {{#sidebarSubMenu "Integration Guides"}}
+        <li class="pageNavList__item">TODO</li>
+      {{/sidebarSubMenu}}
+
+      {{#sidebarSubMenu "Horizon"}}
+        {{>sidebarSubItems glob="horizon/learn/*.html"}}
+        {{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
+      {{/sidebarSubMenu}}
+
+      {{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.html"}}
+    </ul>
+  </div>
+</div>
