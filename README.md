@@ -29,6 +29,11 @@ That will compile the code and start a up test webserver to view the generated s
 
 By default, the site is served under the developers/ subfolder. This is to reduce the amount of bugs when this site is deployed to https://www.stellar.org/developers/. This can be changed by passing a custom baseUrl to the gulp build task like so: `gulp develop --baseUrl="/"` or `gulp build --baseUrl="/"`.
 
+### Browser JavaScript
+Browser JavaScript files live in [`src/js`](/src/js/). `vendor.js` is generated from bower_components and not checked in to the repository.
+
+To add a new browser JS file, add it to [`src/js`](/src/js/) and update the metalsmith concat step by adding your new file to the list. The list of JS files is order sensitive.
+
 ## Development conventions
 - Use yaml especially for front matter since Github can nicely display markdown files with this
 - 2 spaces everywhere
@@ -39,7 +44,7 @@ The developer portal for stellar includes a system for displaying code-samples a
 
 1.  Any markdown (.md) file in a project that has a path prefix of `/docs/horizon-examples` will be considered to be an example file.
 2.  The example file must include a `language` attribute in it's front matter.  Valid values for this attribute are `curl`, `ruby`, `javascript`, and `go`
-3.  The file's basename must match the basename of the horizon endpoint to which it is associated.  For example `docs/horizon-examples/accounts-all.md` will be associated with the "accounts-all" horizon endpoint. 
+3.  The file's basename must match the basename of the horizon endpoint to which it is associated.  For example `docs/horizon-examples/accounts-all.md` will be associated with the "accounts-all" horizon endpoint.
 
 By following the rules above, your example file should get recognized by the build pipeline and slotted into the appropriate output file.
 
