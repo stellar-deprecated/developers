@@ -10,7 +10,8 @@
       {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
 
       {{#sidebarSubMenu "Integration Guides"}}
-        <li class="pageNavList__item">TODO</li>
+        {{>sidebarSubMenu title="Building blocks" glob="learn/integration-guides/building-blocks/*.html"}}
+        {{>sidebarSubItems glob="learn/integration-guides/*.html"}}
       {{/sidebarSubMenu}}
 
       {{#sidebarSubMenu "js-stellar"}}
