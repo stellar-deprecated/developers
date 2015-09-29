@@ -15,8 +15,9 @@
       {{/sidebarSubMenu}}
 
       {{#sidebarSubMenu "js-stellar"}}
+        {{>sidebarSubItems glob="js-stellar-sdk/learn/index.html"}}
         {{>sidebarSubItems glob="js-stellar-base/learn/*.html"}}
-        {{>sidebarSubItems glob="js-stellar-sdk/learn/*.html"}}
+        {{>sidebarSubItems glob="js-stellar-sdk/learn/!(index).html"}}
       {{/sidebarSubMenu}}
 
       {{#sidebarSubMenu "Interstellar"}}
