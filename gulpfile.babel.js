@@ -54,6 +54,7 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor", 'css:symlink-graphics
     engine: "handlebars",
     partials: "partials",
     helpers: hbars.helpers,
+    preventIndent: true,
   };
 
   Metalsmith(__dirname)
