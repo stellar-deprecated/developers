@@ -7,6 +7,7 @@ import fs from 'fs';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
 import links from "./gulp/links";
+import minimatch from "minimatch";
 import safeSymlink from './gulp/safeSymlink';
 
 let argv = require('minimist')(process.argv.slice(2));
@@ -54,6 +55,7 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor", 'css:symlink-graphics
     engine: "handlebars",
     partials: "partials",
     helpers: hbars.helpers,
+    preventIndent: true,
   };
 
   Metalsmith(__dirname)
@@ -87,7 +89,10 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor", 'css:symlink-graphics
     }))
     .use(renameReadme)
     .use($m.markdown())
-    .use($m.inPlace(templateOptions))
+    .use($m.inPlace(_.extend({}, templateOptions, {
+      pattern: '*.handlebars'
+    })))
+    .use(renameHandlebars)
     .use($m.layouts(templateOptions))
     .use(links.rewrite)
 
@@ -114,6 +119,16 @@ function renameReadme(files, metalsmith, done) {
     files[newPath] = files[p];
     delete files[p];
   });
+  done();
+}
+
+function renameHandlebars (files, metalsmith, done) {
+  let toReplace = _(files).keys().pick(key => minimatch(key, '*.handlebars')).value();
+  _.each(toReplace, key => {
+    let newPath = path.basename(key, '.handlebars') + '.html'
+    files[newPath] = files[key];
+    delete files[key];
+  })
   done();
 }
 
