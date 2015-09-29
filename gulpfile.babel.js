@@ -88,7 +88,9 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor", 'css:symlink-graphics
     }))
     .use(renameReadme)
     .use($m.markdown())
-    .use($m.inPlace(templateOptions))
+    .use($m.inPlace(_.extend({}, templateOptions, {
+      pattern: '*.handlebars'
+    })))
     .use($m.layouts(templateOptions))
     .use(links.rewrite)
 
