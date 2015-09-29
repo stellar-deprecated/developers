@@ -5,11 +5,13 @@
   "stellar-core" : {
     "githubURL": "https://github.com/stellar/stellar-core"
   },
+  "interstellar" : {
+    "githubURL": "https://github.com/stellar/interstellar"
+  },
   "js-stellar-sdk" : {
     "githubURL": "https://github.com/stellar/js-stellar-sdk"
   },
   "horizon" : {
     "githubURL": "https://github.com/stellar/horizon"
   }
-
 }
