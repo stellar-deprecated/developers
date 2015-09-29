@@ -21,6 +21,9 @@
   border-top: 1px solid $s-color-light2;
   padding-top: 2em;
 }
+.mainContent {
+  max-width: 900px;
+}
 
 // gray sidebar on full width pages
 .siteSidebar {
