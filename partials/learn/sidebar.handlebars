@@ -13,6 +13,11 @@
         <li class="pageNavList__item">TODO</li>
       {{/sidebarSubMenu}}
 
+      {{#sidebarSubMenu "js-stellar"}}
+        {{>sidebarSubItems glob="js-stellar-base/learn/*.html"}}
+        {{>sidebarSubItems glob="js-stellar-sdk/learn/*.html"}}
+      {{/sidebarSubMenu}}
+
       {{#sidebarSubMenu "Interstellar"}}
         {{>sidebarSubItems glob="interstellar/learn/index.html"}}
         {{>sidebarSubItems glob="interstellar/learn/!(index).html"}}

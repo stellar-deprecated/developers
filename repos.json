@@ -8,6 +8,9 @@
   "interstellar" : {
     "githubURL": "https://github.com/stellar/interstellar"
   },
+  "js-stellar-base" : {
+    "githubURL": "https://github.com/stellar/js-stellar-base"
+  },
   "js-stellar-sdk" : {
     "githubURL": "https://github.com/stellar/js-stellar-sdk"
   },
