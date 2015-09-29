@@ -19,6 +19,7 @@ export default function enhance(files, metalsmith, done) {
 
 function addRepoInfo(f, p) {
   let parts = p.split(path.sep);
+  f.srcPath = p;
 
   switch(parts[0]) {
     case "learn":
