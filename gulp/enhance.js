@@ -43,7 +43,7 @@ function addRepoInfo(f, p) {
       } else {
         // no repo for this case
       }
-    break;  
+    break;
   }
 
   if (!f.repo) return;
@@ -104,12 +104,8 @@ function addExamples(f, p, metalsmith) {
   let examples = metalsmith.metadata()._examples;
   let ext = path.extname(p);
   let endpoint = path.basename(p).slice(0,-ext.length);
-  
+
   if(!(endpoint in examples)) return;
 
   f.examples = examples[endpoint];
 }
-
-
-
-
