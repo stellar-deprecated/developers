@@ -7,6 +7,7 @@ let repos = require("../repos.json");
 // The enhance middleware populates a bunch of metadata fields on the files.
 export default function enhance(files, metalsmith, done) {
   _.each(files, (f, p) => {
+    addSrcInfo(f, p, metalsmith);
     addRepoInfo(f, p, metalsmith);
     addProject(f, p, metalsmith);
     addSection(f, p, metalsmith);
@@ -17,9 +18,12 @@ export default function enhance(files, metalsmith, done) {
   done();
 }
 
+function addSrcInfo(f, p) {
+  f.srcPath = p;
+}
+
 function addRepoInfo(f, p) {
   let parts = p.split(path.sep);
-  f.srcPath = p;
 
   switch(parts[0]) {
     case "learn":
