@@ -31,7 +31,7 @@ function addRepoInfo(f, p) {
     case "tools":
     case "beyond-code":
       f.repo = "docs";
-      f.repoPath = "docs/" + parts.join("/");
+      f.repoPath = p;
       break;
     default:
       // if parts[0] is the name of a repo, use it
