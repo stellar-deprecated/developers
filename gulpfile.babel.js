@@ -65,6 +65,7 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor", 'css:symlink-graphics
       d();
     })
     .use(extract.examples)
+    .use(require("./gulp/sidecarMetadata"))
     .use(require("./gulp/enhance"))
     .use($m.sass({
       outputStyle: "expanded",
