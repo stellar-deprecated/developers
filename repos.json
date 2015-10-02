@@ -3,18 +3,23 @@
     "githubURL": "https://github.com/stellar/docs"
   },
   "stellar-core" : {
-    "githubURL": "https://github.com/stellar/stellar-core"
+    "githubURL": "https://github.com/stellar/stellar-core",
+    "projectTitle": "Stellar Core"
   },
   "interstellar" : {
-    "githubURL": "https://github.com/stellar/interstellar"
+    "githubURL": "https://github.com/stellar/interstellar",
+    "projectTitle": "Interstellar"
   },
   "js-stellar-base" : {
-    "githubURL": "https://github.com/stellar/js-stellar-base"
+    "githubURL": "https://github.com/stellar/js-stellar-base",
+    "projectTitle": "JS Stellar Base"
   },
   "js-stellar-sdk" : {
-    "githubURL": "https://github.com/stellar/js-stellar-sdk"
+    "githubURL": "https://github.com/stellar/js-stellar-sdk",
+    "projectTitle": "JS Stellar SDK"
   },
   "horizon" : {
-    "githubURL": "https://github.com/stellar/horizon"
+    "githubURL": "https://github.com/stellar/horizon",
+    "projectTitle": "Horizon"
   }
 }

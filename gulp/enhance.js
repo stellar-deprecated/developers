@@ -53,12 +53,12 @@ function addRepoInfo(f, p) {
   f.repoBlobURL = repo.githubURL + "/blob/master/" + f.repoPath;
 }
 
-
 function addProject(f, p) {
   if (!f.repo) return;
   if (f.repo === "docs") return;
 
   f.project = f.repo;
+  f.projectTitle = repos[f.repo].projectTitle;
 }
 
 function addSection(f, p) {
