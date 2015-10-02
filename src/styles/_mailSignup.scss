@@ -1,12 +1,6 @@
 .mailSignup {
   @include S-flex-rowWrap;
 }
-.mailSignup--contained {
-  max-width: 40em;
-}
-.mailSignup--centered {
-  margin: 0 auto;
-}
   .mailSignup__title {
     @include S-flexItem-full;
     font-weight: bold;
