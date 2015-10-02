@@ -3,7 +3,10 @@
     {{> mainNavMenu }}
   </div>
   <div class="spu-padSE-30">
-    <h1 class="mainSectionTitle">{{ title }}</h1>
+    <h1 class="mainSectionTitle">
+      {{ title }}
+      {{#if projectTitle}}&nbsp;<span class="spu-color-light1">[{{ projectTitle }}]</span>{{/if}}
+    </h1>
   </div>
   <div class="S-flex-rowWrap spu-borderTop-1 spu-borderColor-light2">
     <s-read-md class="S-flexItem-share mainContent s-read-md--capped spu-padSE-30 spu-padTB-20 documentRead" link-process-md>
