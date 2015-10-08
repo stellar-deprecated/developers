@@ -30,8 +30,11 @@
         {{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
       {{/sidebarSubMenu}}
 
-      {{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.html"}}
-      {{>sidebarSubMenu title="Stellar Core" glob="stellar-core/learn/*.pdf"}}
+
+      {{#sidebarSubMenu "Stellar Core"}}
+        {{>sidebarSubItems glob="stellar-core/learn/*.html"}}
+        {{>sidebarSubItems glob="stellar-core/learn/*.pdf"}}
+      {{/sidebarSubMenu}}
     </ul>
   </div>
 </div>
