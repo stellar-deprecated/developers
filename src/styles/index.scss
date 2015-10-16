@@ -15,10 +15,10 @@
   padding-top: 1em;
   padding-bottom: 1em;
   font-size: $s-scale-2;
-  color: $s-color-dark2;
+  color: $s-color-neutral2;
 }
 .mainSidebar {
-  border-top: 1px solid $s-color-light2;
+  border-top: 1px solid $s-color-neutral7;
   padding-top: 2em;
 }
 .mainContent {
@@ -30,13 +30,13 @@
   @include S-flexItem-noFlex;
   width: 288px;
   padding-left: 2em;
-  background: $s-color-light3;
+  background: $s-color-neutral8;
 }
 
 // syntaxHighlight (.codeBlock is added automatically by syntaxHighlight.js)
 @import 'codemirror/theme/monokai';
 .cm-s-monokai.CodeMirror {
-  background: $s-color-dark1;
+  background: $s-color-neutral1;
 }
 .codeBlock {
   font-size: $s-scale-5;
@@ -69,7 +69,7 @@ s-read-md .codeBlock {
 }
 .endpointRef-exampleRequest:before, .endpointRef-exampleResponse:before {
   display: block;
-  color: $s-color-light2;
+  color: $s-color-neutral7;
   font-size: $s-scale-5;
 }
 .endpointRef-exampleRequest:before {
@@ -105,8 +105,8 @@ s-read-md .codeBlock {
   text-decoration: none;
 }
 .pageNavList__item.is-currentItem a {
-  color: $s-color-dark3;
-  border-color: $s-color-dark3;
+  color: $s-color-neutral3;
+  border-color: $s-color-neutral3;
 }
 .pageNavList__item a:hover {
   color: $s-color-primary1;

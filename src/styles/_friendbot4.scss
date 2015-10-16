@@ -1,12 +1,12 @@
 .friendbot4__console {
-  background: $s-color-dark1;
-  color: $s-color-light3;
+  background: $s-color-neutral1;
+  color: $s-color-neutral8;
 }
 .friendbot4__console__input {
   @include S-flex-row;
   align-items: center;
-  color: $s-color-light3;
-  border-bottom: 1px solid $s-color-dark4;
+  color: $s-color-neutral8;
+  border-bottom: 1px solid $s-color-neutral4;
   padding: 1em;
 }
 .friendbot4__console__result {
@@ -22,8 +22,8 @@
   @include S-flexItem-noFlex;
 }
 .friendbot4__console__results {
-  color: $s-color-light3;
-  border-bottom: 1px solid $s-color-dark4;
+  color: $s-color-neutral8;
+  border-bottom: 1px solid $s-color-neutral4;
   padding: 1em;
 }
 .friendbot4__nav {
@@ -55,7 +55,7 @@
   padding: 1em;
 }
 .friendbot4-step0__code {
-  color: $s-color-light3;
+  color: $s-color-neutral8;
 }
 .friendbot4-step4__key {
   text-align: center;
