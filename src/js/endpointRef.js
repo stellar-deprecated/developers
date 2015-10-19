@@ -64,7 +64,7 @@
     if (language in languagesWithExamples) {
       examplesExist = true;
       var activeClass = (firstLanguage) ? ' is-active' : '';
-      $menu.append('<button class="s-navList__item js-endpointRef-menu__item js-endpointRef-menuLang--' + language + activeClass + '" endpoint-ref-lang="' + language + '">' + language + '</button>');
+      $menu.append('<button class="s-buttonList__item js-endpointRef-menu__item js-endpointRef-menuLang--' + language + activeClass + '" endpoint-ref-lang="' + language + '">' + language + '</button>');
 
       $exampleRequest.append('<div class="js-endpointRef-lang js-endpointRef-lang--' + language + '"></div>');
       $exampleResponse.append('<div class="js-endpointRef-lang js-endpointRef-lang--' + language + '"></div>');
