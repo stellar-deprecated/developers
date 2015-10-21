@@ -10,6 +10,7 @@ export default function enhance(files, metalsmith, done) {
     addSrcInfo(f, p, metalsmith);
     addRepoInfo(f, p, metalsmith);
     addProject(f, p, metalsmith);
+    addFullTitle(f, p, metalsmith);
     addSection(f, p, metalsmith);
     addLayout(f, p, metalsmith);
     addDefaultTitles(f, p, metalsmith);
@@ -59,6 +60,17 @@ function addProject(f, p) {
 
   f.project = f.repo;
   f.projectTitle = repos[f.repo].projectTitle;
+}
+
+function addFullTitle(f, p) {
+  let titleSuffix = ' | Stellar Developers';
+
+  if (!f.projectTitle || f.repo === 'docs') {
+    f.fullTitle = f.title + titleSuffix;
+    return;
+  };
+
+  f.fullTitle = f.title + ' - ' + f.projectTitle + titleSuffix;
 }
 
 function addSection(f, p) {
