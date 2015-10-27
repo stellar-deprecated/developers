@@ -87,12 +87,7 @@
       render();
 
       $.get('https://horizon-testnet.stellar.org/friendbot?addr=' + requestAddress, function(data) {
-        if (data.result === 'received') {
-          state.step2.friendbotStatus = 'Lumens are on their way!';
-        } else {
-          state.step2.friendbotStatus = 'Hmm the friendly robot can\'t send lumens there :(';
-          state.step2.friendbotDisabled = false;
-        }
+        state.step2.friendbotStatus = 'Lumens are on their way!';
         render();
       }).fail(function (data) {
         if (data.result == "connection_failed") {
