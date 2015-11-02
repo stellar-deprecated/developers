@@ -67,15 +67,15 @@
       state.maxStep = 2;
       state.step1.result = '' +
         '{\n' +
-        '  address: ' + state.keypair.address + ',\n' +
-        '  seed: ' + state.keypair.seed + '\n' +
+        '  public key: ' + state.keypair.address + ',\n' +
+        '  secret key: ' + state.keypair.seed + '\n' +
         '}';
       render();
     });
 
     // Step 2
     $fb4.find('.js-friendbot4__bot__button').on('click', function() {
-      state.step2.friendbotStatus = 'Loading...';
+      state.step2.friendbotStatus = 'Asking Stroopy...';
       state.step2.friendbotDisabled = true;
 
       var requestAddress = state.keypair.address;
@@ -91,11 +91,11 @@
         render();
       }).fail(function (data) {
         if (data.result == "connection_failed") {
-          state.step2.friendbotStatus = 'Network connection problem, please try again.';
+          state.step2.friendbotStatus = 'Network connection problem. Try again in a moment.';
           state.step2.friendbotDisabled = false;
             jQuery('#bot_button').removeAttr('disabled');
         } else {
-          state.step2.friendbotStatus = 'Unknown server error: ' + data.responseText;
+          state.step2.friendbotStatus = 'We're having a server issue: ' + data.responseText;
           state.step2.friendbotDisabled = false;
         }
         render();
@@ -113,7 +113,7 @@
           render();
         },
         error: function() {
-          state.step3.result = 'Account not found (waiting for consensus). Please try again in a few seconds.';
+          state.step3.result = 'Waiting for lumens to fund test account. Try again in a moment.';
           render();
         }
       });
