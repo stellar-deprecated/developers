@@ -95,7 +95,7 @@
           state.step2.friendbotDisabled = false;
             jQuery('#bot_button').removeAttr('disabled');
         } else {
-          state.step2.friendbotStatus = 'We're having a server issue: ' + data.responseText;
+          state.step2.friendbotStatus = 'We\'re having a server issue: ' + data.responseText;
           state.step2.friendbotDisabled = false;
         }
         render();
@@ -113,7 +113,7 @@
           render();
         },
         error: function() {
-          state.step3.result = 'Waiting for lumens to fund test account. Try again in a moment.';
+          state.step3.result = 'Couldn\'t find test account due to a server issue. Report in our public Slack channel and try creating an account again later.';
           render();
         }
       });
