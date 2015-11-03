@@ -21,6 +21,7 @@
       },
       step2: {
         friendbotStatus: '',
+        friendbotError: '',
         customAddress: '',
       },
       step3: {
@@ -67,8 +68,8 @@
       state.maxStep = 2;
       state.step1.result = '' +
         '{\n' +
-        '  public key: ' + state.keypair.address + ',\n' +
-        '  secret key: ' + state.keypair.seed + '\n' +
+        '  "public key": "' + state.keypair.address + '",\n' +
+        '  "secret key": "' + state.keypair.seed + '"\n' +
         '}';
       render();
     });
@@ -76,6 +77,7 @@
     // Step 2
     $fb4.find('.js-friendbot4__bot__button').on('click', function() {
       state.step2.friendbotStatus = 'Asking Stroopy...';
+      state.step2.friendbotError = '';
       state.step2.friendbotDisabled = true;
 
       var requestAddress = state.keypair.address;
@@ -83,21 +85,25 @@
       if (inputVal !== state.keypair.address) {
         requestAddress = state.step2.customAddress = inputVal;
       }
-      state.maxStep = 3;
       render();
 
-      $.get('https://horizon-testnet.stellar.org/friendbot?addr=' + requestAddress, function(data) {
-        state.step2.friendbotStatus = 'Lumens are on their way!';
-        render();
-      }).fail(function (data) {
-        if (data.result == "connection_failed") {
+      $.ajax({
+        url: 'https://horizon-testnet.stellar.org/friendbot?addr=' + requestAddress,
+      })
+      .fail(function (data) {
+        if (typeof data === 'undefined') {
           state.step2.friendbotStatus = 'Network connection problem. Try again in a moment.';
           state.step2.friendbotDisabled = false;
-            jQuery('#bot_button').removeAttr('disabled');
         } else {
-          state.step2.friendbotStatus = 'We\'re having a server issue: ' + data.responseText;
+          state.step2.friendbotStatus = 'We\'re having a server issue: ';
+          state.step2.friendbotError = data.responseText;
           state.step2.friendbotDisabled = false;
         }
+        render();
+      })
+      .done(function(data) {
+        state.step2.friendbotStatus = 'Lumens are on their way!';
+        state.maxStep = 3;
         render();
       })
     });
@@ -151,9 +157,19 @@
 
       // step 1
       $fb4.find('.js-friendbot4-step1-result').text(state.step1.result);
+      syntaxHighlight($fb4.find('.js-friendbot4-step1-result'));
 
       // step 2
       $fb4.find('.js-friendbot4__bot__button__status').text(state.step2.friendbotStatus);
+      $fb4.find('.js-friendbot4__bot__button__error__code').text(state.step2.friendbotError);
+      if (state.step2.friendbotError != '') {
+        $fb4.find('.js-friendbot4__bot__button__error').addClass('is-populated');
+      } else {
+        $fb4.find('.js-friendbot4__bot__button__error').removeClass('is-populated');
+      }
+
+      syntaxHighlight($fb4.find('.js-friendbot4__bot__button__error__code'));
+
       if (state.step2.customAddress !== '') {
         $fb4.find('.friendbot4__bot__input').val(state.step2.customAddress);
       } else {
