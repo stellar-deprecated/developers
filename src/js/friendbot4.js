@@ -102,7 +102,7 @@
         render();
       })
       .done(function(data) {
-        state.step2.friendbotStatus = 'Lumens are on their way!';
+        state.step2.friendbotStatus = 'Lumens have arrived!';
         state.maxStep = 3;
         render();
       })
