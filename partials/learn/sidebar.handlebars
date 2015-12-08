@@ -21,7 +21,8 @@
       {{/sidebarSubMenu}}
 
       {{#sidebarSubMenu "Horizon"}}
-        {{>sidebarSubItems glob="horizon/learn/*.html"}}
+        {{>sidebarSubItems glob="horizon/learn/index.html"}}
+        {{>sidebarSubItems glob="horizon/learn/!(index).html"}}
         {{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
       {{/sidebarSubMenu}}
 
