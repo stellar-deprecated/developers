@@ -1,0 +1,13 @@
+// These custom color backgrounds are done so that colors can more easily match
+// the mockups while we can still track which colors we have already used.
+.background-5B6A72 {
+  background-color: #5B6A72;
+}
+.background-nightBlue {
+  background-color: #1E3440;
+}
+.background-starsLayer {
+  @include so-graphic('stars-texture.png', 1530, 1140);
+  width: auto;
+  height: auto;
+}
