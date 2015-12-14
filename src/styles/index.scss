@@ -11,6 +11,8 @@
 @import 'graphics';
 @import 'backgrounds';
 
+@import 'siteFooter';
+
 @import 'pages/landing';
 
 
@@ -35,6 +37,7 @@
   width: 288px;
   padding-left: 2em;
   background: $s-color-neutral8;
+  padding-bottom: 2em;
 }
 
 // syntaxHighlight (.codeBlock is added automatically by syntaxHighlight.js)
@@ -169,6 +172,7 @@ s-read-md .codeBlock {
 
 // Testing
 .linkCheck-emptyLink:after {
+  position: absolute;
   content: '*';
   color: red;
 }

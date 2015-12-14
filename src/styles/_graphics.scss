@@ -14,4 +14,5 @@
 
 .graphic-centaurus-120 { @include so-graphic("centaurus-120.png", 240, 240); @extend .so-graphic; }
 .graphic-app-stack-bill-140 { @include so-graphic("app-stack-bill.png", 280, 280); @extend .so-graphic; }
-.graphic-long-down-arrow-88 { @include so-graphic("long-down-arrow.png", 66, 176); @extend .so-graphic; }
+.graphic-longDownArrow-88 { @include so-graphic("longDownArrow.png", 66, 176); @extend .so-graphic; }
+.graphic-backArrow-9 { @include so-graphic("backArrow.svg", 36, 18); @extend .so-graphic;}
