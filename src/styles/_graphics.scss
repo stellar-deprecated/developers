@@ -6,3 +6,13 @@
 .so-graphic-s-fileFolder { @include so-graphic("s-fileFolder.png", 132, 120); @extend .so-graphic; }
 .so-graphic-s-rectangularTree { @include so-graphic("s-rectangularTree.png", 126, 120); @extend .so-graphic; }
 .so-graphic-s-stellarRocket { @include so-graphic("s-stellarRocket.png", 96, 120); @extend .so-graphic; }
+
+// New format since it was taken out of solar
+.graphic-circled-code-120 { @include so-graphic("circled-code-120.png", 240, 240); @extend .so-graphic; }
+.graphic-circled-folder-120 { @include so-graphic("circled-folder-120.png", 240, 240); @extend .so-graphic; }
+.graphic-circled-horizon-120 { @include so-graphic("circled-horizon-120.png", 240, 240); @extend .so-graphic; }
+
+.graphic-centaurus-120 { @include so-graphic("centaurus-120.png", 240, 240); @extend .so-graphic; }
+.graphic-app-stack-bill-140 { @include so-graphic("app-stack-bill.png", 280, 280); @extend .so-graphic; }
+.graphic-longDownArrow-88 { @include so-graphic("longDownArrow.png", 66, 176); @extend .so-graphic; }
+.graphic-backArrow-9 { @include so-graphic("backArrow.svg", 36, 18); @extend .so-graphic;}

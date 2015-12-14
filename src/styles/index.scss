@@ -9,6 +9,11 @@
 @import 'friendbot4';
 @import 'mailSignup';
 @import 'graphics';
+@import 'backgrounds';
+
+@import 'siteFooter';
+
+@import 'pages/landing';
 
 
 // site wide above the content, the title in the sidebar and above the body
@@ -32,6 +37,7 @@
   width: 288px;
   padding-left: 2em;
   background: $s-color-neutral8;
+  padding-bottom: 2em;
 }
 
 // syntaxHighlight (.codeBlock is added automatically by syntaxHighlight.js)
@@ -151,11 +157,6 @@ s-read-md .codeBlock {
     }
 }
 
-// Used to align the three landing page images together
-.landingColsImage {
-  min-height: 260px;
-}
-
 
 .centerText {
   text-align: center;
@@ -171,6 +172,7 @@ s-read-md .codeBlock {
 
 // Testing
 .linkCheck-emptyLink:after {
+  position: absolute;
   content: '*';
   color: red;
 }

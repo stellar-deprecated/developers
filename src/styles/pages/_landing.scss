@@ -1,0 +1,49 @@
+.landing-lead {
+  max-width: 28em;
+}
+.landing-sectionTitle {
+  margin-bottom: 1em;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.landing-introItemDesc {
+  max-width: 13em;
+}
+
+.landing-apps {
+  @include S-flex-row;
+  padding-bottom: 120px;
+}
+.landing-appItem {
+  @include S-flex-row;
+  text-decoration: none;
+  margin: 0 1em 1em 1em;
+}
+  .landing-appItem__media {
+    position: relative;
+    align-self: center;
+    margin-right: 1em;
+  }
+    .landing-appItem__media__downArrow {
+      position: absolute;
+      bottom: -105px;
+      left: 30px;
+    }
+  .landing-appItem__copy {
+    @include S-flexItem-share;
+    align-self: center;
+  }
+    .landing-appItem__copy__title {
+      font-size: $s-scale-3;
+      display: block;
+      color: $s-color-primary4;
+      margin-bottom: 0.25em;
+      text-decoration: none;
+    }
+    .landing-appItem__copy__description {
+      font-size: $s-scale-4;
+      color: $s-color-neutral3;
+    }
