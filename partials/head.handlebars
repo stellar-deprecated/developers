@@ -15,6 +15,11 @@
   <meta property="og:title" content="{{ fullTitle }}" />
   <meta property="og:type" content="website" />
 
+  {{#if previewImage}}
+    <meta property="og:image" content="{{ pathPrefix }}/images/previews/{{previewImage}}"/>
+    <meta itemprop="image" content="{{ pathPrefix }}/images/previews/{{previewImage}}"/>
+  {{/if}}
+
   <link rel="stylesheet" href="{{ pathPrefix }}/{{ fingerprint.[styles/index.css] }}" />
 
 </head>
