@@ -9,12 +9,13 @@
   }
   .siteFooter__list--aux {
     @include S-flex-row;
+    justify-content: flex-end;
     margin-right: 0;
     margin-top: 1em;
   }
     .siteFooter__list__sep {
       color: $s-color-neutral4;
-      margin-right: 1.5em;
+      margin-right: 1.25em;
     }
     .siteFooter__list__item {
       align-content: flex-start;
@@ -27,10 +28,9 @@
       color: $s-color-primary4;
     }
     .siteFooter__list__item--aux {
-      color: $s-color-neutral4;
-    }
-    .siteFooter__list__item--aux:last-child {
+      margin-left: 1.5em;
       margin-right: 0;
+      color: $s-color-neutral4;
     }
 
 
