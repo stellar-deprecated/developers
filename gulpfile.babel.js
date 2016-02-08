@@ -74,6 +74,7 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
         "js/syntaxHighlight.js",
         "js/endpointRef.js",
         "js/friendbot4.js",
+        "js/headingAnchorShortcut.js",
         "js/linkCheck.js",
       ],
       output: "js/app.js",

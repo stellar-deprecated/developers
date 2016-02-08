@@ -1,0 +1,25 @@
+// Anchor shortcuts only apply on headings (h1, h2, h3, h4, h5, h6)
+.anchorShortcut {
+  position: relative;
+}
+.anchorShortcut:before {
+  display: inline-block;
+  content: '#';
+  position: absolute;
+  right: 0;
+
+  padding: 0 .25em;
+  opacity: 0;
+  color: $s-color-neutral7;
+}
+.anchorShortcut:hover:before {
+  color: $s-color-primary4;
+}
+h1:hover > .anchorShortcut:before,
+h2:hover > .anchorShortcut:before,
+h3:hover > .anchorShortcut:before,
+h4:hover > .anchorShortcut:before,
+h5:hover > .anchorShortcut:before,
+h6:hover > .anchorShortcut:before {
+  opacity: 1;
+}
