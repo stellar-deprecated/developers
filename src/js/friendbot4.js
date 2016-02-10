@@ -36,15 +36,22 @@
     var canNavNext = function() {
       return state.currentStep !== state.maxStep;
     }
+    var ensureTopVisible = function() {
+      if ($fb4[0].getBoundingClientRect().top < 0) {
+        window.scrollTo(window.scrollX, $fb4.offset().top - 18)
+      }
+    }
     $fb4.find('.js-friendbot4__nav__prev').on('click', function() {
       if (canNavPrev()) {
         state.currentStep = state.currentStep - 1;
+        ensureTopVisible();
         render();
       }
     });
     $fb4.find('.js-friendbot4__nav__next').on('click', function() {
       if (canNavNext()) {
         state.currentStep = state.currentStep + 1;
+        ensureTopVisible();
         render();
       }
     });
