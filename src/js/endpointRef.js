@@ -97,7 +97,7 @@
   // Try it out [in the laboratory] button
   if (typeof clientData.laboratoryUrl === 'string') {
     $menu.append('<a href="' + clientData.laboratoryUrl + '"' +
-      'class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item" target="blank">Try it out</a>');
+      'class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item" target="blank">Try it out <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral9"></span></a>');
   }
 
   if (!examplesExist) {
