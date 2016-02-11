@@ -64,6 +64,9 @@ The developer portal for stellar includes a system for displaying code-samples a
 
 By following the rules above, your example file should get recognized by the build pipeline and slotted into the appropriate output file.
 
+## Client Data
+Sometimes, we may want to pass frontmatter data to js scripts on the page. Documents can specify "client data" in front matter. The term client refers to the browser. The `clientData` key in the front matter of a document will be converted to JSON and put in the web page as a js variable `window.clientData`. The `clientData` must be an object in order to successfully appear in the html.
+
 ## Contributing
 Please read the [contributing guide](CONTRIBUTING.md) to learn more about how to contribute to the developer portal. For contributions to docs, please put contributions in their respective repositories.
 
