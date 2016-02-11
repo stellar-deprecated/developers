@@ -44,6 +44,20 @@ module.exports.helpers = {
       </li>
     `;
   },
+
+  // clientData is documented in the README.md
+  frontmatterClientDataScript(options) {
+    // If clientData is not specified, an empty object will appear at window.clientData.
+    // This makes it easier since scripts can always know clientData exists.
+    let clientDataJson = '{}';
+    if (typeof options.data.root.clientData === 'object') {
+      clientDataJson = JSON.stringify(options.data.root.clientData);
+    }
+    if (typeof options.data.root.clientData === 'string') {
+      console.log(`warn: clientData in "${options.data.root.title}" must be formatted as an object`);
+    }
+    return `<script>window.clientData = ${clientDataJson};</script>`;
+  },
 }
 
 
