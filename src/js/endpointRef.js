@@ -64,7 +64,7 @@
     if (language in languagesWithExamples) {
       examplesExist = true;
       var activeClass = (firstLanguage) ? ' is-active' : '';
-      $menu.append('<button class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item js-endpointRef-menuLang--' + language + activeClass + '" endpoint-ref-lang="' + language + '">' + language + '</button>');
+      $menu.append('<button class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item js-endpointRef-menu__item--lang js-endpointRef-menuLang--' + language + activeClass + '" endpoint-ref-lang="' + language + '">' + language + '</button>');
 
       $exampleRequest.append('<div class="js-endpointRef-lang js-endpointRef-lang--' + language + '"></div>');
       $exampleResponse.append('<div class="js-endpointRef-lang js-endpointRef-lang--' + language + '"></div>');
@@ -93,6 +93,11 @@
       }
     }
   });
+
+  // Try it out [in the laboratory] button
+  $menu.append('<a href="https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=all"' +
+    'class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item" target="blank">Try it out</a>');
+
 
   if (!examplesExist) {
     $endpointBar.remove();
@@ -128,8 +133,9 @@
     // runtime render for the first time
     render();
 
-    // component "mounted". now attach click handler to tab menu
-    $endpointBar.find('.js-endpointRef-menu__item').on('click', function(el) {
+    // component "mounted". now attach click handler to tab menu only on items
+    // that are considered language examples (and not external links)
+    $endpointBar.find('.js-endpointRef-menu__item--lang').on('click', function(el) {
       state.language = el.target.innerHTML;
       // component will update. save to localstorage the current param
       localStorage.setItem('developers.endpointRef.language', state.language);
