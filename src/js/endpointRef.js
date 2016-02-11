@@ -95,9 +95,10 @@
   });
 
   // Try it out [in the laboratory] button
-  $menu.append('<a href="https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=all"' +
-    'class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item" target="blank">Try it out</a>');
-
+  if (typeof clientData.laboratoryUrl === 'string') {
+    $menu.append('<a href="' + clientData.laboratoryUrl + '"' +
+      'class="s-button s-button__min s-buttonList__item js-endpointRef-menu__item" target="blank">Try it out</a>');
+  }
 
   if (!examplesExist) {
     $endpointBar.remove();
