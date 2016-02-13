@@ -1,13 +1,15 @@
-.headerWithSidebar {
+.header2016 {
   @include S-flex-row;
   border-bottom: 1px solid $s-color-neutral7;
 }
-  .headerWithSidebar__logo {
+  .header2016__logo {
     @include S-flexItem-noFlex;
     @include S-flexItem-noFlex;
-    width: 288px;
-    padding-left: 2em;
   }
-  .headerWithSidebar__nav {
+    .header2016__logo--spaced {
+      width: 288px;
+      padding-left: 2em;
+    }
+  .header2016__nav {
     @include S-flexItem-share;
   }
