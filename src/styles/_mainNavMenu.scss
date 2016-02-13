@@ -1,0 +1,17 @@
+.mainNavMenu {
+  @include S-flex-row;
+  align-items: stretch;
+}
+  .mainNavMenu__item {
+    margin-right: 3em;
+    margin-top: 29px;
+    color: $s-color-primary4;
+    text-decoration: none;
+  }
+  .mainNavMenu__item:hover {
+    color: $s-color-neutral3;
+  }
+  .mainNavMenu__item.is-currentItem {
+    color: $s-color-neutral3;
+    border-bottom: 5px solid $s-color-neutral4;
+  }
