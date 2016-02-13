@@ -39,7 +39,7 @@
   @include S-flexItem-noFlex;
   width: 288px;
   padding-left: 2em;
-  background: $s-color-neutral8;
+  background: $s-color-primary9;
   padding-bottom: 2em;
 }
 
@@ -92,6 +92,9 @@ s-read-md .codeBlock {
   margin-bottom: 0;
 }
 
+.pageNavListBounder {
+  position: relative;
+}
 .pageNavList {
   list-style: none;
 }
@@ -108,15 +111,26 @@ s-read-md .codeBlock {
 .pageNavList__title {
   font-weight: 700;
 }
-.pageNavList__item a {
+.pageNavList__item.is-currentItem:before {
+  content: '';
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
   display: block;
-  border-right: 0.4em solid transparent;
-  color: $s-color-primary2;
+  border-left: 10px solid $s-color-primary4;
+  height: 1.5em;
+  background: $s-color-neutral9;
+}
+.pageNavList__item a {
+  z-index: 1;
+  position: relative;
+  display: block;
+  color: $s-color-neutral2;
   text-decoration: none;
 }
 .pageNavList__item.is-currentItem a {
-  color: $s-color-neutral3;
-  border-color: $s-color-neutral3;
+  font-weight: bold;
 }
 .pageNavList__item a:hover {
   color: $s-color-primary1;
