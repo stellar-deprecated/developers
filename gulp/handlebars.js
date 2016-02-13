@@ -36,9 +36,9 @@ module.exports.helpers = {
 
   sidebarSubMenu(title, options) {
     return `
-      <li class="pageNavList__subList">
-        <span class="pageNavList__title">${title}</span>
-        <ul>
+      <li class="pageNavList__subList collapsibleListSet js-collapsibleListSet">
+        <span class="pageNavList__title collapsibleListSet__label js-collapsibleListSet__label">${title}</span>
+        <ul class="collapsibleListSet__list js-collapsibleListSet__list is-collapsed">
           ${options.fn(this)}
         </ul>
       </li>
