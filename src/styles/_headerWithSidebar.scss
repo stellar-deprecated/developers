@@ -1,0 +1,11 @@
+.headerWithSidebar {
+  width: auto;
+}
+  .headerWithSidebar__logo {
+    @include S-flexItem-noFlex;
+    width: 288px;
+    padding-left: 2em;
+  }
+  .headerWithSidebar__nav {
+
+  }
