@@ -1,0 +1,27 @@
+.collapsibleListSet {
+}
+  .collapsibleListSet__label {
+    cursor: pointer;
+  }
+  .collapsibleListSet__label:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+    width: 9px;
+    height: 6px;
+    background-repeat: no-repeat;
+    background-size: 9px 6px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="9" height="6" viewBox="0 0 9 6" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6L9 0H0z" fill="#242A2E" fill-rule="evenodd"/></svg>');
+  }
+  .collapsibleListSet__label.is-collapsed:after {
+    background-image: url('data:image/svg+xml;utf8,<svg width="9" height="6" viewBox="0 0 9 6" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 0L9 6H0z" fill="#242A2E" fill-rule="evenodd"/></svg>');
+  }
+
+  .collapsibleListSet__list {
+    overflow: hidden;
+    transition: 0.4s all;
+  }
+  .collapsibleListSet__list.is-collapsed {
+    max-height: 0 !important;
+  }
