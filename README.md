@@ -14,9 +14,11 @@ To build this project, you must have the following dependencies installed:
 ## Installation
 ```bash
 git clone https://github.com/stellar/developers # or git@github.com:stellar/developers.git
-npm install
+npm install --no-shrinkwrap
 bower install
 ```
+
+(Note the `no-shrinkwrap` option is because of an issue in `metalsmith-concat`: https://github.com/aymericbeaumet/metalsmith-concat/issues/22)
 
 ## Docs repository cloning
 The developers site tool generates content pulled in from other repos. These repositories are configured in `repos.json` and stored in `repos/`. To clone all the required repositories, run:
