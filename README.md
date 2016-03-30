@@ -14,9 +14,11 @@ To build this project, you must have the following dependencies installed:
 ## Installation
 ```bash
 git clone https://github.com/stellar/developers # or git@github.com:stellar/developers.git
-npm install
+npm install --no-shrinkwrap
 bower install
 ```
+
+(Note the `no-shrinkwrap` option is because of an issue in `metalsmith-concat`: https://github.com/aymericbeaumet/metalsmith-concat/issues/22)
 
 ## Docs repository cloning
 The developers site tool generates content pulled in from other repos. These repositories are configured in `repos.json` and stored in `repos/`. To clone all the required repositories, run:
@@ -37,13 +39,20 @@ done
 
 ## Development
 To generate the static site, run the following inside your repo containing this folder:
+
 ```bash
-node_modules/.bin/gulp develop # or just `gulp` if you have it installed globally or have path set up
+node_modules/.bin/gulp # or just `gulp` if you have it installed globally or have path set up
 ```
 
-That will compile the code and start a up test webserver to view the generated site. It will also watch for edits (to content) and automatically build when needed.
+To run a web server and view the site in a browser:
 
-By default, the site is served under the developers/ subfolder. This is to reduce the amount of bugs when this site is deployed to https://www.stellar.org/developers/. This can be changed by passing a custom baseUrl to the gulp build task like so: `gulp develop --baseUrl="/"` or `gulp build --baseUrl="/"`.
+```bash
+node_modules/.bin/gulp serve
+```
+
+This won't automatically rebuild the site when edits are made, but it will automatically pick up new builds (so you can do a build without needing to restart the server).
+
+By default, the site is served under the developers/ subfolder. This is to reduce the amount of bugs when this site is deployed to https://www.stellar.org/developers/. This can be changed by passing a custom baseUrl to the gulp build task like so: `gulp --baseUrl="/"` or `gulp build --baseUrl="/"`.
 
 ### Browser JavaScript
 Browser JavaScript files live in [`src/js`](/src/js/). `vendor.js` is generated from bower_components and not checked in to the repository.
