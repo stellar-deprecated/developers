@@ -75,6 +75,7 @@ function addFullTitle(f, p) {
 
 function addSection(f, p) {
   if (path.extname(p) !== ".md") return;
+  if (f.section) return;
 
   let parts = p.split(path.sep);
   switch(parts[0]) {
@@ -83,6 +84,13 @@ function addSection(f, p) {
     case "tools":
     case "beyond-code":
       f.section = parts[0];
+      break;
+    // FIXME: applications should not be special cased :(
+    case "horizon":
+      f.section = "reference";
+      break;
+    case "stellar-core":
+      f.section = "tools";
       break;
     default:
       // if we're dealing with a document inside a project's /docs folder, don't assign a layout
