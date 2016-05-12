@@ -87,6 +87,8 @@ function addSection(f, p) {
       break;
     // FIXME: applications should not be special cased :(
     case "horizon":
+    case "js-stellar-sdk":
+    case "js-stellar-base":
       f.section = "reference";
       break;
     case "stellar-core":
