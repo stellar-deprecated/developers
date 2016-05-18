@@ -6,89 +6,95 @@ previewImage: landing-1.png
 {{> header-centered}}
 
 <div class="so-back so-slantContainer background-nightBlue background-starsLayer spu-padTop-40 spu-padBottom-30">
-  <div class="so-chunk spu-color-neutral9 spu-padBottom-20">
-    <h2 class="landing-sectionTitle">Stellar Documentation</h2>
+  <section class="so-chunk spu-color-neutral9 spu-padBottom-20">
+    <h1 class="landing-sectionTitle">Stellar Documentation</h1>
     <p class="spu-centerBlock spu-centerText spu-fontSize-3 landing-lead">
-      <span class="spu-lineFullL">Make money move as easily as email.</span>
-      <span class="spu-lineFullL">Develop a Stellar application or run a node on the network.</span>
+      <span class="spu-lineFullL">Stellar is open-source, distributed payments infrastructure. Build affordable financial services.</span>
     </p>
-  </div>
-  <div class="so-chunk">
-    <div class="flexCols flexCols--l spu-padTB-20">
-      <div class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30 centerText">
-        <a href="{{pathPrefix}}/learn/" class="spu-textDecorationNone">
-          <div class="spu-padBottom-15">
-            <span class="graphic-circled-folder-120"></span>
-          </div>
-          <h3 class="spu-color-neutral9 spu-fontSize-3">Libraries and Tutorials</h3>
-          <p class="spu-fontSize-5 spu-color-neutral6 spu-centerBlock landing-introItemDesc">Learn about developing with Stellar.</p>
-        </a>
-      </div>
-      <div class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30 centerText">
-        <a href="{{pathPrefix}}/reference/" class="spu-textDecorationNone">
-          <div class="spu-padBottom-15">
-            <span class="graphic-circled-horizon-120"></span>
-          </div>
-          <h3 class="spu-color-neutral9">Horizon</h3>
-          <p class="spu-fontSize-5 spu-color-neutral6 spu-centerBlock landing-introItemDesc">Integrate with Stellar using the API server.</p>
-        </a>
-      </div>
-      <div class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30 centerText">
-        <a href="https://www.stellar.org/developers/stellar-core/learn/admin.html" class="spu-textDecorationNone">
-          <div class="spu-padBottom-15">
-            <span class="graphic-circled-code-120"></span>
-          </div>
-          <h3 class="spu-color-neutral9">Stellar Core</h3>
-          <p class="spu-fontSize-5 spu-color-neutral6 spu-centerBlock landing-introItemDesc">Contribute to the ledger server or run a node. </p>
-        </a>
-      </div>
-    </div>
-  </div>
+  </section>
+
+  <section class="so-chunk spu-color-neutral9 spu-padBottom-20">
+    <h2 class="landing-sectionTitle">Get Started</h2>
+    <ol class="flexCols flexCols--l spu-padTB-20">
+      <li class="flexCols__col flexCols--l__col">Stellar Overview</li>
+      <li class="flexCols__col flexCols--l__col">Create Accounts</li>
+      <li class="flexCols__col flexCols--l__col">Send and Receive Payments</li>
+    </ol>
+  </section>
+
   <div class="so-slant background-5B6A72"></div>
 </div>
 
 <div class="so-back so-slantContainer spu-padBottom-50 background-5B6A72">
-  <div class="so-chunk spu-pad-20" id="friendbot">
-    <h2 class="landing-sectionTitle spu-color-neutral9 spu-padBottom-10">Quick Start: Test Account</h2>
-    <div class="spu-background-neutral2 spu-radius spu-color-neutral8">
-      {{> modules/friendbot4}}
-    </div>
-  </div>
+  <section class="so-chunk spu-pad-20 flexCols flexCols--l spu-padTB-20">
+    <section class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30">
+      <h2 class="spu-color-neutral9"><a href="{{pathPrefix}}/reference/">Reference &amp; SDKs</a></h2>
+      <ul class="spu-color-neutral6">
+        <li><a href="{{pathPrefix}}/horizon/learn/">REST API</a></li>
+        <li><a href="{{pathPrefix}}/js-stellar-sdk/learn/">JavaScript SDK</a></li>
+        <li><a href="https://github.com/stellar/java-stellar-sdk">Java SDK</a></li>
+        <li><a href="https://github.com/stellar/go-stellar-base">Go SDK</a></li>
+        <li><a href="https://github.com/QuantozTechnology/csharp-stellar-base">C# SDK</a></li>
+        <li><a href="https://github.com/stellar/ruby-stellar-sdk">Ruby SDK</a></li>
+        <li><a href="https://github.com/StellarCN/py-stellar-base">Python SDK</a></li>
+      </ul>
+    </section>
+
+    <section class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30">
+      <h2 class="spu-color-neutral9"><a href="{{pathPrefix}}/learn/">Guides</a></h2>
+      <ul class="spu-color-neutral6">
+        <li><a href="{{pathPrefix}}/learn/get-started">Get Started</a></li>
+        <li><a href="{{pathPrefix}}/learn/integration-guides/anchor.html">Become an Anchor</a></li>
+      </ul>
+    </section>
+
+    <section class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30">
+      <h2 class="spu-color-neutral9"><a href="{{pathPrefix}}/software/">Software</a></h2>
+      <ul class="spu-color-neutral6">
+        <li><a href="{{pathPrefix}}/stellar-core/learn/admin.html">Stellar Core</a></li>
+        <li><a href="https://github.com/stellar/horizon">Horizon API Server</a></li>
+        <li><a href="https://github.com/stellar/federation">Federation Server</a></li>
+        <li><a href="https://github.com/stellar/bridge-server">Bridge Server</a></li>
+      </ul>
+    </section>
+
+    <section class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30">
+      <h2 class="spu-color-neutral9"><a href="{{pathPrefix}}/learn/concepts">Concepts</a></h2>
+      <ul class="spu-color-neutral6">
+        <li><a href="{{pathPrefix}}/learn/concepts/accounts.html">Accounts</a></li>
+        <li><a href="{{pathPrefix}}/learn/concepts/assets.html">Assets</a></li>
+        <li><a href="{{pathPrefix}}/learn/concepts/scp.html">Stellar Consensus Protocol</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <section class="so-chunk spu-pad-20 centerText">
+    <h2><a href="{{pathPrefix}}/learn/things-to-build.html">Build Awesome Stuff!</a></h2>
+    <p>Stellar supports all kinds of projects. Build a Slack bot to report a transaction stream to a particular channel or a microsavings account for school fees or health insurance.</p>
+    <p>
+      <a href="https://stellar.org/stellar-101/powered-by-stellar">See what others are building</a>
+    </p>
+  </section>
+
   <div class="so-slant spu-background-primary8"></div>
 </div>
 
 <div class="so-back so-slantContainer spu-background-primary8">
-  <div class="so-chunk spu-padTop-20 spu-padBottom-50">
-    <h2 class="landing-sectionTitle spu-color-neutral3 spu-padBottom-20">App Spotlight</h2>
-    <div class="landing-apps">
-      <a href="https://play.google.com/store/apps/details?id=de.xcoins.centaurus" class="landing-appItem">
-        <span class="landing-appItem__media graphic-centaurus-120"></span>
-        <div class="landing-appItem__copy">
-          <p class="landing-appItem__copy__title">Centaurus</p>
-          <p class="landing-appItem__copy__description">
-            Send and receive payments with a Stellar wallet for Android.
-          </p>
-        </div>
-      </a>
-      <div class="landing-appItem">
-        <span class="landing-appItem__media graphic-app-stack-bill-140">
-          <span class="landing-appItem__media__downArrow graphic-longDownArrow-88"></span>
-        </span>
-        <div class="landing-appItem__copy">
-          <a href="{{pathPrefix}}/learn/things-to-build.html" class="landing-appItem__copy__title">Develop Your Own</a>
-          <p class="landing-appItem__copy__description">
-            Build tools to collect payments, send transaction alerts, and perform other services.
-          </p>
-        </div>
-      </div>
-    </div>
-    <p class="spu-centerText">
-      <a href="{{pathPrefix}}/learn/things-to-build.html" class="s-button spu-textUppercase spu-padSE-30">Build Stellar Apps</a>
-    </p>
+  <section class="so-chunk spu-padTop-20 spu-padBottom-50 centerText">
+    <h2>HEEEEEEEEEEEEELP!!!!!!</h2>
+    <p>Don't see what you're looking for?</p>
 
-  </div>
+    <p>Talk to fellow Stellar devs in <a href="http://slack.stellar.org/">Slack</a></p>
+
+    <ul>
+      <li><a href="https://github.com/stellar">Github</a></li>
+      <li><a href="https://www.stellar.org/blog/">Stellar Blog</a></li>
+      <li><a href="https://twitter.com/stellarorg">Twitter</a></li>
+    </ul>
+  </section>
   <div class="so-slant spu-background-neutral9"></div>
 </div>
+
 <div class="so-back">
   <div class="so-chunk spu-padBottom-15 spu-maxWidth-40">
     {{> modules/dev-newsletter}}
