@@ -81,6 +81,7 @@ function addSection(f, p) {
   switch(parts[0]) {
     case "learn":
     case "reference":
+    case "software":
     case "tools":
     case "beyond-code":
       f.section = parts[0];
@@ -92,7 +93,7 @@ function addSection(f, p) {
       f.section = "reference";
       break;
     case "stellar-core":
-      f.section = "tools";
+      f.section = "software";
       break;
     default:
       // if we're dealing with a document inside a project's /docs folder, don't assign a layout
