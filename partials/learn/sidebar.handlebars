@@ -6,14 +6,13 @@
         {{>sidebarSubItems glob="learn/get-started/!(index).html"}}
       {{/sidebarSubMenu}}
 
-      {{#sidebarSubMenu "Integration Guides"}}
-        {{>sidebarSubMenu title="Building Blocks" glob="learn/integration-guides/building-blocks/*.html"}}
-        {{>sidebarSubItems glob="learn/integration-guides/*.html"}}
-      {{/sidebarSubMenu}}
-
       {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
-
-      {{>sidebarSubItems glob="learn/!(index).html"}}
+      
+      {{>sidebarSubItems glob="learn/anchor.html"}}
+      {{>sidebarSubItems glob="learn/exchange.html"}}
+      {{>sidebarSubItems glob="learn/!(index|contributing|anchor|exchange).html"}}
+      {{>sidebarSubItems glob="learn/contributing.html"}}
+      
     </ul>
   </div>
 </div>
