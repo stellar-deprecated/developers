@@ -39,6 +39,7 @@ gulp.task('js:copy-vendor', function() {
       './bower_components/codemirror/addon/runmode/runmode.js',
       './bower_components/codemirror/mode/javascript/javascript.js',
       './bower_components/codemirror/mode/shell/shell.js',
+      './bower_components/codemirror/mode/clike/clike.js',
       './bower_components/stellar-sdk/stellar-sdk.min.js',
     ])
     .pipe($g.concat('vendor.js'))
