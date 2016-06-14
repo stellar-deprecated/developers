@@ -182,6 +182,51 @@ s-read-md .codeBlock {
   text-align: center;
 }
 
+.miniItems {
+  @include S-flex-row;
+  justify-content: space-around;
+}
+.miniItems__item {
+  flex: 0 12 auto;
+  width: 200px;
+}
+
+// Single row splitting into half
+.halfSplit {
+  display: block;
+}
+.halfSplit__half {
+  width: 100%;
+  border-bottom: 1px solid $s-color-neutral4;
+  padding: 1em;
+}
+.halfSplit__half:last-child {
+  border-bottom: none;
+}
+.halfSplit__divider {
+  display: none;
+}
+@include r-media(l) {
+  .halfSplit {
+    @include S-flex-row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .halfSplit__half {
+    @include S-flexItem-noFlex;
+    border: none;
+    padding: 0 1em;
+    width: 50%;
+    max-width: 400px;
+  }
+  .halfSplit__divider {
+    flex: 0 0 auto;
+    display: block;
+    width: 1px;
+    background: $s-color-neutral3;
+    align-self: stretch;
+  }
+}
 
 // solar stuff incubated here. Will be moved into solar when needed
 .so-capTitle {
@@ -196,3 +241,7 @@ s-read-md .codeBlock {
   content: '*';
   color: red;
 }
+
+
+// Page specific comes after
+@import 'landing0616';
