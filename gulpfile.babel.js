@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import path from 'path';
 import Metalsmith from 'metalsmith';
 import _ from 'lodash';
+import markdownItAnchor from 'markdown-it-anchor';
 import util from 'util';
 import fs from 'fs';
 import hbars from './gulp/handlebars';
@@ -88,7 +89,18 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
       ]
     }))
     .use(renameReadme)
-    .use($m.markdown())
+    .use($m.markdownit({
+      html: true,
+      linkify: true,
+      typographer: true
+    }).use(markdownItAnchor, {
+      // We can pre-generate the links & remove src/js/headingAnchorShortcut.js
+      // Off for now, though.
+      // permalink: true,
+      // permalinkClass: 'anchorShortcut',
+      // permalinkSymbol: '',
+      // permalinkBefore: true
+    }))
     .use($m.inPlace(_.extend({}, templateOptions, {
       pattern: '*.handlebars'
     })))
