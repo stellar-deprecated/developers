@@ -3,6 +3,7 @@ import path from 'path';
 import Metalsmith from 'metalsmith';
 import _ from 'lodash';
 import markdownItAnchor from 'markdown-it-anchor';
+import markdownItFootnote from 'markdown-it-footnote';
 import util from 'util';
 import fs from 'fs';
 import hbars from './gulp/handlebars';
@@ -100,7 +101,7 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
       // permalinkClass: 'anchorShortcut',
       // permalinkSymbol: '',
       // permalinkBefore: true
-    }))
+    }).use(markdownItFootnote))
     .use($m.inPlace(_.extend({}, templateOptions, {
       pattern: '*.handlebars'
     })))

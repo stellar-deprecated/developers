@@ -17,6 +17,7 @@
     "load-metalsmith-plugins": "^0.1.1",
     "lodash": "^3.10.1",
     "markdown-it-anchor": "^2.5.0",
+    "markdown-it-footnote": "^2.0.0",
     "metalsmith": "git+https://github.com/stellar/metalsmith.git",
     "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-concat": "^3.0.3",
