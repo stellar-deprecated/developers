@@ -76,6 +76,7 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
       files: [
         "js/vendor.js",
         "js/syntaxHighlight.js",
+        "js/codeExamples.js",
         "js/endpointRef.js",
         "js/friendbot4.js",
         "js/collapsibleListSet.js",
