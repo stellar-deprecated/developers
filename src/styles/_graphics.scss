@@ -16,3 +16,22 @@
 .graphic-app-stack-bill-140 { @include so-graphic("app-stack-bill.png", 280, 280); @extend .so-graphic; }
 .graphic-longDownArrow-88 { @include so-graphic("longDownArrow.png", 66, 176); @extend .so-graphic; }
 .graphic-backArrow-9 { @include so-graphic("backArrow.svg", 36, 18); @extend .so-graphic;}
+
+
+.graphic-centaurus-120 { @include so-graphic("centaurus-120.png", 240, 240); @extend .so-graphic; }
+.graphic-app-stack-bill-140 { @include so-graphic("app-stack-bill.png", 280, 280); @extend .so-graphic; }
+.graphic-longDownArrow-88 { @include so-graphic("longDownArrow.png", 66, 176); @extend .so-graphic; }
+.graphic-backArrow-9 { @include so-graphic("backArrow.svg", 36, 18); @extend .so-graphic;}
+
+// for landing0616
+.graphic-rocket { @include so-graphic("rocket.png", 96, 120); @extend .so-graphic;}
+.graphic-checkId { @include so-graphic("check-id.png", 164, 120); @extend .so-graphic;}
+.graphic-schoolOfCash { @include so-graphic("school-of-cash.png", 186, 120); @extend .so-graphic;}
+.graphic-pageCode { @include so-graphic("page-code.png", 184, 162); @extend .so-graphic;}
+.graphic-pageWriting { @include so-graphic("page-writing.png", 180, 164); @extend .so-graphic;}
+.graphic-pageBrick { @include so-graphic("page-brick.png", 154, 164); @extend .so-graphic;}
+.graphic-prototypeGear { @include so-graphic("prototype-gear.png", 180, 180); @extend .so-graphic;}
+.graphic-ldarkSlack { @include so-graphic("ldark-slack.png", 100, 100); @extend .so-graphic;}
+.graphic-ldarkGithub { @include so-graphic("ldark-github.png", 100, 100); @extend .so-graphic;}
+.graphic-ldarkPaper { @include so-graphic("ldark-paper.png", 100, 100); @extend .so-graphic;}
+.graphic-ldarkTwitter { @include so-graphic("ldark-twitter.png", 100, 100); @extend .so-graphic;}

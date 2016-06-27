@@ -1,0 +1,101 @@
+.landing0616 {
+
+}
+.landing0616-cta {
+  padding: 0.7em 2em 0.6333em 2em;
+}
+
+
+// Resources
+.landing0616-resTitle {
+  font-weight: normal;
+  text-align: center;
+  border-bottom: 3px solid $s-color-neutral7;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+a.landing0616-resLink {
+  color: $s-color-neutral4;
+  text-decoration: none;
+}
+a.landing0616-resLink:hover {
+  text-decoration: underline;
+}
+.landing0616-res {
+  list-style: none;
+}
+.landing0616-res__item {
+  padding: 0;
+  border-bottom: 1px solid $s-color-neutral7;
+}
+.landing0616-res__item a {
+  display: block;
+  padding: 0.5em 0;
+  text-decoration: none;
+  color: $s-color-primary4;
+}
+.landing0616-res__item a:hover {
+  text-decoration: underline;
+}
+
+
+.landing0616-buildApps, .landing0616-buildAppsSlant {
+  background: #121D24;
+}
+.landing0616-buildApps__chunk {
+  max-width: 47em;
+}
+.landing0616-buildApps__lead {
+}
+
+.landing0616-introMini {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+@include r-media(m) {
+  .landing0616-introMini {
+    display: flex;
+  }
+}
+a.landing0616-introMini__item {
+  text-decoration: none;
+  text-align: center;
+}
+a.landing0616-introMini__item:hover {
+  text-decoration: underline;
+}
+.landing0616-circleNum {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  padding: 0.75em;
+  border: 1px solid $s-color-neutral7;
+  margin-bottom: 18px;
+
+  text-align: center;
+  line-height: 9px;
+  font-size: 16px;
+  background: white;
+  border-radius: 100%;
+}
+
+// Don't see what you're looking for?
+.landing0616-lookMini {
+}
+a.landing0616-lookMini__item {
+  display: block;
+  max-width: 120px;
+  text-decoration: none;
+}
+a.landing0616-lookMini__item:hover {
+  text-decoration: underline;
+}
+.landing0616-lookMini__item__graphic {
+  opacity: 0.6;
+}
+a.landing0616-lookMini__item:hover .landing0616-lookMini__item__graphic {
+  opacity: 1;
+}

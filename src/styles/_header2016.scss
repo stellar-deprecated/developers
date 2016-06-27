@@ -1,6 +1,11 @@
+.header2016, .header2016Back {
+  border-bottom: 1px solid $s-color-neutral7;
+}
 .header2016 {
   @include S-flex-row;
-  border-bottom: 1px solid $s-color-neutral7;
+}
+.header2016--centered {
+  border-bottom: 0;
 }
   .header2016__logo {
     @include S-flexItem-noFlex;
