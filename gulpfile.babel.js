@@ -80,7 +80,6 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
         "js/endpointRef.js",
         "js/friendbot4.js",
         "js/collapsibleListSet.js",
-        "js/headingAnchorShortcut.js",
         "js/linkCheck.js",
       ],
       output: "js/app.js",
@@ -97,12 +96,10 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
       linkify: true,
       typographer: true
     }).use(markdownItAnchor, {
-      // We can pre-generate the links & remove src/js/headingAnchorShortcut.js
-      // Off for now, though.
-      // permalink: true,
-      // permalinkClass: 'anchorShortcut',
-      // permalinkSymbol: '',
-      // permalinkBefore: true
+      permalink: true,
+      permalinkClass: 'anchorShortcut',
+      permalinkSymbol: '',
+      permalinkBefore: true
     }).use(markdownItFootnote))
     .use($m.inPlace(_.extend({}, templateOptions, {
       pattern: '*.handlebars'
