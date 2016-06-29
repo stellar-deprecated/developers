@@ -243,6 +243,19 @@ s-read-md .codeBlock {
   color: red;
 }
 
+// sequential navigation for multi-page docs (e.g. "get started")
+.sequence-navigation {
+  overflow: hidden;
+  margin: 2em 0;
+}
+
+.button--previous {
+  float: left;
+}
+
+.button--next {
+  float: right;
+}
 
 // Page specific comes after
 @import 'landing0616';
