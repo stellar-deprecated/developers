@@ -1,13 +1,13 @@
 <div class="siteSidebar pageNavListBounder">
   <div class="mainSidebar">
     <ul class="pageNavList">
-      {{#sidebarSubMenu "Get Started" numbered="true"}}
+      {{#sidebarSubMenu "Get Started" numbered="true"  collapsible=false}}
         {{>sidebarSubItems glob="learn/get-started/index.html"}}
         {{>sidebarSubItems glob="learn/get-started/!(index).html"}}
       {{/sidebarSubMenu}}
-      
-      {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"}}
-      
+
+      {{>sidebarSubMenu title="Concepts" glob="learn/concepts/*.html"  collapsible=false}}
+
       {{>sidebarSubItems glob="learn/anchor.html"}}
       {{>sidebarSubItems glob="learn/exchange.html"}}
       {{>sidebarSubItems glob="learn/!(index|contributing|anchor|exchange).html"}}
