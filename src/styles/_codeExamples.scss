@@ -1,27 +1,42 @@
+code-example {
+  display: block;
+  margin-bottom: 1em;
+}
+
+code-example pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .language-switcher {
-  background: #ccc;
-  background: linear-gradient(0deg, #aaa, #ddd);
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  color: #333;
+  border: 1px solid $s-color-neutral6;
+  border-bottom: none;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: $s-color-neutral4;
   font-size: 0.75em;
-  padding: 0.5em 1em;
+  padding: 0.5em 1em 0 1em;
   
   .code-example-title {
     margin-right: 2em;
   }
   
   .language-switcher--setter {
-    border: 1px solid #aaa;
-    border-radius: 1em;
+    border: none;
+    background: transparent;
+    color: $s-color-neutral5;
     margin: 0 1em 0 0;
-    padding: 0 0.65em;
+    padding: 0 0.65em 0.4em 0.65em;
+  }
+  
+  .language-switcher--setter:not(.selected):hover {
+    color: $s-color-neutral3;
+    border-bottom: 3px solid $s-color-neutral3;
   }
   
   .language-switcher--setter.selected {
-    background: #aaa;
-    background: linear-gradient(180deg, #999, #bbb);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
+    border-bottom: 3px solid $s-color-primary4;
+    color: $s-color-primary4;
   }
 }
 
