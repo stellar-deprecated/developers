@@ -27,8 +27,9 @@ function addRepoInfo(f, p) {
   let parts = p.split(path.sep);
 
   switch(parts[0]) {
-    case "learn":
+    case "guides":
     case "reference":
+    case "software":
     case "tools":
     case "beyond-code":
       f.repo = "docs";
@@ -79,21 +80,11 @@ function addSection(f, p) {
 
   let parts = p.split(path.sep);
   switch(parts[0]) {
-    case "learn":
+    case "guides":
     case "reference":
     case "software":
     case "tools":
-    case "beyond-code":
       f.section = parts[0];
-      break;
-    // FIXME: applications should not be special cased :(
-    case "horizon":
-    case "js-stellar-sdk":
-    case "js-stellar-base":
-      f.section = "reference";
-      break;
-    case "stellar-core":
-      f.section = "software";
       break;
     default:
       // if we're dealing with a document inside a project's /docs folder, don't assign a layout
