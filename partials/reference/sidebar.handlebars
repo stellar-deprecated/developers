@@ -2,7 +2,7 @@
   <div class="mainSidebar">
     <ul class="pageNavList">
 
-      {{#sidebarSubMenu "REST API"}}
+      {{#sidebarSubMenu "REST API" collapsible=true}}
         {{>sidebarSubItems glob="horizon/learn/index.html"}}
         {{>sidebarSubItems glob="horizon/learn/!(index).html"}}
         {{>sidebarSubMenu title="Tutorials" glob="horizon/learn/tutorials/*.html"}}
@@ -11,7 +11,7 @@
         {{>sidebarSubMenu title="Errors" glob="horizon/reference/errors/*.html"}}
       {{/sidebarSubMenu}}
 
-      {{#sidebarSubMenu "JavaScript SDK"}}
+      {{#sidebarSubMenu "JavaScript SDK" collapsible=true}}
         {{>sidebarSubItems glob="js-stellar-sdk/learn/index.html"}}
         {{>sidebarSubItems glob="js-stellar-base/learn/*.html"}}
         {{>sidebarSubItems glob="js-stellar-sdk/learn/!(index).html"}}

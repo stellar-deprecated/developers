@@ -35,10 +35,7 @@ module.exports.helpers = {
   },
 
   sidebarSubMenu(title, options) {
-    let c = options.hash.collapsible;
-    if (c === undefined) {
-      c = true;
-    }
+    let c = options.hash.collapsible == true;
     const listTag = options.hash.numbered ? 'ol' : 'ul';
 
     return `
