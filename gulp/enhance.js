@@ -27,8 +27,9 @@ function addRepoInfo(f, p) {
   let parts = p.split(path.sep);
 
   switch(parts[0]) {
-    case "learn":
+    case "guides":
     case "reference":
+    case "software":
     case "tools":
     case "beyond-code":
       f.repo = "docs";
@@ -75,13 +76,14 @@ function addFullTitle(f, p) {
 
 function addSection(f, p) {
   if (path.extname(p) !== ".md") return;
+  if (f.section) return;
 
   let parts = p.split(path.sep);
   switch(parts[0]) {
-    case "learn":
+    case "guides":
     case "reference":
+    case "software":
     case "tools":
-    case "beyond-code":
       f.section = parts[0];
       break;
     default:

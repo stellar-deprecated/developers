@@ -1,96 +1,148 @@
 ---
-title: Start Developing
-previewImage: landing-1.png
+title: Stellar Developers Documentation
+previewImage: landing-2.png
 ---
 {{> head}}
 {{> header-centered}}
 
-<div class="so-back so-slantContainer background-nightBlue background-starsLayer spu-padTop-40 spu-padBottom-30">
-  <div class="so-chunk spu-color-neutral9 spu-padBottom-20">
-    <h2 class="landing-sectionTitle">Stellar Documentation</h2>
+<div class="so-back so-slantContainer spu-background-primary8 spu-padTop-40 spu-padBottom-30">
+  <section class="so-chunk spu-color-neutral3 spu-padBottom-20">
+    <h1 class="landing-sectionTitle">Stellar Documentation</h1>
     <p class="spu-centerBlock spu-centerText spu-fontSize-3 landing-lead">
-      <span class="spu-lineFullL">Make money move as easily as email.</span>
-      <span class="spu-lineFullL">Develop a Stellar application or run a node on the network.</span>
+      <span class="spu-lineFullL">Stellar is open-source, distributed payments infrastructure. Build affordable financial services.</span>
     </p>
-  </div>
-  <div class="so-chunk">
-    <div class="flexCols flexCols--l spu-padTB-20">
-      <div class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30 centerText">
-        <a href="{{pathPrefix}}/learn/" class="spu-textDecorationNone">
-          <div class="spu-padBottom-15">
-            <span class="graphic-circled-folder-120"></span>
-          </div>
-          <h3 class="spu-color-neutral9 spu-fontSize-3">Libraries and Tutorials</h3>
-          <p class="spu-fontSize-5 spu-color-neutral6 spu-centerBlock landing-introItemDesc">Learn about developing with Stellar.</p>
-        </a>
-      </div>
-      <div class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30 centerText">
-        <a href="{{pathPrefix}}/reference/" class="spu-textDecorationNone">
-          <div class="spu-padBottom-15">
-            <span class="graphic-circled-horizon-120"></span>
-          </div>
-          <h3 class="spu-color-neutral9">Horizon</h3>
-          <p class="spu-fontSize-5 spu-color-neutral6 spu-centerBlock landing-introItemDesc">Integrate with Stellar using the API server.</p>
-        </a>
-      </div>
-      <div class="flexCols__col flexCols--l__col spu-padTB-10 spu-padSE-30 centerText">
-        <a href="https://www.stellar.org/developers/stellar-core/learn/admin.html" class="spu-textDecorationNone">
-          <div class="spu-padBottom-15">
-            <span class="graphic-circled-code-120"></span>
-          </div>
-          <h3 class="spu-color-neutral9">Stellar Core</h3>
-          <p class="spu-fontSize-5 spu-color-neutral6 spu-centerBlock landing-introItemDesc">Contribute to the ledger server or run a node. </p>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="so-slant background-5B6A72"></div>
-</div>
+  </section>
 
-<div class="so-back so-slantContainer spu-padBottom-50 background-5B6A72">
-  <div class="so-chunk spu-pad-20" id="friendbot">
-    <h2 class="landing-sectionTitle spu-color-neutral9 spu-padBottom-10">Quick Start: Test Account</h2>
-    <div class="spu-background-neutral2 spu-radius spu-color-neutral8">
-      {{> modules/friendbot4}}
-    </div>
-  </div>
-  <div class="so-slant spu-background-primary8"></div>
-</div>
-
-<div class="so-back so-slantContainer spu-background-primary8">
-  <div class="so-chunk spu-padTop-20 spu-padBottom-50">
-    <h2 class="landing-sectionTitle spu-color-neutral3 spu-padBottom-20">App Spotlight</h2>
-    <div class="landing-apps">
-      <a href="https://play.google.com/store/apps/details?id=de.xcoins.centaurus" class="landing-appItem">
-        <span class="landing-appItem__media graphic-centaurus-120"></span>
-        <div class="landing-appItem__copy">
-          <p class="landing-appItem__copy__title">Centaurus</p>
-          <p class="landing-appItem__copy__description">
-            Send and receive payments with a Stellar wallet for Android.
-          </p>
+  <section class="so-chunk spu-color-neutral3 spu-padBottom-20">
+    <div class="miniItems landing0616-introMini">
+      <a href="{{pathPrefix}}/guides/get-started/" class="miniItems__item landing0616-introMini__item">
+        <div>
+          <span class="landing0616-circleNum">1</span>
         </div>
+        <span class="graphic-rocket"></span>
+        <p class="spu-padTop-10 spu-padBottom-20">Stellar Network Overview</p>
       </a>
-      <div class="landing-appItem">
-        <span class="landing-appItem__media graphic-app-stack-bill-140">
-          <span class="landing-appItem__media__downArrow graphic-longDownArrow-88"></span>
-        </span>
-        <div class="landing-appItem__copy">
-          <a href="https://github.com/stellar/docs/blob/master/other/things-to-build.md" class="landing-appItem__copy__title">Develop Your Own</a>
-          <p class="landing-appItem__copy__description">
-            Build tools to collect payments, send transaction alerts, and perform other services.
-          </p>
+      <a href="{{pathPrefix}}/guides/get-started/create-account.html" class="miniItems__item landing0616-introMini__item">
+        <div>
+          <span class="landing0616-circleNum">2</span>
         </div>
-      </div>
+        <span class="graphic-checkId"></span>
+        <p class="spu-padTop-10 spu-padBottom-20">Create an Account</p>
+      </a>
+      <a href="{{pathPrefix}}/guides/get-started/transactions.html" class="miniItems__item landing0616-introMini__item">
+        <div>
+          <span class="landing0616-circleNum">3</span>
+        </div>
+        <span class="graphic-schoolOfCash"></span>
+        <p class="spu-padTop-10 spu-padBottom-20">Send and Receive Money</p>
+      </a>
     </div>
-    <p class="spu-centerText">
-      <a href="https://github.com/stellar/docs/blob/master/other/things-to-build.md" class="s-button spu-textUppercase spu-padSE-30">Build Stellar Apps</a>
-    </p>
+  </section>
 
-  </div>
   <div class="so-slant spu-background-neutral9"></div>
 </div>
+
+<div class="so-back so-slantContainer spu-padBottom-50">
+  <section class="so-chunk spu-pad-20 flexCols flexCols--l spu-padBottom-10">
+    <section class="flexCols__col flexCols--l__col spu-padTB-15 spu-padSE-10">
+      <div class="landing0616-resLink">
+        <div class="centerText">
+          <span class="graphic-pageCode"></span>
+        </div>
+        <h2 class="spu-color-neutral4 landing0616-resTitle">Reference &amp; SDKs</h2>
+      </div>
+      <ul class="spu-color-primary4 landing0616-res">
+        <li class="landing0616-res__item"><a href="{{pathPrefix}}/horizon/reference/">REST API</a></li>
+        <li class="landing0616-res__item"><a href="{{pathPrefix}}/js-stellar-sdk/reference/">JavaScript SDK</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/stellar/java-stellar-sdk">Java SDK</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/stellar/go-stellar-base">Go SDK</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/QuantozTechnology/csharp-stellar-base">C# SDK</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/stellar/ruby-stellar-sdk">Ruby SDK</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/StellarCN/py-stellar-base">Python SDK</a></li>
+      </ul>
+    </section>
+
+    <section class="flexCols__col flexCols--l__col spu-padTB-15 spu-padSE-10">
+      <div class="landing0616-resLink">
+        <div class="centerText">
+          <span class="graphic-pageWriting"></span>
+        </div>
+        <h2 class="spu-color-neutral4 landing0616-resTitle">Guides</h2>
+      </div>
+      <ul class="spu-color-primary4 landing0616-res">
+        <li class="landing0616-res__item"><a href="{{pathPrefix}}/guides/get-started/">Get Started</a></li>
+        <li class="landing0616-res__item"><a href="{{pathPrefix}}/guides/anchor.html">Become an Anchor</a></li>
+        <li class="landing0616-res__item"><a href="https://www.stellar.org/wp-content/uploads/2016/06/Sending-Payment-Flow-Detailed.jpg">Sending Payments</a></li>
+        <li class="landing0616-res__item"><a href="https://www.stellar.org/wp-content/uploads/2016/06/Receiving-Payment-Flow-Detailed.jpg">Receiving Payments</a></li>
+      </ul>
+    </section>
+
+    <section class="flexCols__col flexCols--l__col spu-padTB-15 spu-padSE-10">
+      <div class="landing0616-resLink">
+        <div class="centerText">
+          <span class="graphic-pageBrick"></span>
+        </div>
+        <h2 class="spu-color-neutral4 landing0616-resTitle">Software</h2>
+      </div>
+      <ul class="spu-color-primary4 landing0616-res">
+        <li class="landing0616-res__item"><a href="{{pathPrefix}}/stellar-core/software/admin.html">Stellar Core</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/stellar/horizon">Horizon API Server</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/stellar/federation">Federation Server</a></li>
+        <li class="landing0616-res__item"><a href="https://github.com/stellar/bridge-server">Bridge Server</a></li>
+      </ul>
+    </section>
+  </section>
+  <div class="so-slant landing0616-buildAppsSlant"></div>
+</div>
+
+<div class="so-back so-slantContainer landing0616-buildApps">
+  <section class="so-chunk spu-pad-20 centerText spu-color-neutral9 landing0616-buildApps__chunk">
+    <div class="spu-padBottom-20"><span class="graphic-prototypeGear"></span></div>
+    <h2 class="landing-sectionTitle spu-color-neutral9">Develop the future of finance</h2>
+    <p class="spu-fontSize-3 landing0616-buildApps__lead spu-padBottom-10">The Stellar network can support all kinds of projects. Build microsavings accounts for school fees or health insurance, or a Slack bot to report a transaction stream.</p>
+    <p>
+      <a href="https://www.stellar.org/how-it-works/powered-by-stellar/" class="s-button landing0616-cta spu-textUppercase">Build Stellar Apps</a>
+    </p>
+  </section>
+</div>
+<div class="so-back spu-background-neutral8">
+  <section class="so-chunk spu-padTop-30 spu-padBottom-50 centerText spu-color-neutral3">
+    <h2 class="landing-sectionTitle spu-color-neutral3 spu-padBottom-15">Don't see what you're looking for?</h2>
+    <div class="halfSplit">
+      <div class="halfSplit__half">
+        <p class="spu-fontSize-3">Ask questions and get in touch with 1000+ developers.</p>
+        <div class="miniItems landing0616-lookMini">
+          <a href="http://slack.stellar.org/" class="miniItems__item landing0616-lookMini__item">
+            <span class="graphic-ldarkSlack landing0616-lookMini__item__graphic"></span>
+            <p>Slack</p>
+          </a>
+        </div>
+      </div>
+      <div class="halfSplit__divider">
+      </div>
+      <div class="halfSplit__half">
+        <p class="spu-fontSize-3">Find more information and contact us in other Stellar channels.</p>
+        <div class="miniItems landing0616-lookMini">
+          <a href="https://github.com/stellar" class="miniItems__item landing0616-lookMini__item">
+            <span class="graphic-ldarkGithub landing0616-lookMini__item__graphic"></span>
+            <p>GitHub</p>
+          </a>
+          <a href="https://www.stellar.org/blog/category/technical/" class="miniItems__item landing0616-lookMini__item">
+            <span class="graphic-ldarkPaper landing0616-lookMini__item__graphic"></span>
+            <p>Technical blog</p>
+          </a>
+          <a href="https://twitter.com/stellarorg" class="miniItems__item landing0616-lookMini__item">
+            <span class="graphic-ldarkTwitter landing0616-lookMini__item__graphic"></span>
+            <p>Twitter</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="so-back">
-  <div class="so-chunk spu-padBottom-15 spu-maxWidth-40">
+  <div class="so-chunk spu-padTB-15 spu-maxWidth-40">
     {{> modules/dev-newsletter}}
   </div>
 </div>

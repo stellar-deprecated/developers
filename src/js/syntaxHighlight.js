@@ -12,6 +12,8 @@ window.syntaxHighlight = (function() {
     'sh': 'shell',
     'shell': 'shell',
     'bash': 'shell',
+    'java': 'text/x-java',
+    'go': 'text/x-go'
   };
 
   var highlighter = function(code) {

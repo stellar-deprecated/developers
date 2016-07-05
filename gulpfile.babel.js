@@ -2,6 +2,8 @@ import gulp from 'gulp';
 import path from 'path';
 import Metalsmith from 'metalsmith';
 import _ from 'lodash';
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItFootnote from 'markdown-it-footnote';
 import util from 'util';
 import fs from 'fs';
 import hbars from './gulp/handlebars';
@@ -21,10 +23,10 @@ gulp.task("default", ["build"]);
 
 gulp.task('src:symlink-repos', ['git:clone'], () => {
   // symlink the landing pages/custom content from the docs repo for each section
-  safeSymlink("../repos/docs/learn", "src/learn")
+  safeSymlink("../repos/docs/guides", "src/guides")
   safeSymlink("../repos/docs/reference", "src/reference")
+  safeSymlink("../repos/docs/software", "src/software")
   safeSymlink("../repos/docs/tools", "src/tools")
-  safeSymlink("../repos/docs/beyond-code", "src/beyond-code")
 
   // link up other repo's docs folder into the src structure
   return gulp.src("./repos/*/docs/")
@@ -39,6 +41,8 @@ gulp.task('js:copy-vendor', function() {
       './bower_components/codemirror/addon/runmode/runmode.js',
       './bower_components/codemirror/mode/javascript/javascript.js',
       './bower_components/codemirror/mode/shell/shell.js',
+      './bower_components/codemirror/mode/clike/clike.js',
+      './bower_components/codemirror/mode/go/go.js',
       './bower_components/stellar-sdk/stellar-sdk.min.js',
     ])
     .pipe($g.concat('vendor.js'))
@@ -72,10 +76,10 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
       files: [
         "js/vendor.js",
         "js/syntaxHighlight.js",
+        "js/codeExamples.js",
         "js/endpointRef.js",
         "js/friendbot4.js",
         "js/collapsibleListSet.js",
-        "js/headingAnchorShortcut.js",
         "js/linkCheck.js",
       ],
       output: "js/app.js",
@@ -87,7 +91,16 @@ gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
       ]
     }))
     .use(renameReadme)
-    .use($m.markdown())
+    .use($m.markdownit({
+      html: true,
+      linkify: true,
+      typographer: true
+    }).use(markdownItAnchor, {
+      permalink: true,
+      permalinkClass: 'anchorShortcut',
+      permalinkSymbol: '',
+      permalinkBefore: true
+    }).use(markdownItFootnote))
     .use($m.inPlace(_.extend({}, templateOptions, {
       pattern: '*.handlebars'
     })))

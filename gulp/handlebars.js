@@ -35,12 +35,15 @@ module.exports.helpers = {
   },
 
   sidebarSubMenu(title, options) {
+    let c = options.hash.collapsible == true;
+    const listTag = options.hash.numbered ? 'ol' : 'ul';
+
     return `
-      <li class="pageNavList__subList collapsibleListSet js-collapsibleListSet">
-        <span class="pageNavList__title collapsibleListSet__label js-collapsibleListSet__label">${title}</span>
-        <ul class="collapsibleListSet__list js-collapsibleListSet__list is-collapsed">
+      <li class="pageNavList__subList${(c) ? ' collapsibleListSet js-collapsibleListSet' : ''}">
+        <span class="pageNavList__title${(c) ? ' collapsibleListSet__label js-collapsibleListSet__label' : ''}">${title}</span>
+        <${listTag} class="collapsibleListSet__list${(c) ? ' js-collapsibleListSet__list is-collapsed' : ''}">
           ${options.fn(this)}
-        </ul>
+        </${listTag}>
       </li>
     `;
   },
