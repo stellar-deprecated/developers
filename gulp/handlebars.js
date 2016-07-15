@@ -61,6 +61,12 @@ module.exports.helpers = {
     }
     return `<script>window.clientData = ${clientDataJson};</script>`;
   },
+
+  // If available, return the fingerprinted version of a path, otherwise just
+  // return the path as-is.
+  fingerprint (path) {
+    return this.fingerprint && this.fingerprint[path] || path;
+  }
 }
 
 

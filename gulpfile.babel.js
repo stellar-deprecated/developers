@@ -50,65 +50,7 @@ gulp.task('js:copy-vendor', function() {
 });
 
 gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
-
-  let templateOptions = {
-    engine: "handlebars",
-    partials: "partials",
-    helpers: hbars.helpers,
-    preventIndent: true,
-  };
-
-  Metalsmith(__dirname)
-    .metadata({ pathPrefix: argv.pathPrefix || "" })
-    .use((f,m,d) => {
-      hbars.setFileList(f);
-      d();
-    })
-    .use(extract.examples)
-    .use(require("./gulp/sidecarMetadata"))
-    .use(require("./gulp/enhance"))
-    .use($m.sass({
-      outputStyle: "expanded",
-      includePaths: [ "./node_modules", "./bower_components" ]
-    }))
-    .use($m.autoprefixer({ }))
-    .use($m.concat({
-      files: [
-        "js/vendor.js",
-        "js/syntaxHighlight.js",
-        "js/codeExamples.js",
-        "js/endpointRef.js",
-        "js/friendbot4.js",
-        "js/collapsibleListSet.js",
-        "js/linkCheck.js",
-      ],
-      output: "js/app.js",
-    }))
-    .use($m.fingerprint({
-      pattern: [
-        "styles/index.css",
-        "js/app.js",
-      ]
-    }))
-    .use(renameReadme)
-    .use($m.markdownit({
-      html: true,
-      linkify: true,
-      typographer: true
-    }).use(markdownItAnchor, {
-      permalink: true,
-      permalinkClass: 'anchorShortcut',
-      permalinkSymbol: '',
-      permalinkBefore: true
-    }).use(markdownItFootnote))
-    .use($m.inPlace(_.extend({}, templateOptions, {
-      pattern: '*.handlebars'
-    })))
-    .use(renameHandlebars)
-    .use($m.layouts(templateOptions))
-    .use(links.rewrite)
-
-    .build(done);
+  build({incremental: !!argv.incremental}, done);
 });
 
 gulp.task('serve', () => {
@@ -118,6 +60,12 @@ gulp.task('serve', () => {
       open: "index.html",
     }));
 });
+
+gulp.task('watch', done => {
+  gulp.watch('src/**/*', (event) => {
+    build({incremental: true}, function() {});
+  });
+})
 
 function repoToSrc(file) {
   let project = file.relative.split(path.sep)[0];
@@ -154,9 +102,83 @@ function log(fn) {
   };
 }
 
+function build({clean = false, incremental = false}, done) {
+
+  let templateOptions = {
+    engine: "handlebars",
+    partials: "partials",
+    helpers: hbars.helpers,
+    preventIndent: true,
+  };
+
+  const pipeline = Metalsmith(__dirname)
+    .clean(!incremental)
+    .metadata({ pathPrefix: argv.pathPrefix || "" })
+    .use(extract.examples)
+    .use(require("./gulp/sidecarMetadata"))
+    .use(require("./gulp/enhance"))
+    .use($m.sass({
+      outputStyle: "expanded",
+      includePaths: [ "./node_modules", "./bower_components" ]
+    }))
+    .use($m.autoprefixer({ }))
+    .use($m.concat({
+      files: [
+        "js/vendor.js",
+        "js/syntaxHighlight.js",
+        "js/codeExamples.js",
+        "js/endpointRef.js",
+        "js/friendbot4.js",
+        "js/collapsibleListSet.js",
+        "js/linkCheck.js",
+      ],
+      output: "js/app.js",
+    }));
+  
+  if (!incremental) {
+    // fingerprinting can only be done for non-incremental builds, otherwise
+    // we'd need to rebuild every file that references the fingerprinted assets
+	  pipeline.use($m.fingerprint({
+      pattern: [
+        "styles/index.css",
+        "js/app.js",
+      ]
+    }));
+  }
+
+  pipeline
+    .use(renameReadme)
+    .use((files, metalsmith, done) => {
+      // we both need to copy the file list (so it doesn't get truncated if we
+      // limit to incremental building in the next step) and do the renaming of
+      // .md -> .html (again in case we limit to incremental building)
+      const renamedFiles = _.mapKeys(
+        files, (file, name) => name.replace(/\.md$/, '.html'));
+      hbars.setFileList(renamedFiles);
+      done();
+    })
+    .use($m.changed())
+    .use($m.markdownit({
+      html: true,
+      linkify: true,
+      typographer: true
+    }).use(markdownItAnchor, {
+      permalink: true,
+      permalinkClass: 'anchorShortcut',
+      permalinkSymbol: '',
+      permalinkBefore: true
+    }).use(markdownItFootnote))
+    .use($m.inPlace(_.extend({}, templateOptions, {
+      pattern: '*.handlebars'
+    })))
+    .use(renameHandlebars)
+    .use($m.layouts(templateOptions))
+    .use(links.rewrite)
+    .build(done);
+}
+
 
 // TODO:
-//   live reload
 //   rewrite link engine
 //   example system
 //   concat vendor.js
