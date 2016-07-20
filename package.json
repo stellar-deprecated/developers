@@ -20,6 +20,7 @@
     "markdown-it-footnote": "^2.0.0",
     "metalsmith": "git+https://github.com/stellar/metalsmith.git",
     "metalsmith-autoprefixer": "^1.1.0",
+    "metalsmith-changed": "^2.0.0",
     "metalsmith-concat": "^3.0.3",
     "metalsmith-fingerprint": "^1.0.3",
     "metalsmith-in-place": "^1.3.1",

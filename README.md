@@ -47,10 +47,10 @@ node_modules/.bin/gulp # or just `gulp` if you have it installed globally or hav
 To run a web server and view the site in a browser:
 
 ```bash
-node_modules/.bin/gulp serve
+node_modules/.bin/gulp watch serve
 ```
 
-This won't automatically rebuild the site when edits are made, but it will automatically pick up new builds (so you can do a build without needing to restart the server).
+This will also automatically rebuild the site when edits are made. (To serve without rebuilding, drop the `watch` argument.)
 
 By default, the site is served under the developers/ subfolder. This is to reduce the amount of bugs when this site is deployed to https://www.stellar.org/developers/. This can be changed by passing a custom baseUrl to the gulp build task like so: `gulp --baseUrl="/"` or `gulp build --baseUrl="/"`.
 
