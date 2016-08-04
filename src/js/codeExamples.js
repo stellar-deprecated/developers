@@ -8,7 +8,8 @@
   var MATCH_LANGUAGE = /(?:lang|language)-([a-zA-Z]+)/;
   var LANGUAGE_NAMES = {
     sh: 'Bash',
-    js: 'JavaScript'
+    js: 'JavaScript',
+    json: 'JSON'
   };
   var DEFAULT_LANGUAGE = 'js';
   var STORAGE_KEY = 'code-examples';
@@ -105,7 +106,8 @@
     for (var language in this.examples) {
       var visible = language === value;
       $(this.examples[language]).css('display', visible ? '' : 'none');
-      $('.language-switcher--setter[data-language="' + language + '"]')
+      $('.language-switcher--setter[data-language="' + language + '"]',
+        this.element)
         .toggleClass('selected', visible);
     }
     
@@ -127,6 +129,5 @@
   $('code-example').each(function(index, element) {
     new Switcher(element);
   });
-  
   
 })(jQuery);
