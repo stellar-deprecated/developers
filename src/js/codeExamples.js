@@ -8,7 +8,8 @@
   var MATCH_LANGUAGE = /(?:lang|language)-([a-zA-Z]+)/;
   var LANGUAGE_NAMES = {
     sh: 'Bash',
-    js: 'JavaScript'
+    js: 'JavaScript',
+    json: 'JSON'
   };
   var DEFAULT_LANGUAGE = 'js';
   var STORAGE_KEY = 'code-examples';
