@@ -105,7 +105,8 @@
     for (var language in this.examples) {
       var visible = language === value;
       $(this.examples[language]).css('display', visible ? '' : 'none');
-      $('.language-switcher--setter[data-language="' + language + '"]')
+      $('.language-switcher--setter[data-language="' + language + '"]',
+        this.element)
         .toggleClass('selected', visible);
     }
     
@@ -127,6 +128,5 @@
   $('code-example').each(function(index, element) {
     new Switcher(element);
   });
-  
   
 })(jQuery);
