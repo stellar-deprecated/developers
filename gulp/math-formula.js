@@ -14,15 +14,22 @@ import path from "path";
  *
  * Finds "```math-formula" code blocks in Markdown and converts them to
  * `<div class="math-formula">` with some additional typography cleanup and
- * markup/classes around types of symbols (operators, parens, etc)
+ * markup/classes around types of symbols (operators, parens, etc).
+ * 
+ * Inline blocks are delimited by `$$` and are displayed without modified
+ * font sizes and margins so as not to disrupt text flow.
  */
 export default function mathFormula(files, metalsmith, done) {
   _.chain(files)
     .filter(isMarkdown)
     .each(file => {
-      file.contents = file.contents.toString().replace(
-        /\n```math-formula\n((?:.|\n)*?)\n```\n/g,
-        (token, content) => `\n${formatFormula(content)}\n`);
+      file.contents = file.contents.toString()
+        .replace(
+          /\n```math-formula\n((?:.|\n)*?)\n```\n/g,
+          (token, content) => `\n${formatFormula(content)}\n`)
+        .replace(
+          /\$\$(.+?)\$\$/g,
+          (token, content) => formatFormula(content, true));
     })
     .value();
   done();
@@ -32,14 +39,15 @@ function isMarkdown(file, filePath) {
   return /\.(md|markdown|mdown)$/.test(path.extname(filePath));
 }
 
-function formatFormula(text) {
+function formatFormula(text, inline = false) {
   const formatted =
     prettyParentheses(
       prettyVariables(
         prettyNumbers(
           prettyExponents(
             prettyOperators(text)))));
-  return `<div class="math-formula">${formatted}</div>`;
+  const tagName = inline ? 'code' : 'figure';
+  return `<${tagName} class="math-formula">${formatted}</${tagName}>`;
 }
 
 function prettyOperators(text) {
