@@ -1,0 +1,29 @@
+.math-formula {
+  display: block;
+  font-size: 1.5em;
+  margin: 1em;
+  text-align: center;
+  
+  .math-formula-paren {
+    font-size: 1.5em;
+    font-weight: lighter;
+    opacity: 0.25;
+    
+    &.open {
+      margin-right: 0.25em;
+    }
+    &.close {
+      margin-left: 0.25em;
+    }
+  }
+  
+  .math-formula-operator {
+    opacity: 0.8;
+    margin: 0 0.2em;
+  }
+  
+  var {
+    border-bottom: 1px solid #ddd;
+    line-height: 1;
+  }
+}

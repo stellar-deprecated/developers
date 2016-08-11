@@ -157,7 +157,10 @@ function build({clean = false, incremental = false}, done) {
       hbars.setFileList(renamedFiles);
       done();
     })
-    .use($m.changed())
+    .use($m.changed({
+      forcePattern: '**/index*.css'
+    }))
+    .use(require("./gulp/math-formula.js"))
     .use($m.markdownit({
       html: true,
       linkify: true,
