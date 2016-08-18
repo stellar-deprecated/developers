@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+      "semi": "error",
+      "no-console": "warn",
+      "no-empty": "off"
+  },
+  "globals": {
+    "clientData": true,
+    "CodeMirror": true,
+    "StellarSdk": true,
+    "syntaxHighlight": true
+  }
+}

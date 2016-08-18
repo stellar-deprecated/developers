@@ -12,7 +12,7 @@
 // A collapsibleListSet's classes can also be removed if it is a child of another
 // collapsibleListSet.
 
-;(function() {
+(function() {
   $('.js-collapsibleListSet').each(function(index, container) {
     var $container = $(container);
     var $label = $container.find('> .js-collapsibleListSet__label');

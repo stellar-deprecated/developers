@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+      "semi": "error",
+      "no-console": "off",
+      "indent": ["error", 2, {
+        "SwitchCase": 1
+      }],
+      "no-empty": "off",
+      "no-unused-vars": ["error", {
+        "args": "none"
+      }]
+  }
+}

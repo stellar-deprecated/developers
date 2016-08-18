@@ -60,7 +60,7 @@
       this.setLanguage(language);
     }.bind(this));
     this.setLanguage(codeExamples.getLanguage());
-  };
+  }
   
   Switcher.prototype.findExamples = function() {
     var examples = {};

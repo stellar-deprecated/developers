@@ -4,8 +4,6 @@ import Metalsmith from 'metalsmith';
 import _ from 'lodash';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItFootnote from 'markdown-it-footnote';
-import util from 'util';
-import fs from 'fs';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
 import links from "./gulp/links";
@@ -23,28 +21,28 @@ gulp.task("default", ["build"]);
 
 gulp.task('src:symlink-repos', ['git:clone'], () => {
   // symlink the landing pages/custom content from the docs repo for each section
-  safeSymlink("../repos/docs/guides", "src/guides")
-  safeSymlink("../repos/docs/reference", "src/reference")
-  safeSymlink("../repos/docs/software", "src/software")
-  safeSymlink("../repos/docs/tools", "src/tools")
+  safeSymlink("../repos/docs/guides", "src/guides");
+  safeSymlink("../repos/docs/reference", "src/reference");
+  safeSymlink("../repos/docs/software", "src/software");
+  safeSymlink("../repos/docs/tools", "src/tools");
 
   // link up other repo's docs folder into the src structure
   return gulp.src("./repos/*/docs/")
     .pipe($g.sym(repoToSrc, {force: true, relative: true}));
-})
+});
 
 gulp.task('js:copy-vendor', function() {
   return gulp.src([
-      // TODO: optimize and only load which ones are necessary
-      './bower_components/jquery/dist/jquery.min.js',
-      './bower_components/codemirror/lib/codemirror.js',
-      './bower_components/codemirror/addon/runmode/runmode.js',
-      './bower_components/codemirror/mode/javascript/javascript.js',
-      './bower_components/codemirror/mode/shell/shell.js',
-      './bower_components/codemirror/mode/clike/clike.js',
-      './bower_components/codemirror/mode/go/go.js',
-      './bower_components/stellar-sdk/stellar-sdk.min.js',
-    ])
+    // TODO: optimize and only load which ones are necessary
+    './bower_components/jquery/dist/jquery.min.js',
+    './bower_components/codemirror/lib/codemirror.js',
+    './bower_components/codemirror/addon/runmode/runmode.js',
+    './bower_components/codemirror/mode/javascript/javascript.js',
+    './bower_components/codemirror/mode/shell/shell.js',
+    './bower_components/codemirror/mode/clike/clike.js',
+    './bower_components/codemirror/mode/go/go.js',
+    './bower_components/stellar-sdk/stellar-sdk.min.js',
+  ])
     .pipe($g.concat('vendor.js'))
     .pipe(gulp.dest('./src/js'));
 });
@@ -65,7 +63,7 @@ gulp.task('watch', done => {
   gulp.watch('src/**/*', (event) => {
     build({incremental: true}, function() {});
   });
-})
+});
 
 function repoToSrc(file) {
   let project = file.relative.split(path.sep)[0];
@@ -85,21 +83,11 @@ function renameReadme(files, metalsmith, done) {
 function renameHandlebars (files, metalsmith, done) {
   let toReplace = _(files).keys().pick(key => minimatch(key, '*.handlebars')).value();
   _.each(toReplace, key => {
-    let newPath = path.basename(key, '.handlebars') + '.html'
+    let newPath = path.basename(key, '.handlebars') + '.html';
     files[newPath] = files[key];
     delete files[key];
-  })
+  });
   done();
-}
-
-
-function log(fn) {
-  return function(files, metalsmith, done) {
-    _.each(files, (f,p) => {
-      console.log(`${p}: ${fn(f)}`);
-    })
-    done();
-  };
 }
 
 function build({clean = false, incremental = false}, done) {
@@ -138,7 +126,7 @@ function build({clean = false, incremental = false}, done) {
   if (!incremental) {
     // fingerprinting can only be done for non-incremental builds, otherwise
     // we'd need to rebuild every file that references the fingerprinted assets
-	  pipeline.use($m.fingerprint({
+    pipeline.use($m.fingerprint({
       pattern: [
         "styles/index.css",
         "js/app.js",

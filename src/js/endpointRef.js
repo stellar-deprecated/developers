@@ -2,7 +2,7 @@
 // FOUC can be removed by moving the DOM manipulation into the post processing
 
 // Build step
-;(function() {
+(function() {
   'use strict';
 
   // init
@@ -35,7 +35,7 @@
 
     $id.remove();
     $example.remove();
-  }
+  };
   languageList.forEach(function(language) {
     var languageId = language.toLowerCase();
     processExample('#' + languageId + '-example-request', language, 'request');
@@ -130,7 +130,7 @@
       $endpointBar.find('.js-endpointRef-menu .js-endpointRef-menuLang--' + state.language).addClass('is-active');
       $endpointBar.find('.js-endpointRef-lang').hide();
       $endpointBar.find('.js-endpointRef-lang--' + state.language).show();
-    }
+    };
     // runtime render for the first time
     render();
 
@@ -141,6 +141,6 @@
       // component will update. save to localstorage the current param
       localStorage.setItem('developers.endpointRef.language', state.language);
       render();
-    })
+    });
   }
 })();

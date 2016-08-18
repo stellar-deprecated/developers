@@ -1,5 +1,4 @@
-import url from 'url'
-import path from 'path'
+import url from 'url';
 import cheerio from 'cheerio';
 import minimatch from 'minimatch';
 import _ from 'lodash';
@@ -29,7 +28,7 @@ module.exports.rewrite = function(files, metalsmith, done) {
   // TODO: If relative or root-relative, re
   // 
   done();
-}
+};
 
 // All .md links that are relative should point to the rendered output
 function mdToHtml($, elem) {

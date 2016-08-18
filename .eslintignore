@@ -1,0 +1,3 @@
+repos/**/*
+build/**/*
+src/js/vendor.js
