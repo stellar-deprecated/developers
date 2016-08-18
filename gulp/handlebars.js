@@ -1,8 +1,7 @@
-import path from 'path';
 import _ from 'lodash';
 import minimatch from "minimatch";
 
-let allFiles = {}
+let allFiles = {};
 
 module.exports.helpers = {
   equal(lvalue, rvalue, options) {
@@ -15,18 +14,18 @@ module.exports.helpers = {
     }
   },
 
- eachFile() {
+  eachFile() {
     let args = Array.slice(arguments);
-    let options = _.last(args)
+    let options = _.last(args);
     let globs = args.slice(0, args.length-1);
 
     let result = "";
 
     _.each(allFiles, (f,p) => {
       let matches = _.any(globs, g => minimatch(p,g));
-      if (!matches) return
+      if (!matches) return;
 
-      let ctx = _.extend({}, this, {path: p, file: f})
+      let ctx = _.extend({}, this, {path: p, file: f});
 
       result += options.fn(ctx);
     });
@@ -67,9 +66,9 @@ module.exports.helpers = {
   fingerprint (path) {
     return this.fingerprint && this.fingerprint[path] || path;
   }
-}
+};
 
 
 module.exports.setFileList = function(files) {
-  allFiles = files
-}
+  allFiles = files;
+};

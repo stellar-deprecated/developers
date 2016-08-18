@@ -32,15 +32,15 @@
     // Navigation
     var canNavPrev = function() {
       return state.currentStep > 0;
-    }
+    };
     var canNavNext = function() {
       return state.currentStep !== state.maxStep;
-    }
+    };
     var ensureTopVisible = function() {
       if ($fb4[0].getBoundingClientRect().top < 0) {
-        window.scrollTo(window.scrollX, $fb4.offset().top - 18)
+        window.scrollTo(window.scrollX, $fb4.offset().top - 18);
       }
-    }
+    };
     $fb4.find('.js-friendbot4__nav__prev').on('click', function() {
       if (canNavPrev()) {
         state.currentStep = state.currentStep - 1;
@@ -112,7 +112,7 @@
         state.step2.friendbotStatus = 'Lumens have arrived!';
         state.maxStep = 3;
         render();
-      })
+      });
     });
 
     // Step 3
@@ -135,7 +135,7 @@
     var render = function() {
       // show the current step
       $fb4.find('[js-friendbot4-step]').hide()
-          .filter('[js-friendbot4-step=' + state.currentStep + ']').show()
+          .filter('[js-friendbot4-step=' + state.currentStep + ']').show();
 
       // helpers
       var setButtonDisabled = function(button, disabled) {
@@ -196,5 +196,5 @@
       $fb4.find('.js-friendbot4-step4-seed').text(state.keypair.seed);
     };
     render();
-  })
-})()
+  });
+})();

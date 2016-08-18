@@ -1,8 +1,5 @@
 import _ from "lodash";
-import path from "path";
 import minimatch from "minimatch";
-
-let repos = require("../repos.json");
 
 export default function sidecarMetadata(allFiles, metalsmith, done) {
   _.each(allFiles, (f, p) => {

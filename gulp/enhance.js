@@ -15,7 +15,7 @@ export default function enhance(files, metalsmith, done) {
     addLayout(f, p, metalsmith);
     addDefaultTitles(f, p, metalsmith);
     addExamples(f, p, metalsmith);
-  })
+  });
   done();
 }
 
@@ -45,7 +45,7 @@ function addRepoInfo(f, p) {
       } else {
         // no repo for this case
       }
-    break;
+      break;
   }
 
   if (!f.repo) return;
@@ -69,7 +69,7 @@ function addFullTitle(f, p) {
   if (!f.projectTitle || f.repo === 'docs') {
     f.fullTitle = f.title + titleSuffix;
     return;
-  };
+  }
 
   f.fullTitle = f.title + ' - ' + f.projectTitle + titleSuffix;
 }

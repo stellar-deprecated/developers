@@ -35,6 +35,7 @@
     "solar-stellarorg-pages": "git+https://github.com/stellar/solar-stellarorg-pages#master"
   },
   "devDependencies": {
+    "eslint": "^3.3.1",
     "gulp-debug": "^2.1.0"
   },
   "scripts": {
