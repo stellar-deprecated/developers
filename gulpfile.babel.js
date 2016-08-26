@@ -14,6 +14,11 @@ let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
 let $m = require('load-metalsmith-plugins')();
 
+if (argv.pathPrefix && argv.pathPrefix[0] !== '/') {
+  throw new Error('The --pathPrefix argument must start with a "/"');
+}
+const PATH_PREFIX = argv.pathPrefix || '';
+
 // add the git related gulp tasks
 import "./gulp/git";
 
@@ -101,7 +106,7 @@ function build({clean = false, incremental = false}, done) {
 
   const pipeline = Metalsmith(__dirname)
     .clean(!incremental)
-    .metadata({ pathPrefix: argv.pathPrefix || "" })
+    .metadata({ pathPrefix: PATH_PREFIX })
     .use(extract.examples)
     .use(require("./gulp/sidecarMetadata"))
     .use(require("./gulp/enhance"))
@@ -122,7 +127,7 @@ function build({clean = false, incremental = false}, done) {
       ],
       output: "js/app.js",
     }));
-  
+
   if (!incremental) {
     // fingerprinting can only be done for non-incremental builds, otherwise
     // we'd need to rebuild every file that references the fingerprinted assets
