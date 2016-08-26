@@ -4,16 +4,19 @@ import minimatch from 'minimatch';
 import _ from 'lodash';
 
 module.exports.rewrite = function(files, metalsmith, done) {
+  const pathPrefix = metalsmith.metadata().pathPrefix || '';
+
   _.each(files, (f,p) => {
     if (!minimatch(p, "**/*.html")) return;
 
     let $ = cheerio.load(f.contents);
 
-    
+
     $('[link-process-md] a').each(function(i, elem) {
       //re-write relative .md links to .html
       mdToHtml($, elem, f, p);
       rootRelativeToGithub($, elem, f, p);
+      devportalToRelative($, elem, f, p, pathPrefix);
     });
 
     f.contents = $.html();
@@ -22,11 +25,10 @@ module.exports.rewrite = function(files, metalsmith, done) {
 
   // link re-targeting
   // TODO: protocol relative links are left alone
-  // TODO: links to the devportal prefix are rewritten to the rendering's prefix (i.e. host/path prefix are replaced)
   // TODO: root relative links are rewritten using the documents  root.
   // TODO: relative links are maintainted
   // TODO: If relative or root-relative, re
-  // 
+  //
   done();
 };
 
@@ -55,7 +57,31 @@ function rootRelativeToGithub($, elem, f, p) {
 
   var isRootRelative = href.charAt(0) === '/';
   if (!isRootRelative) return;
-  
+
   $(elem).attr('href', f.repoURL + "/blob/master" + href);
 }
 
+// Identifies a URL for a dev portal page and matches a group for the path
+const DEVPORTAL_URL =
+  /^http(?:s)?:\/\/(?:www\.)?stellar.org\/developers\/?(.*)$/;
+
+/**
+ * Convert links to dev portal pages (used when linking to a doc whose
+ * canonical version lives in another repo, e.g. a Horizon reference page
+ * linking to a Stellar-Core reference page) to be relative.
+ * e.g. "https://stellar.org/developers/whatever" -> "/whatever"
+ * @param {CheerioDocument} $
+ * @param {HTMLAnchorElement} element
+ * @param {MetalsmithFile} file
+ * @param {String} pathname
+ * @param {String} pathPrefix
+ */
+function devportalToRelative($, element, file, pathname, pathPrefix) {
+  let href = $(element).attr('href');
+  const urlMatch = DEVPORTAL_URL.exec(href);
+
+  if (urlMatch) {
+    const urlPath = urlMatch[1];
+    $(element).attr('href', `${pathPrefix}/${urlPath}`);
+  }
+}
