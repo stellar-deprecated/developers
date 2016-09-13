@@ -15,13 +15,18 @@
         {{>sidebarSubItems glob="js-stellar-sdk/reference/index.html"}}
         {{>sidebarSubItems glob="js-stellar-base/reference/*.html"}}
         {{>sidebarSubItems glob="js-stellar-sdk/reference/!(index).html"}}
-        <li class="pageNavList__item"><a href="https://stellar.github.io/js-stellar-sdk/" target="_blank">API Reference <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></a></li>
+        <li class="pageNavList__item"><a href="https://stellar.github.io/js-stellar-sdk/" target="_blank" rel="noopener noreferrer">API Reference <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></li>
+      {{/sidebarSubMenu}}
+
+      {{#sidebarSubMenu "Go SDK" collapsible=true}}
+        {{>sidebarSubItems glob="go/reference/index.html"}}
+        {{>sidebarSubItems glob="go/reference/!(index).html"}}
+        <li class="pageNavList__item"><a href="https://godoc.org/github.com/stellar/go" target="_blank">Godoc <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></li>
       {{/sidebarSubMenu}}
 
       {{! FIXME: these should be info pages rather than raw links to Github }}
       {{! e.g. >sidebarSubItems glob="java-stellar-sdk/guides/index.html"}}
       <li class="pageNavList__item"><a href="https://github.com/stellar/java-stellar-sdk" target="_blank">Java SDK <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></a></li>
-      <li class="pageNavList__item"><a href="https://github.com/stellar/go" target="_blank">Go SDK <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></a></li>
       <li class="pageNavList__item"><a href="https://github.com/stellar/ruby-stellar-sdk" target="_blank">Ruby SDK <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></a></li>
       <li class="pageNavList__item"><a href="https://github.com/StellarCN/py-stellar-base" target="_blank">Python SDK <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></a></li>
       <li class="pageNavList__item"><a href="https://github.com/QuantozTechnology/csharp-stellar-base" target="_blank">C# SDK <span class="icon-faSvg icon-faSvg--small icon-faSvg-external-neutral5"></span></a></a></li>

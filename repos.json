@@ -21,5 +21,9 @@
   "horizon" : {
     "githubURL": "https://github.com/stellar/horizon",
     "projectTitle": "Horizon"
+  },
+  "go" : {
+    "githubURL": "https://github.com/stellar/go",
+    "projectTitle": "Go SDK"
   }
 }
