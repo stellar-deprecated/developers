@@ -54,6 +54,9 @@ This will also automatically rebuild the site when edits are made. (To serve wit
 
 By default, the site is served under the developers/ subfolder. This is to reduce the amount of bugs when this site is deployed to https://www.stellar.org/developers/. This can be changed by passing a custom baseUrl to the gulp build task like so: `gulp --baseUrl="/"` or `gulp build --baseUrl="/"`.
 
+When working on the site, you can also use the `--debug` option to generate output that is easier to debug in the browser (it includes things like sourcemaps).
+
+
 ### Browser JavaScript
 Browser JavaScript files live in [`src/js`](/src/js/). `vendor.js` is generated from bower_components and not checked in to the repository.
 
