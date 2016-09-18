@@ -95,7 +95,7 @@ function renameHandlebars (files, metalsmith, done) {
   done();
 }
 
-function build({clean = false, incremental = false}, done) {
+function build({clean = false, incremental = false, debug = !!argv.debug}, done) {
 
   let templateOptions = {
     engine: "handlebars",
@@ -104,16 +104,25 @@ function build({clean = false, incremental = false}, done) {
     preventIndent: true,
   };
 
+  const sassOptions = {
+    outputStyle: "expanded",
+    includePaths: [ "./node_modules", "./bower_components" ]
+  };
+  if (debug) {
+    Object.assign(sassOptions, {
+      sourceMap: true,
+      sourceMapContents: true,
+      sourceMapEmbed: true
+    });
+  }
+
   const pipeline = Metalsmith(__dirname)
     .clean(!incremental)
     .metadata({ pathPrefix: PATH_PREFIX })
     .use(extract.examples)
     .use(require("./gulp/sidecarMetadata"))
     .use(require("./gulp/enhance"))
-    .use($m.sass({
-      outputStyle: "expanded",
-      includePaths: [ "./node_modules", "./bower_components" ]
-    }))
+    .use($m.sass(sassOptions))
     .use($m.autoprefixer({ }))
     .use($m.concat({
       files: [
