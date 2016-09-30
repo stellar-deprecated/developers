@@ -13,7 +13,8 @@ window.syntaxHighlight = (function() {
     'shell': 'shell',
     'bash': 'shell',
     'java': 'text/x-java',
-    'go': 'text/x-go'
+    'go': 'text/x-go',
+    'toml': 'text/x-toml'
   };
 
   var highlighter = function(code) {
