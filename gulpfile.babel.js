@@ -3,6 +3,7 @@ import path from 'path';
 import Metalsmith from 'metalsmith';
 import _ from 'lodash';
 import markdownItAnchor from 'markdown-it-anchor';
+import markdownItImplicitFigures from 'markdown-it-implicit-figures';
 import markdownItFootnote from 'markdown-it-footnote';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
@@ -163,16 +164,20 @@ function build({clean = false, incremental = false, debug = !!argv.debug}, done)
       forcePattern: '**/index*.css'
     }))
     .use(require("./gulp/math-formula.js"))
-    .use($m.markdownit({
-      html: true,
-      linkify: true,
-      typographer: true
-    }).use(markdownItAnchor, {
-      permalink: true,
-      permalinkClass: 'anchorShortcut',
-      permalinkSymbol: '',
-      permalinkBefore: true
-    }).use(markdownItFootnote))
+    .use(
+      $m.markdownit({
+        html: true,
+        linkify: true,
+        typographer: true
+      })
+      .use(markdownItAnchor, {
+        permalink: true,
+        permalinkClass: 'anchorShortcut',
+        permalinkSymbol: '',
+        permalinkBefore: true
+      })
+      .use(markdownItFootnote)
+      .use(markdownItImplicitFigures))
     .use($m.inPlace(_.extend({}, templateOptions, {
       pattern: '*.handlebars'
     })))
