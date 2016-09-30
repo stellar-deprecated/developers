@@ -6,10 +6,14 @@
         {{>sidebarSubItems glob="guides/get-started/!(index).html"}}
       {{/sidebarSubMenu}}
 
+
+      {{#sidebarSubMenu "Become an Anchor" numbered="true" }}
+        {{>sidebarSubItems glob="guides/anchor/index.html"}}
+        {{>sidebarSubItems glob="guides/anchor/!(index).html"}}
+      {{/sidebarSubMenu}}
+
       {{>sidebarSubMenu title="Concepts" glob="guides/concepts/*.html"}}
 
-      {{>sidebarSubItems glob="guides/anchor.html"}}
-      {{>sidebarSubItems glob="guides/exchange.html"}}
       {{>sidebarSubItems glob="guides/!(index|contributing|anchor|exchange).html"}}
       {{>sidebarSubItems glob="guides/contributing.html"}}
     </ul>
