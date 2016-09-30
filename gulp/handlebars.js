@@ -17,20 +17,19 @@ module.exports.helpers = {
   eachFile() {
     let args = Array.slice(arguments);
     let options = _.last(args);
-    let globs = args.slice(0, args.length-1);
+    let globs = args
+      .slice(0, args.length - 1)
+      .map(glob => new minimatch.Minimatch(glob));
 
-    let result = "";
-
-    _.each(allFiles, (f,p) => {
-      let matches = _.any(globs, g => minimatch(p,g));
-      if (!matches) return;
-
-      let ctx = _.extend({}, this, {path: p, file: f});
-
-      result += options.fn(ctx);
-    });
-
-    return result;
+    return _.chain(allFiles)
+      .map((file, path) => path)
+      .filter(path => _.any(globs, glob => glob.match(path)))
+      .sortBy()
+      .map(path => options.fn(
+        // create a child context object for rendering
+        _.extend({}, this, {path, file: allFiles[path]})))
+      .join('')
+      .value();
   },
 
   sidebarSubMenu(title, options) {
