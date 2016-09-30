@@ -23,6 +23,13 @@
 
 @import 'pages/landing';
 
+.S-flexItem-share {
+  // this causes the boxes to actually create a layout context where their
+  // width, as determined by the flexbox algorithm, is respected (otherwise
+  // their content can force them wider (note this *doesn't* actually create
+  // scrollbars. Just causes the flex width to actually be used as the width.)
+  overflow: auto;
+}
 
 // site wide above the content, the title in the sidebar and above the body
 .mainSectionTitle {
@@ -36,6 +43,26 @@
 }
 .mainContent {
   max-width: 900px;
+
+  & > figure {
+    margin: 1em 0;
+  }
+}
+
+s-read-md.mainContent {
+  max-width: none;
+
+  & > * {
+    max-width: 804px;
+    max-width: calc(900px - 6em);
+  }
+
+  & > figure,
+  & > code-example,
+  & > table,
+  & > .codeBlock {
+    max-width: none;
+  }
 }
 
 // gray sidebar on full width pages
@@ -55,8 +82,11 @@
 .codeBlock {
   font-size: $s-scale-5;
 }
-s-read-md .codeBlock {
-  padding: 1em;
+
+// Note this intentially affects non-highlighted "code blocks" as well
+// (they don't get the `.codeBlock` class)
+s-read-md pre {
+  margin-bottom: 1em;
 }
 
 
@@ -69,6 +99,8 @@ s-read-md .codeBlock {
 .endpointRef-exampleBar.is-available {
   display: block;
   @include S-flexItem-full;
+  // FIXME: should this flex problem from the above include be fixed in solar?
+  flex: 12 0 auto;
 }
 @include r-media(3xl) {
   .endpointRef-exampleBar.is-available {
