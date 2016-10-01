@@ -1,0 +1,41 @@
+s-read-md dl {
+  & > * {
+    margin: 0;
+    padding: 0.2em 0;
+  }
+
+  dt {
+    float: left;
+    font-weight: bold;
+    min-width: 8em;
+    padding-right: 0.5em;
+  }
+
+  dt:after {
+    content: ': ';
+  }
+
+  dd {
+    border-bottom: 1px solid $s-color-neutral7;
+    margin-bottom: 0.5em;
+    text-align: right;
+  }
+
+  dd code:only-child {
+    background: transparent;
+    outline: none;
+  }
+}
+
+@supports (display: grid) {
+  s-read-md dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    dt,
+    dd {
+      border-bottom: 1px solid $s-color-neutral7;
+      margin-bottom: 0.5em;
+    }
+  }
+}

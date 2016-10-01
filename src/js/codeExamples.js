@@ -4,16 +4,17 @@
  */
 (function($) {
   'use strict';
-  
+
   var MATCH_LANGUAGE = /(?:lang|language)-([a-zA-Z]+)/;
   var LANGUAGE_NAMES = {
     sh: 'Bash',
     js: 'JavaScript',
-    json: 'JSON'
+    json: 'JSON',
+    toml: 'TOML'
   };
   var DEFAULT_LANGUAGE = 'js';
   var STORAGE_KEY = 'code-examples';
-  
+
   var codeExamples = {
     getLanguage: function() {
       if (!this._language && window.localStorage) {
@@ -38,20 +39,20 @@
       $(document).trigger('change-code-example-language', language);
     }
   };
-  
+
   function clickedLanguageButton(event) {
     var language = $(event.target).attr('data-language');
     if (language) {
       codeExamples.setLanguage(language);
     }
   }
-  
+
   function languageForElement(element) {
     var className = $(element).children('code').attr('class');
     var match = className && className.match(MATCH_LANGUAGE);
     return match && match[1];
   }
-  
+
   function Switcher (element) {
     this.element = element;
     this.examples = this.findExamples();
@@ -61,7 +62,7 @@
     }.bind(this));
     this.setLanguage(codeExamples.getLanguage());
   }
-  
+
   Switcher.prototype.findExamples = function() {
     var examples = {};
     var self = this;
@@ -74,11 +75,11 @@
     });
     return examples;
   };
-  
+
   Switcher.prototype.addUi = function() {
     this.createUi().prependTo(this.element);
   };
-  
+
   Switcher.prototype.createUi = function() {
     var title = $(this.element).attr('name');
     var container = $('<div class="language-switcher"></div>');
@@ -93,16 +94,16 @@
     }
     return container;
   };
-  
+
   Switcher.prototype.setLanguage = function(value) {
     if (!(value in this.examples)) {
       // find the first available language and show it
       value = this._baseLanguage;
     }
-    
+
     var scrollTop = document.body.scrollTop;
     var bounds = this.element.getBoundingClientRect();
-    
+
     for (var language in this.examples) {
       var visible = language === value;
       $(this.examples[language]).css('display', visible ? '' : 'none');
@@ -110,7 +111,7 @@
         this.element)
         .toggleClass('selected', visible);
     }
-    
+
     if (bounds.top < 0) {
       var newBounds = this.element.getBoundingClientRect();
       window.scrollTo(
@@ -118,16 +119,16 @@
         scrollTop + (newBounds.height - bounds.height));
     }
   };
-  
+
   function capitalize(text) {
     return text.split(' ').map(function(word) {
       return word.charAt(0).toUpperCase() + word.slice(1);
     }).join(' ');
   }
-  
+
   // ...and go!
   $('code-example').each(function(index, element) {
     new Switcher(element);
   });
-  
+
 })(jQuery);
