@@ -6,26 +6,26 @@ let repos = require("../repos.json");
 
 // The enhance middleware populates a bunch of metadata fields on the files.
 export default function enhance(files, metalsmith, done) {
-  _.each(files, (f, p) => {
-    addSrcInfo(f, p, metalsmith);
-    addRepoInfo(f, p, metalsmith);
-    addProject(f, p, metalsmith);
-    addFullTitle(f, p, metalsmith);
-    addSection(f, p, metalsmith);
-    addLayout(f, p, metalsmith);
-    addDefaultTitles(f, p, metalsmith);
-    addExamples(f, p, metalsmith);
-    addSequenceInfo(f, p, metalsmith, files);
+  _.each(files, (file, filePath) => {
+    addSrcInfo(file, filePath, metalsmith);
+    addRepoInfo(file, filePath, metalsmith);
+    addProject(file, filePath, metalsmith);
+    addFullTitle(file, filePath, metalsmith);
+    addSection(file, filePath, metalsmith);
+    addLayout(file, filePath, metalsmith);
+    addDefaultTitles(file, filePath, metalsmith);
+    addExamples(file, filePath, metalsmith);
+    addSequenceInfo(file, filePath, metalsmith, files);
   });
   done();
 }
 
-function addSrcInfo(f, p) {
-  f.srcPath = p;
+function addSrcInfo(file, filePath) {
+  file.srcPath = filePath;
 }
 
-function addRepoInfo(f, p) {
-  let parts = p.split(path.sep);
+function addRepoInfo(file, filePath) {
+  let parts = filePath.split(path.sep);
 
   switch(parts[0]) {
     case "guides":
@@ -33,59 +33,59 @@ function addRepoInfo(f, p) {
     case "software":
     case "tools":
     case "beyond-code":
-      f.repo = "docs";
-      f.repoPath = p;
+      file.repo = "docs";
+      file.repoPath = filePath;
       break;
     default:
       // if parts[0] is the name of a repo, use it
       if (parts[0] in repos) {
-        f.repo = parts[0];
+        file.repo = parts[0];
         let newParts = parts.slice(0);
         newParts[0] = "docs";
-        f.repoPath = newParts.join("/");
+        file.repoPath = newParts.join("/");
       } else {
         // no repo for this case
       }
       break;
   }
 
-  if (!f.repo) return;
+  if (!file.repo) return;
 
-  let repo = repos[f.repo];
-  f.repoURL = repo.githubURL;
-  f.repoBlobURL = repo.githubURL + "/blob/master/" + f.repoPath;
+  let repo = repos[file.repo];
+  file.repoURL = repo.githubURL;
+  file.repoBlobURL = repo.githubURL + "/blob/master/" + file.repoPath;
 }
 
-function addProject(f, p) {
-  if (!f.repo) return;
-  if (f.repo === "docs") return;
+function addProject(file, filePath) {
+  if (!file.repo) return;
+  if (file.repo === "docs") return;
 
-  f.project = f.repo;
-  f.projectTitle = repos[f.repo].projectTitle;
+  file.project = file.repo;
+  file.projectTitle = repos[file.repo].projectTitle;
 }
 
-function addFullTitle(f, p) {
+function addFullTitle(file, filePath) {
   let titleSuffix = ' | Stellar Developers';
 
-  if (!f.projectTitle || f.repo === 'docs') {
-    f.fullTitle = f.title + titleSuffix;
+  if (!file.projectTitle || file.repo === 'docs') {
+    file.fullTitle = file.title + titleSuffix;
     return;
   }
 
-  f.fullTitle = f.title + ' - ' + f.projectTitle + titleSuffix;
+  file.fullTitle = file.title + ' - ' + file.projectTitle + titleSuffix;
 }
 
-function addSection(f, p) {
-  if (path.extname(p) !== ".md") return;
-  if (f.section) return;
+function addSection(file, filePath) {
+  if (path.extname(filePath) !== ".md") return;
+  if (file.section) return;
 
-  let parts = p.split(path.sep);
+  let parts = filePath.split(path.sep);
   switch(parts[0]) {
     case "guides":
     case "reference":
     case "software":
     case "tools":
-      f.section = parts[0];
+      file.section = parts[0];
       break;
     default:
       // if we're dealing with a document inside a project's /docs folder, don't assign a layout
@@ -95,23 +95,23 @@ function addSection(f, p) {
       // if not one of the above cases, then we are dealing with a project-specific
       // file (i.e. horizon, js-stellar-sdk).  In this case, we determine layout
       // based upon the nesting undernearth the project name.
-      f.section = parts[1];
+      file.section = parts[1];
       break;
   }
 }
 
-function addLayout(f, p) {
-  if ("section" in f) {
-    f.layout = f.section + ".handlebars";
+function addLayout(file, filePath) {
+  if ("section" in file) {
+    file.layout = file.section + ".handlebars";
   }
 }
 
-function addDefaultTitles(f, p) {
-  if (minimatch(p, "**/!(*.md)")) return;
-  if ("title" in f) return;
+function addDefaultTitles(file, filePath) {
+  if (minimatch(filePath, "**/!(*.md)")) return;
+  if ("title" in file) return;
 
-  console.log(`warn: ${p} has no title`);
-  f.title = path.basename(p);
+  console.log(`warn: ${filePath} has no title`);
+  file.title = path.basename(filePath);
 }
 
 function addExamples(f, p, metalsmith) {
