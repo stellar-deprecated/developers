@@ -49,6 +49,8 @@ gulp.task('js:copy-vendor', function() {
     './bower_components/codemirror/mode/go/go.js',
     './bower_components/codemirror/mode/toml/toml.js',
     './bower_components/stellar-sdk/stellar-sdk.min.js',
+    './bower_components/tether/dist/js/tether.min.js',
+    './bower_components/tether-drop/dist/js/drop.min.js',
   ])
     .pipe($g.concat('vendor.js'))
     .pipe(gulp.dest('./src/js'));
@@ -63,6 +65,7 @@ gulp.task('serve', () => {
     .pipe($g.webserver({
       livereload: true,
       open: "index.html",
+      host: '0.0.0.0'
     }));
 });
 
@@ -135,6 +138,7 @@ function build({clean = false, incremental = false, debug = !!argv.debug}, done)
         "js/friendbot4.js",
         "js/collapsibleListSet.js",
         "js/linkCheck.js",
+        "js/footnotes.js",
       ],
       output: "js/app.js",
     }));

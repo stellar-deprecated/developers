@@ -1,7 +1,42 @@
+// Note Drop also provides SASS content we could use for more customization.
+@import '../../bower_components/tether-drop/dist/css/drop-theme-arrows.min';
+
+// Line separating footnotes from rest of document
 .footnotes-sep {
   border: none;
   border-top: 1px solid $s-color-neutral7;
   // like most text content, .footnotes-sep has a max-width. However, it is
   // normally centered. Remove the left margin so it lines up with content.
   margin-left: 0;
+}
+
+// Popover for displaying footnotes in context
+.drop-element.footnote-drop {
+  $background-color: whiten($s-color-neutral8, 50%);
+  opacity: 0;
+
+  &.drop-after-open {
+    transition: opacity 0.25s;
+    opacity: 1;
+  }
+
+  // Set the color of the "arrow" in the popover
+  &.drop-element-attached-bottom.drop-element-attached-center .drop-content:before {
+    border-top-color: $background-color;
+  }
+  &.drop-element-attached-top.drop-element-attached-center .drop-content:before {
+    border-bottom-color: $background-color;
+  }
+
+  .drop-content {
+    background: $background-color;
+    max-width: 30em;
+    filter:
+      drop-shadow(0 0px 1px $s-color-neutral5)
+      drop-shadow(0 1px 8px rgba(0, 0, 0, 0.2));
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
