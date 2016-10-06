@@ -1,4 +1,7 @@
 .footnotes-sep {
   border: none;
   border-top: 1px solid $s-color-neutral7;
+  // like most text content, .footnotes-sep has a max-width. However, it is
+  // normally centered. Remove the left margin so it lines up with content.
+  margin-left: 0;
 }
