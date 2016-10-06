@@ -15,6 +15,7 @@ export default function enhance(files, metalsmith, done) {
     addLayout(f, p, metalsmith);
     addDefaultTitles(f, p, metalsmith);
     addExamples(f, p, metalsmith);
+    addSequenceInfo(f, p, metalsmith, files);
   });
   done();
 }
@@ -123,3 +124,60 @@ function addExamples(f, p, metalsmith) {
 
   f.examples = examples[endpoint];
 }
+
+/**
+ * Replace `sequence` objects in file metadata with metadata about the
+ * referenced sequence files. Sequence is used to describe navigation through a
+ * multi-step guide. In the file metadata, you might have:
+ *
+ *  sequence:
+ *    previous: first-step.md
+ *    next: third-step.md
+ *
+ * This method will update the sequence property to replace the referenced
+ * file path with the metadata of the given file, plus a URL to link to:
+ *
+ *  {sequnce: {
+ *    previous: {title: "Step 1", linkPath: "./first-step.html", ...}
+ *    next: {title: "Step 3", linkPath: "./third-step.html", ...}
+ *  }}
+ *
+ * @param {MetalsmithFile} file File metadata object from Metalsmith
+ * @param {String} filePath Path of the file
+ * @param {Metalsmith} metalsmith
+ * @param {Object} allFiles Metalsmith file collection object
+ * @returns
+ */
+function addSequenceInfo(file, filePath, metalsmith, allFiles) {
+  const sequence = file.sequence;
+  if (!sequence) return;
+
+  if (sequence.previous) {
+    sequence.previous = fileLinkInfo(sequence.previous, filePath, allFiles);
+  }
+  if (sequence.next) {
+    sequence.next = fileLinkInfo(sequence.next, filePath, allFiles);
+  }
+}
+
+/**
+ * Get an object with a relative URL and title for the given file, as well as
+ * any existing metadata for that file.
+ * @private
+ * @param {String} relativePath The relative path to the file
+ * @param {String} fromPath The path that `relativePath` is relative to
+ * @param {Object} allFiles A metalsmith file collection to get metadata from
+ * @returns {{title: String, linkPath: String}}
+ */
+function fileLinkInfo(relativePath, fromPath, allFiles) {
+  const filePath = path.join(path.dirname(fromPath), relativePath);
+  const linkPath = filePath
+    .replace(/(^|\/)readme\.md$/, 'index.html')
+    .replace(/\.md$/, '.html');
+  return Object.assign({
+    // this is just a fallback if a file doesn't have an explicit title set
+    title: relativePath.replace(/\.md$/, ''),
+    linkPath: linkPath
+  }, allFiles[filePath]);
+}
+
