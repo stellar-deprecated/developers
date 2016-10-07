@@ -105,12 +105,80 @@
     }
   }
 
+  var URL_EXPRESSION = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>\[\]'"]+|\([^\s()<>\[\]'"]*\))+(?:\([^\s()<>\[\]'"]*\)|[^\s`!()\[\]{}:'".,<>?«»“”‘’]))/gi;
+
+  function linkCommentUrls(element) {
+    // if we highlighted anything, only set up links in comments
+    if (element.children.length) {
+      $('.cm-comment', element).each(function(index, comment) {
+        autoLinkInElement(comment);
+      });
+    }
+    else {
+      var fragment = document.createDocumentFragment();
+      var foundLinks = false;
+      element.textContent.split('\n').forEach(function (line) {
+        line += '\n';
+        if (line[0] === '#' || line.slice(0, 2) === '//') {
+          var links = createLinksFromText(line);
+          fragment.appendChild(links);
+          if (links.nodeType !== document.TEXT_NODE) {
+            foundLinks = true;
+          }
+        }
+        else {
+          fragment.appendChild(document.createTextNode(line));
+        }
+      });
+      if (foundLinks) {
+        element.innerHTML = '';
+        element.appendChild(fragment);
+      }
+    }
+  }
+
+  function autoLinkInElement(element) {
+    // TODO: use a treewalker to just walk the text nodes so we don’t destroy
+    // an existing element tree
+    var links = createLinksFromText(element.textContent);
+    if (links.nodeType !== document.TEXT_NODE) {
+      element.innerHTML = '';
+      element.appendChild(links);
+    }
+  }
+
+  function createLinksFromText(text) {
+    var segments = text.split(URL_EXPRESSION);
+    var length = segments.length;
+    if (length === 1) { return document.createTextNode(text); }
+
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < length; i += 2) {
+      fragment.appendChild(document.createTextNode(segments[i]));
+      var url = segments[i + 1];
+      if (url) {
+        var link = document.createElement('a');
+        link.href = url;
+        link.appendChild(document.createTextNode(url));
+        if (isOffsiteUrl(url)) {
+          link.target = '_blank';
+        }
+        fragment.appendChild(link);
+      }
+    }
+    return fragment;
+  }
+
   function isOffsiteUrl(url) {
     var hostname = url && url.match(/^(?:\w+:\/\/(?:\/?))?([^\/]+)/);
     return hostname && hostname[1] !== window.location.hostname;
   }
 
   $(function() {
+    $('pre > code').each(function(index, element) {
+      linkCommentUrls(element);
+    });
+
     var highlightedCode = $('pre > code.language-js');
     if (!highlightedCode.length) return;
 
