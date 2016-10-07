@@ -179,7 +179,7 @@
       linkCommentUrls(element);
     });
 
-    var highlightedCode = $('pre > code.language-js');
+    var highlightedCode = $('pre > code.language-js, pre > code.language-javascript, pre > code.language-node');
     if (!highlightedCode.length) return;
 
     loadSymbols().then(function(symbols) {
