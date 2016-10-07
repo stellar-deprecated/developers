@@ -19,6 +19,8 @@ module.exports.rewrite = function(files, metalsmith, done) {
       devportalToRelative($, elem, f, p, pathPrefix);
     });
 
+    decorateSequentialNavigation($, f, p);
+
     f.contents = $.html();
   });
 
@@ -84,4 +86,17 @@ function devportalToRelative($, element, file, pathname, pathPrefix) {
     const urlPath = urlMatch[1];
     $(element).attr('href', `${pathPrefix}/${urlPath}`);
   }
+}
+
+/**
+ * Ensure sequential navigation blocks (the previous/next links at the bottom
+ * of multi-page guides) get the right markup and styles.
+ * @param {Cheerio} $
+ * @param {MetalsmithFile} file
+ * @param {String} filePath
+ */
+function decorateSequentialNavigation($, file, filePath) {
+  $('.sequence-navigation')
+    .children('[rel~="prev"]').addClass('button button--previous').end()
+    .children('[rel~="next"]').addClass('button button--next').end();
 }
