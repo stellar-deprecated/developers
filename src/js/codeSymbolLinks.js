@@ -91,18 +91,17 @@
 
     // This approach could potentially have a lot of false positives, but if we
     // keep example code nicely written, it should be workable.
-    for (var name in symbols) {
+    $('.cm-property', element).each(function(index, propertyElement) {
+      // don't re-link symbols we already found
+      if (propertyElement.children.length) return;
+
+      var propertyName = $.trim(propertyElement.textContent);
       // TODO: can we make any good inferences that allow us to handle multiple
       // types with the same members, e.g. Keypair#sign vs. Transaction#sign
-      if (symbols[name].length !== 1) continue;
-      var symbol = symbols[name][0];
-      $('.cm-property:contains("' + name + '")', element).each(function(index, propertyElement) {
-        // don't re-link symbols we already found
-        if (!propertyElement.children.length) {
-          replaceWithLink(propertyElement, symbol);
-        }
-      });
-    }
+      if ((symbols[propertyName] || []).length !== 1) return;
+      var symbol = symbols[propertyName][0];
+      replaceWithLink(propertyElement, symbol);
+    });
   }
 
   var URL_EXPRESSION = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>\[\]'"]+|\([^\s()<>\[\]'"]*\))+(?:\([^\s()<>\[\]'"]*\)|[^\s`!()\[\]{}:'".,<>?«»“”‘’]))/gi;
