@@ -1,3 +1,4 @@
+import fs from 'fs';
 import gulp from 'gulp';
 import path from 'path';
 import Metalsmith from 'metalsmith';
@@ -10,6 +11,7 @@ import extract from "./gulp/extract";
 import links from "./gulp/links";
 import minimatch from "minimatch";
 import safeSymlink from './gulp/safeSymlink';
+import {javascriptSymbols} from './gulp/code-symbol-tags';
 
 let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
@@ -56,7 +58,7 @@ gulp.task('js:copy-vendor', function() {
     .pipe(gulp.dest('./src/js'));
 });
 
-gulp.task('build', ['src:symlink-repos', "js:copy-vendor"], done => {
+gulp.task('build', ['src:symlink-repos', 'js:copy-vendor', 'generate-sdk-symbols'], done => {
   build({incremental: !!argv.incremental}, done);
 });
 
@@ -72,6 +74,17 @@ gulp.task('serve', () => {
 gulp.task('watch', done => {
   gulp.watch('src/**/*', (event) => {
     build({incremental: true}, function() {});
+  });
+});
+
+gulp.task('generate-sdk-symbols', done => {
+  javascriptSymbols((error, symbols) => {
+    if (error) {
+      console.error(error);
+      return done(error);
+    }
+    fs.writeFile(
+      './src/js/javascript-symbols.json', JSON.stringify(symbols), done);
   });
 });
 
@@ -139,6 +152,7 @@ function build({clean = false, incremental = false, debug = !!argv.debug}, done)
         "js/collapsibleListSet.js",
         "js/linkCheck.js",
         "js/footnotes.js",
+        "js/codeSymbolLinks.js",
       ],
       output: "js/app.js",
     }));

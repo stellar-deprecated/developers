@@ -3,6 +3,7 @@
 /build
 /repos
 /src/js/vendor.js
+/src/js/*-symbols.json
 
 ###
 # node.js and bower

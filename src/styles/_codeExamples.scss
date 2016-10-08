@@ -16,11 +16,11 @@ code-example pre {
   color: $s-color-neutral4;
   font-size: 0.75em;
   padding: 0.5em 1em 0 1em;
-  
+
   .code-example-title {
     margin-right: 2em;
   }
-  
+
   .language-switcher--setter {
     border: none;
     background: transparent;
@@ -28,15 +28,19 @@ code-example pre {
     margin: 0 1em 0 0;
     padding: 0 0.65em 0.4em 0.65em;
   }
-  
+
   .language-switcher--setter:not(.selected):hover {
     color: $s-color-neutral3;
     border-bottom: 3px solid $s-color-neutral3;
   }
-  
+
   .language-switcher--setter.selected {
     border-bottom: 3px solid $s-color-primary4;
     color: $s-color-primary4;
   }
 }
 
+.drop-element .symbol-description {
+  max-height: 10.5em;
+  overflow: hidden;
+}
