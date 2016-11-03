@@ -58,7 +58,7 @@ gulp.task('js:copy-vendor', function() {
     .pipe(gulp.dest('./src/js'));
 });
 
-gulp.task('build', ['src:symlink-repos', 'js:copy-vendor', 'generate-sdk-symbols'], done => {
+gulp.task('build', ['js:copy-vendor', 'generate-sdk-symbols'], done => {
   build({incremental: !!argv.incremental}, done);
 });
 
@@ -77,7 +77,7 @@ gulp.task('watch', done => {
   });
 });
 
-gulp.task('generate-sdk-symbols', done => {
+gulp.task('generate-sdk-symbols', ['src:symlink-repos'], done => {
   javascriptSymbols((error, symbols) => {
     if (error) {
       console.error(error);
