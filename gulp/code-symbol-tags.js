@@ -16,8 +16,12 @@ export function javascriptSymbols(callback) {
   let output = '';
   let error = '';
 
+  // npm install in js-stellar-sdk
+  child_process.spawnSync('npm', ['install'], {cwd: './repos/js-stellar-sdk/'});
+
   const jsDoc = child_process.spawn(
-    './node_modules/.bin/jsdoc',
+    // Executed in './repos/js-stellar-sdk/'
+    '../../node_modules/.bin/jsdoc',
     [
       '-c', '.jsdoc.json',
       '--explain' // output doclet JSON instead of templated web site
