@@ -53,6 +53,7 @@
 
 s-read-md.mainContent {
   max-width: none;
+  min-width: 500px;
 
   @include r-media(3xl) {
     min-width: 1000px;

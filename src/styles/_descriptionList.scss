@@ -1,11 +1,3 @@
-s-read-md code {
-  word-break: normal;
-}
-
-s-read-md table td {
-  word-break: break-word;
-}
-
 s-read-md dl {
   & > * {
     margin: 0;
