@@ -34,8 +34,6 @@ export function javascriptSymbols(callback) {
   jsDoc.stderr.on('data', data => error += data);
   jsDoc.on('exit', code => {
     if (code === 0) {
-      console.log("jsdoc output:");
-      console.log(output);
       const doc = parseDoclets(output);
       callback(null, doc.names);
     }
