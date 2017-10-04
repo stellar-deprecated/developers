@@ -19,7 +19,7 @@
     "projectTitle": "JS Stellar SDK"
   },
   "horizon" : {
-    "githubURL": "https://github.com/stellar/horizon",
+    "githubURL": "https://github.com/stellar/go/tree/master/services/horizon",
     "projectTitle": "Horizon"
   },
   "go" : {
