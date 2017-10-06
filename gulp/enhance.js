@@ -93,7 +93,7 @@ function addSection(file, filePath) {
         return;
       }
       // if not one of the above cases, then we are dealing with a project-specific
-      // file (i.e. horizon, js-stellar-sdk).  In this case, we determine layout
+      // file (i.e. js-stellar-sdk).  In this case, we determine layout
       // based upon the nesting undernearth the project name.
       file.section = parts[1];
       break;
@@ -115,7 +115,7 @@ function addDefaultTitles(file, filePath) {
 }
 
 function addExamples(f, p, metalsmith) {
-  if(!minimatch(p, "horizon/reference/*.*")) return;
+  if(!minimatch(p, "go/services/horizon/reference/*.*")) return;
   let examples = metalsmith.metadata()._examples;
   let ext = path.extname(p);
   let endpoint = path.basename(p).slice(0,-ext.length);
