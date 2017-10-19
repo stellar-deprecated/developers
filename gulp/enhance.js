@@ -115,7 +115,7 @@ function addDefaultTitles(file, filePath) {
 }
 
 function addExamples(f, p, metalsmith) {
-  if(!minimatch(p, "go/services/horizon/reference/*.*")) return;
+  if(!minimatch(p, "go/services/horizon/internal/reference/*.*")) return;
   let examples = metalsmith.metadata()._examples;
   let ext = path.extname(p);
   let endpoint = path.basename(p).slice(0,-ext.length);
