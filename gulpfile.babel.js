@@ -9,9 +9,13 @@ import markdownItFootnote from 'markdown-it-footnote';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
 import links from "./gulp/links";
+import nodes from "./gulp/nodes";
 import minimatch from "minimatch";
 import safeSymlink from './gulp/safeSymlink';
+import runSequence from 'run-sequence';
 import {javascriptSymbols} from './gulp/code-symbol-tags';
+
+runSequence.use(gulp);
 
 let argv = require('minimist')(process.argv.slice(2));
 let $g = require('gulp-load-plugins')();
@@ -27,7 +31,16 @@ import "./gulp/git";
 
 gulp.task("default", ["build"]);
 
-gulp.task('src:symlink-repos', ['git:clone'], () => {
+gulp.task("src", done => {
+  runSequence(
+    'git:clone',
+    'src:symlink-repos',
+    ['src:generate-nodes-page', 'generate-sdk-symbols'],
+    done
+  );
+});
+
+gulp.task('src:symlink-repos', () => {
   // symlink the landing pages/custom content from the docs repo for each section
   safeSymlink("../repos/docs/guides", "src/guides");
   safeSymlink("../repos/docs/reference", "src/reference");
@@ -42,23 +55,23 @@ gulp.task('src:symlink-repos', ['git:clone'], () => {
 gulp.task('js:copy-vendor', function() {
   return gulp.src([
     // TODO: optimize and only load which ones are necessary
-    './bower_components/jquery/dist/jquery.min.js',
-    './bower_components/codemirror/lib/codemirror.js',
-    './bower_components/codemirror/addon/runmode/runmode.js',
-    './bower_components/codemirror/mode/javascript/javascript.js',
-    './bower_components/codemirror/mode/shell/shell.js',
-    './bower_components/codemirror/mode/clike/clike.js',
-    './bower_components/codemirror/mode/go/go.js',
-    './bower_components/codemirror/mode/toml/toml.js',
-    './bower_components/stellar-sdk/stellar-sdk.min.js',
-    './bower_components/tether/dist/js/tether.min.js',
-    './bower_components/tether-drop/dist/js/drop.min.js',
+    './node_modules/jquery/dist/jquery.min.js',
+    './node_modules/codemirror/lib/codemirror.js',
+    './node_modules/codemirror/addon/runmode/runmode.js',
+    './node_modules/codemirror/mode/javascript/javascript.js',
+    './node_modules/codemirror/mode/shell/shell.js',
+    './node_modules/codemirror/mode/clike/clike.js',
+    './node_modules/codemirror/mode/go/go.js',
+    './node_modules/codemirror/mode/toml/toml.js',
+    './node_modules/stellar-sdk/stellar-sdk.min.js',
+    './node_modules/tether/dist/js/tether.min.js',
+    './node_modules/tether-drop/dist/js/drop.min.js',
   ])
     .pipe($g.concat('vendor.js'))
     .pipe(gulp.dest('./src/js'));
 });
 
-gulp.task('build', ['js:copy-vendor', 'generate-sdk-symbols'], done => {
+gulp.task('build', ['js:copy-vendor', 'src'], done => {
   build({incremental: !!argv.incremental}, done);
 });
 
@@ -77,7 +90,7 @@ gulp.task('watch', done => {
   });
 });
 
-gulp.task('generate-sdk-symbols', ['src:symlink-repos'], done => {
+gulp.task('generate-sdk-symbols', done => {
   javascriptSymbols((error, symbols) => {
     if (error) {
       console.error(error);
@@ -124,7 +137,7 @@ function build({clean = false, incremental = false, debug = !!argv.debug}, done)
 
   const sassOptions = {
     outputStyle: "expanded",
-    includePaths: [ "./node_modules", "./bower_components" ]
+    includePaths: ["./node_modules"]
   };
   if (debug) {
     Object.assign(sassOptions, {
