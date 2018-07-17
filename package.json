@@ -41,7 +41,7 @@
     "solar-stellarorg": "git+https://github.com/stellar/solar-stellarorg#master",
     "solar-stellarorg-pages": "git+https://github.com/stellar/solar-stellarorg-pages#master",
     "stellar-sdk": "~0.9.1",
-    "tether-drop": "~1.4.2"
+    "tether-drop": "1.4.2"
   },
   "devDependencies": {
     "eslint": "^3.3.1",
