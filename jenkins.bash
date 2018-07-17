@@ -16,8 +16,7 @@ cat <<-EOS > build-node.bash
 
   trap rollback INT TERM EXIT ERR
 
-  # allow bower to run inside docker
-  echo '{ "allow_root": true }' > /root/.bowerrc
+  npm install -q -g gulp
 
   npm install -q 
   chown -R ${UID} ./node_modules
