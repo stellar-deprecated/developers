@@ -9,7 +9,6 @@ cat <<-EOS > build-node.bash
     echo "rolling back"
     set +e
     rm -rf node_modules
-    rm -rf bower_components
     rm -rf build 
     rm -rf repos
     rm build-node.bash
@@ -19,10 +18,6 @@ cat <<-EOS > build-node.bash
 
   # allow bower to run inside docker
   echo '{ "allow_root": true }' > /root/.bowerrc
-
-  npm install -q -g gulp bower
-  bower install -q
-  chown -R ${UID} ./bower_components
 
   npm install -q 
   chown -R ${UID} ./node_modules
