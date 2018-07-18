@@ -16,9 +16,9 @@ cat <<-EOS > build-node.bash
 
   trap rollback INT TERM EXIT ERR
 
-  npm install -q -g gulp
+  npm install -q -g gulp yarn
 
-  npm install -q 
+  yarn install
   chown -R ${UID} ./node_modules
 
   rm -rf ./repos/
@@ -33,6 +33,6 @@ EOS
 docker run \
   --rm \
   -v $(pwd):/app \
-  node:4 /bin/bash /app/build-node.bash 
+  node:6 /bin/bash /app/build-node.bash 
 
 
