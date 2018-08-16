@@ -36,6 +36,10 @@ function addRepoInfo(file, filePath) {
       file.repo = "docs";
       file.repoPath = filePath;
       break;
+    case "horizon":
+      file.repo = "go";
+      file.repoPath = "services/horizon/internal/docs/" + parts.slice(1).join("/");
+      break;
     default:
       // if parts[0] is the name of a repo, use it
       if (parts[0] in repos) {
