@@ -117,7 +117,7 @@ function renameReadme(files, metalsmith, done) {
 }
 
 function renameHandlebars (files, metalsmith, done) {
-  let toReplace = _(files).keys().pick(key => minimatch(key, '*.handlebars')).value();
+  let toReplace = _(files).keys().pickBy(key => minimatch(key, '*.handlebars')).value();
   _.each(toReplace, key => {
     let newPath = path.basename(key, '.handlebars') + '.html';
     files[newPath] = files[key];

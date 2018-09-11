@@ -23,7 +23,7 @@ module.exports.helpers = {
 
     return _.chain(allFiles)
       .map((file, path) => path)
-      .filter(path => _.any(globs, glob => glob.match(path)))
+      .filter(path => _.some(globs, glob => glob.match(path)))
       .sortBy()
       .map(path => options.fn(
         // create a child context object for rendering
