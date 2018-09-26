@@ -7,15 +7,15 @@ This uses gulp and metalsmith (plus a heap of plugins) to generate the site.
 
 To build this project, you must have the following dependencies installed:
 
-- node 4.0.0
+- node 8
 - npm
-- bower
+- yarn
 
 ## Installation
 ```bash
 git clone https://github.com/stellar/developers # or git@github.com:stellar/developers.git
 npm install --no-shrinkwrap
-bower install
+yarn install
 ```
 
 (Note the `no-shrinkwrap` option is because of an issue in `metalsmith-concat`: https://github.com/aymericbeaumet/metalsmith-concat/issues/22)
