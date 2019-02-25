@@ -18,7 +18,6 @@
     "gulp-webserver": "^0.9.1",
     "handlebars": "^4.0.2",
     "jquery": "~3.0.0",
-    "jsdoc": "3.4.2",
     "load-metalsmith-plugins": "^0.1.1",
     "lodash": "^4.17.5",
     "markdown-it-anchor": "^2.5.0",
