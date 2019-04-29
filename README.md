@@ -79,6 +79,16 @@ By following the rules above, your example file should get recognized by the bui
 ## Client Data
 Sometimes, we may want to pass frontmatter data to js scripts on the page. Documents can specify "client data" in front matter. The term client refers to the browser. The `clientData` key in the front matter of a document will be converted to JSON and put in the web page as a js variable `window.clientData`. The `clientData` must be an object in order to successfully appear in the html.
 
+## Troubleshooting
+
+### No handlebars file
+
+```sh
+[00:49:37] Error: ENOENT: no such file or directory, open '/app/layouts/plans.handlebars'
+```
+
+This happens when you add a new directory in a `docs` folder in one of the repos that `stellar/developers` processes. If you don't want any of the docs in the directory to be included in the developers site, you can add your directory to the `excluded_dirs` in `gulp/enhance.js:addSection`.
+
 ## Contributing
 Please read the [contributing guide](CONTRIBUTING.md) to learn more about how to contribute to the developer portal. For contributions to docs, please put contributions in their respective repositories.
 

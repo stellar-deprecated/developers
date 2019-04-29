@@ -27,7 +27,7 @@ function addSrcInfo(file, filePath) {
 function addRepoInfo(file, filePath) {
   let parts = filePath.split(path.sep);
 
-  switch(parts[0]) {
+  switch (parts[0]) {
     case "guides":
     case "reference":
     case "software":
@@ -38,7 +38,8 @@ function addRepoInfo(file, filePath) {
       break;
     case "horizon":
       file.repo = "go";
-      file.repoPath = "services/horizon/internal/docs/" + parts.slice(1).join("/");
+      file.repoPath =
+        "services/horizon/internal/docs/" + parts.slice(1).join("/");
       break;
     default:
       // if parts[0] is the name of a repo, use it
@@ -69,22 +70,23 @@ function addProject(file, filePath) {
 }
 
 function addFullTitle(file, filePath) {
-  let titleSuffix = ' | Stellar Developers';
+  let titleSuffix = " | Stellar Developers";
 
-  if (!file.projectTitle || file.repo === 'docs') {
+  if (!file.projectTitle || file.repo === "docs") {
     file.fullTitle = file.title + titleSuffix;
     return;
   }
 
-  file.fullTitle = file.title + ' - ' + file.projectTitle + titleSuffix;
+  file.fullTitle = file.title + " - " + file.projectTitle + titleSuffix;
 }
 
 function addSection(file, filePath) {
   if (path.extname(filePath) !== ".md") return;
   if (file.section) return;
+  const excluded_dirs = ["plans"];
 
   let parts = filePath.split(path.sep);
-  switch(parts[0]) {
+  switch (parts[0]) {
     case "guides":
     case "reference":
     case "software":
@@ -96,6 +98,12 @@ function addSection(file, filePath) {
       if (parts.length == 2) {
         return;
       }
+
+      // directories that we shouldn't process / assign a layout to
+      if (excluded_dirs.includes(parts[1])) {
+        return;
+      }
+
       // if not one of the above cases, then we are dealing with a project-specific
       // file (i.e. js-stellar-sdk).  In this case, we determine layout
       // based upon the nesting undernearth the project name.
@@ -119,12 +127,12 @@ function addDefaultTitles(file, filePath) {
 }
 
 function addExamples(f, p, metalsmith) {
-  if(!minimatch(p, "horizon/reference/*.*")) return;
+  if (!minimatch(p, "horizon/reference/*.*")) return;
   let examples = metalsmith.metadata()._examples;
   let ext = path.extname(p);
-  let endpoint = path.basename(p).slice(0,-ext.length);
+  let endpoint = path.basename(p).slice(0, -ext.length);
 
-  if(!(endpoint in examples)) return;
+  if (!(endpoint in examples)) return;
 
   f.examples = examples[endpoint];
 }
@@ -176,12 +184,14 @@ function addSequenceInfo(file, filePath, metalsmith, allFiles) {
 function fileLinkInfo(relativePath, fromPath, allFiles) {
   const filePath = path.join(path.dirname(fromPath), relativePath);
   const linkPath = filePath
-    .replace(/(^|\/)readme\.md$/, 'index.html')
-    .replace(/\.md$/, '.html');
-  return Object.assign({
-    // this is just a fallback if a file doesn't have an explicit title set
-    title: relativePath.replace(/\.md$/, ''),
-    linkPath: linkPath
-  }, allFiles[filePath]);
+    .replace(/(^|\/)readme\.md$/, "index.html")
+    .replace(/\.md$/, ".html");
+  return Object.assign(
+    {
+      // this is just a fallback if a file doesn't have an explicit title set
+      title: relativePath.replace(/\.md$/, ""),
+      linkPath: linkPath
+    },
+    allFiles[filePath]
+  );
 }
-
