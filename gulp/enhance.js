@@ -83,6 +83,7 @@ function addFullTitle(file, filePath) {
 function addSection(file, filePath) {
   if (path.extname(filePath) !== ".md") return;
   if (file.section) return;
+  const excluded_dirs = ["plans"];
 
   let parts = filePath.split(path.sep);
   switch (parts[0]) {
@@ -99,7 +100,7 @@ function addSection(file, filePath) {
       }
 
       // directories that we shouldn't process / assign a layout to
-      if (["plans"].includes(parts[1])) {
+      if (excluded_dirs.includes(parts[1])) {
         return;
       }
 
