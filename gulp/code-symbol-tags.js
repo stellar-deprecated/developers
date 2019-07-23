@@ -18,6 +18,7 @@ export function javascriptSymbols(callback) {
 
   // npm install in js-stellar-sdk
   child_process.spawnSync('yarn', ['install'], {cwd: './repos/js-stellar-sdk/'});
+  child_process.spawnSync('yarn', ['build:docs'], {cwd: './repos/js-stellar-sdk/'});
 
   const jsDoc = child_process.spawn(
     // Executed in './repos/js-stellar-sdk/'
