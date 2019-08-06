@@ -299,3 +299,21 @@ s-read-md pre {
 
 // Page specific comes after
 @import 'landing0616';
+
+
+// Reskin
+body {
+  font-family: "suisse", sans-serif;
+}
+
+.so-logo {
+  align-items: center;
+}
+.so-logo__main {
+  margin: -12px 0 -7px;
+  line-height: 0;
+}
+.so-logo__separator {
+  height: 1em;
+  border-color: $gray;
+}
