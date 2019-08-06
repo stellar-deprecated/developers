@@ -19,9 +19,9 @@
   }
 
   .collapsibleListSet__list {
-    overflow: hidden;
     transition: 0.4s all;
   }
   .collapsibleListSet__list.is-collapsed {
+    overflow: hidden;
     max-height: 0 !important;
   }
