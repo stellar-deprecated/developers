@@ -158,6 +158,9 @@ s-read-md pre {
 .pageNavList__title {
   font-weight: 700;
 }
+.pageNavList__item {
+  padding-right: 1.5em;
+}
 .pageNavList__item.is-currentItem {
   color: $purple;
   position: relative;
