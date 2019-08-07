@@ -305,6 +305,7 @@ s-read-md pre {
 // Reskin
 body {
   font-family: "suisse", sans-serif;
+  color: $darkestGray;
 }
 
 .so-logo {
@@ -334,6 +335,8 @@ body {
 }
 
 s-read-md{
+  font-size: 16px;
+
   code{
     background-color: $lightestPurple;
     outline-color: $lightestPurple;
