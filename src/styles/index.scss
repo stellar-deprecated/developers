@@ -340,6 +340,12 @@ s-read-md{
   }
 
   a {
-    color: $darkerPurple;
+    color: $purple;
+    text-decoration: none;
+
+    &:hover {
+      color: $darkerPurple;
+      text-decoration: underline;
+    }
   }
 }
