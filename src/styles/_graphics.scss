@@ -31,7 +31,7 @@
 .graphic-pageWriting { @include so-graphic("icon-guides.svg", 180, 164); @extend .so-graphic;}
 .graphic-pageSoftware { @include so-graphic("icon-software.svg", 154, 164); @extend .so-graphic;}
 .graphic-prototypeGear { @include so-graphic("prototype-gear.png", 180, 180); @extend .so-graphic;}
-.graphic-ldarkSlack { @include so-graphic("ldark-slack.png", 100, 100); @extend .so-graphic;}
+.graphic-ldarkKeybase { @include so-graphic("ldark-keybase.png", 100, 100); @extend .so-graphic;}
 .graphic-ldarkGithub { @include so-graphic("ldark-github.png", 100, 100); @extend .so-graphic;}
 .graphic-ldarkPaper { @include so-graphic("ldark-paper.png", 100, 100); @extend .so-graphic;}
 .graphic-ldarkTwitter { @include so-graphic("ldark-twitter.png", 100, 100); @extend .so-graphic;}
