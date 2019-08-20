@@ -335,7 +335,13 @@ body {
   border-radius: 4rem;
   &:hover {
     background-color: $darkerPurple;
+    border-color: $purple;
   }
+}
+
+.js-endpointRef-menu.js-endpointRef-menu .s-button:not(.is-active) {
+  background-color: transparent;
+  border-color: white;
 }
 
 s-read-md{
