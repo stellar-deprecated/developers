@@ -24,12 +24,12 @@
 .graphic-backArrow-9 { @include so-graphic("backArrow.svg", 36, 18); @extend .so-graphic;}
 
 // for landing0616
-.graphic-rocket { @include so-graphic("rocket.png", 96, 120); @extend .so-graphic;}
-.graphic-checkId { @include so-graphic("check-id.png", 164, 120); @extend .so-graphic;}
-.graphic-schoolOfCash { @include so-graphic("school-of-cash.png", 186, 120); @extend .so-graphic;}
-.graphic-pageCode { @include so-graphic("page-code.png", 184, 162); @extend .so-graphic;}
-.graphic-pageWriting { @include so-graphic("page-writing.png", 180, 164); @extend .so-graphic;}
-.graphic-pageBrick { @include so-graphic("page-brick.png", 154, 164); @extend .so-graphic;}
+.graphic-network { @include so-graphic("icon-stellar-network.svg", 96, 120); @extend .so-graphic;}
+.graphic-checkId { @include so-graphic("icon-create-account.svg", 164, 120); @extend .so-graphic;}
+.graphic-money { @include so-graphic("icon-money.svg", 186, 120); @extend .so-graphic;}
+.graphic-pageCode { @include so-graphic("icon-references.svg", 184, 162); @extend .so-graphic;}
+.graphic-pageWriting { @include so-graphic("icon-guides.svg", 180, 164); @extend .so-graphic;}
+.graphic-pageSoftware { @include so-graphic("icon-software.svg", 154, 164); @extend .so-graphic;}
 .graphic-prototypeGear { @include so-graphic("prototype-gear.png", 180, 180); @extend .so-graphic;}
 .graphic-ldarkSlack { @include so-graphic("ldark-slack.png", 100, 100); @extend .so-graphic;}
 .graphic-ldarkGithub { @include so-graphic("ldark-github.png", 100, 100); @extend .so-graphic;}

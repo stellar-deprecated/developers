@@ -4,14 +4,15 @@
 }
   .mainNavMenu__item {
     margin-right: 3em;
-    margin-top: 29px;
-    color: $s-color-primary4;
+    margin-top: 26px;
+    color: $darkestGray;
     text-decoration: none;
   }
   .mainNavMenu__item:hover {
-    color: $s-color-neutral3;
+    color: $darkerPurple;
   }
   .mainNavMenu__item.is-currentItem {
-    color: $s-color-neutral3;
-    border-bottom: 5px solid $s-color-neutral4;
+    color: $purple;
+    font-weight: 500;
+    border-bottom: 2px solid $purple;
   }

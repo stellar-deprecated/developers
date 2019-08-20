@@ -1,5 +1,6 @@
 .header2016, .header2016Back {
-  border-bottom: 1px solid $s-color-neutral7;
+  border-bottom: 1px solid $lightestGray;
+  background-color: $white;
 }
 .header2016 {
   @include S-flex-row;

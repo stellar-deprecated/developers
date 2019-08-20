@@ -10,13 +10,13 @@
 .landing0616-resTitle {
   font-weight: normal;
   text-align: center;
-  border-bottom: 3px solid $s-color-neutral7;
+  border-bottom: 1px solid $gray;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
+  color: $darkestGray;
 
   &.sub {
     font-size: 20px;
-    border-bottom: 2px solid #dedfe0;
   }
 }
 
@@ -32,13 +32,13 @@ a.landing0616-resLink:hover {
 }
 .landing0616-res__item {
   padding: 0;
-  border-bottom: 1px solid $s-color-neutral7;
+  border-bottom: 1px solid $gray;
 }
 .landing0616-res__item a {
   display: block;
   padding: 0.5em 0;
   text-decoration: none;
-  color: $s-color-primary4;
+  color: $darkestGray;
 }
 .landing0616-res__item a:hover {
   text-decoration: underline;
@@ -77,13 +77,14 @@ a.landing0616-introMini__item:hover {
   width: 36px;
   height: 36px;
   padding: 0.75em;
-  border: 1px solid $s-color-neutral7;
+  border: 1px solid $lightPurple;
+  color: #1E1E1E;
   margin-bottom: 18px;
 
   text-align: center;
   line-height: 9px;
   font-size: 16px;
-  background: white;
+  background: $lightPurple;
   border-radius: 100%;
 }
 

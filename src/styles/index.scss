@@ -6,6 +6,8 @@
 @import 'solar-stellarorg/styles/index';
 @import 'solar-stellarorg-pages/styles/index';
 
+@import 'reskinColors';
+
 @import 'popovers';
 @import 'friendbot4';
 @import 'mailSignup';
@@ -77,7 +79,7 @@ s-read-md.mainContent {
   @include S-flexItem-noFlex;
   width: 288px;
   padding-left: 2em;
-  background: $s-color-primary9;
+  background: $lightestGray;
   padding-bottom: 2em;
 }
 
@@ -88,6 +90,7 @@ s-read-md.mainContent {
 }
 .codeBlock {
   font-size: $s-scale-5;
+  font-family: 'suisse-mono', monospace;
 }
 
 // Note this intentially affects non-highlighted "code blocks" as well
@@ -155,28 +158,30 @@ s-read-md pre {
 .pageNavList__title {
   font-weight: 700;
 }
-.pageNavList__item.is-currentItem:before {
-  content: '';
-  z-index: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: block;
-  border-left: 10px solid $s-color-primary4;
-  height: 1.5em;
-  background: $s-color-neutral9;
+.pageNavList__item {
+  padding-right: 1.5em;
+  font-size: .88888em;
+}
+.pageNavList__item.is-currentItem {
+  color: $purple;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -5em;
+    background-color: rgba(125, 0, 255,0.08);
+  }
 }
 .pageNavList__item a {
-  z-index: 1;
-  position: relative;
   display: block;
-  color: $s-color-neutral2;
+  line-height: 1.75;
   text-decoration: none;
 }
-.pageNavList__item.is-currentItem a {
-  font-weight: bold;
-}
-.pageNavList__item a:hover {
+.pageNavList__item:not(.is-currentItem) a:hover {
   color: $s-color-neutral2;
   text-decoration: underline;
 }
@@ -264,7 +269,7 @@ s-read-md pre {
     flex: 0 0 auto;
     display: block;
     width: 1px;
-    background: $s-color-neutral3;
+    background: $gray;
     align-self: stretch;
   }
 }
@@ -299,3 +304,55 @@ s-read-md pre {
 
 // Page specific comes after
 @import 'landing0616';
+
+
+// Reskin
+body {
+  font-family: "suisse", sans-serif;
+  color: $darkestGray;
+}
+
+.so-logo {
+  align-items: center;
+}
+.so-logo__main {
+  margin: -12px 0 -7px;
+  line-height: 0;
+}
+.so-logo__separator {
+  height: 1em;
+  border-color: $gray;
+}
+
+.hero {
+  background-color: $lightestGray;
+  color: $black;
+}
+
+.s-button.s-button {
+  background-color: $purple;
+  border-color: $purple;
+  border-radius: 4rem;
+  &:hover {
+    background-color: $darkerPurple;
+  }
+}
+
+s-read-md{
+  font-size: 16px;
+
+  code{
+    background-color: $lightestPurple;
+    outline-color: $lightestPurple;
+  }
+
+  a {
+    color: $purple;
+    text-decoration: none;
+
+    &:hover {
+      color: $darkerPurple;
+      text-decoration: underline;
+    }
+  }
+}
