@@ -126,7 +126,7 @@
           render();
         },
         error: function() {
-          state.step3.result = 'Couldn\'t find test account due to a server issue. Report in our public Slack channel and try creating an account again later.';
+          state.step3.result = 'Couldn\'t find test account due to a server issue. Report in our public Keybase channel and try creating an account again later.';
           render();
         }
       });
