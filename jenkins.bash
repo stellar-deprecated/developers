@@ -4,12 +4,12 @@ set -e
 cat <<-EOS > build-node.bash
   set -e
   cd "\$(dirname "\$0")"
-    
+
   rollback() {
     echo "rolling back"
     set +e
     rm -rf node_modules
-    rm -rf build 
+    rm -rf build
     rm -rf repos
     rm build-node.bash
   }
@@ -33,6 +33,6 @@ EOS
 docker run \
   --rm \
   -v $(pwd):/app \
-  node:6 /bin/bash /app/build-node.bash 
+  node:10 /bin/bash /app/build-node.bash
 
 
