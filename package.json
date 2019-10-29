@@ -23,7 +23,7 @@
     "markdown-it-anchor": "^2.5.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-implicit-figures": "^0.3.2",
-    "metalsmith": "git+https://github.com/stellar/metalsmith.git",
+    "metalsmith": "^2.3.0",
     "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-changed": "^2.0.0",
     "metalsmith-concat": "^3.0.3",
