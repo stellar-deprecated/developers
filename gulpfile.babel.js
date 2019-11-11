@@ -63,6 +63,7 @@ gulp.task('js:copy-vendor', function() {
     './node_modules/codemirror/mode/clike/clike.js',
     './node_modules/codemirror/mode/go/go.js',
     './node_modules/codemirror/mode/toml/toml.js',
+    './node_modules/codemirror/mode/python/python.js',
     './node_modules/stellar-sdk/stellar-sdk.min.js',
     './node_modules/tether/dist/js/tether.min.js',
     './node_modules/tether-drop/dist/js/drop.min.js',

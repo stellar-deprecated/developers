@@ -14,7 +14,8 @@ window.syntaxHighlight = (function() {
     'bash': 'shell',
     'java': 'text/x-java',
     'go': 'text/x-go',
-    'toml': 'text/x-toml'
+    'toml': 'text/x-toml',
+    'python': 'text/x-python'
   };
 
   var highlighter = function(code) {
