@@ -7,7 +7,7 @@ This uses gulp and metalsmith (plus a heap of plugins) to generate the site.
 
 To build this project, you must have the following dependencies installed:
 
-- node 8
+- node 10.16.3
 - npm
 - yarn
 
