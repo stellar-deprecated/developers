@@ -9,7 +9,6 @@ import markdownItFootnote from 'markdown-it-footnote';
 import hbars from './gulp/handlebars';
 import extract from "./gulp/extract";
 import links from "./gulp/links";
-import nodes from "./gulp/nodes";
 import minimatch from "minimatch";
 import safeSymlink from './gulp/safeSymlink';
 import runSequence from 'run-sequence';
@@ -35,7 +34,7 @@ gulp.task("src", done => {
   runSequence(
     'git:clone',
     'src:symlink-repos',
-    ['src:generate-nodes-page', 'generate-sdk-symbols'],
+    'generate-sdk-symbols',
     done
   );
 });
