@@ -16,7 +16,7 @@ cat <<-EOS > build-node.bash
 
   trap rollback INT TERM EXIT ERR
 
-  npm install -q -g gulp yarn
+  npm install -q -g gulp
 
   yarn install
   chown -R ${UID} ./node_modules
