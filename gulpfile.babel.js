@@ -34,6 +34,7 @@ gulp.task("src", done => {
   runSequence(
     'git:clone',
     'src:symlink-repos',
+    'src:copy-stellar-base-to-js-sdk',
     'generate-sdk-symbols',
     done
   );
@@ -88,6 +89,11 @@ gulp.task('watch', done => {
   gulp.watch('src/**/*', (event) => {
     build({incremental: true}, function() {});
   });
+});
+
+// This is needed to generate the symbols for the js-stellar-sdk
+gulp.task('src:copy-stellar-base-to-js-sdk', done => {
+  return gulp.src(['repos/js-stellar-base/**/*']).pipe(gulp.dest('repos/js-stellar-sdk/js-stellar-base'));
 });
 
 gulp.task('generate-sdk-symbols', done => {
