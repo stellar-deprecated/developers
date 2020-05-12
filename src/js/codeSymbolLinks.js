@@ -8,7 +8,7 @@
   function loadSymbols() {
     return $.ajax({
       // FIXME: need to grab a base url from somewhere
-      url: '/js/javascript-symbols.json',
+      url: 'https://www.stellar.org/developers/js/javascript-symbols.json',
       dataType: 'json'
     });
   }
