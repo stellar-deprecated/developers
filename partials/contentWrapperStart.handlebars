@@ -6,7 +6,18 @@
     </h1>
   </div>
   <div class="S-flex-rowWrap spu-borderTop-1 spu-borderColor-neutral7">
-    <s-read-md class="S-flexItem-share mainContent s-read-md--capped spu-padSE-30 spu-padTB-20 documentRead" link-process-md>
+    <div class="mainContent s-read-md--capped spu-padSE-30 spu-padTB-20">
+      {{#if replacement}}
+      Updated content for this documentation is available in <a href="{{replacement}}">the new documentation</a>.
+      {{else}}
+      This page will be going away once <a href="https://developers.stellar.org/docs">the new documentation</a> is
+      stable.
+      {{/if}}
+    </div>
+  </div>
+  <div class="S-flex-rowWrap spu-borderTop-1 spu-borderColor-neutral7">
+    <s-read-md class="S-flexItem-share mainContent s-read-md--capped spu-padSE-30 spu-padTB-20 documentRead"
+      link-process-md>
       {{{ contents }}}
       <br />
       <a href="{{repoBlobURL}}" class="spu-color-neutral6">Edit this doc in GitHub</a>
