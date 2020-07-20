@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y curl git make gcc g++ apt-transport-htt
 
 
 RUN npm install -q -g gulp && yarn install && rm -rf ./repos/ && \
-    gulp --pathPrevix="/"
+    gulp --pathPrefix="/developers"
 
 FROM nginx:1.17
 
-COPY --from=build /app/src/build/ /usr/share/nginx/html/
+COPY --from=build /app/src/build/ /usr/share/nginx/html/developers
