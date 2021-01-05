@@ -5,7 +5,7 @@
   "description": "",
   "dependencies": {
     "array-to-table": "^1.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel": "^5.8.23",
     "bluebird": "^2.10.1",
     "cheerio": "^0.19.0",
