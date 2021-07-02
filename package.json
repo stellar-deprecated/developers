@@ -39,7 +39,7 @@
     "solar-css": "git+https://github.com/stellar/solar#master",
     "solar-stellarorg": "git+https://github.com/stellar/solar-stellarorg#master",
     "solar-stellarorg-pages": "git+https://github.com/stellar/solar-stellarorg-pages#master",
-    "stellar-sdk": "~0.9.1",
+    "stellar-sdk": "~8.2.3",
     "tether-drop": "1.4.2"
   },
   "devDependencies": {
