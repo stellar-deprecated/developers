@@ -7,6 +7,7 @@ ADD . /app/src
 WORKDIR /app/src
 
 ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install --no-install-recommends -y gpg curl git make ca-certificates gcc g++ apt-transport-https && \
     curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key|gpg --dearmor >/etc/apt/trusted.gpg.d/nodesource.gpg && \
     echo "deb https://deb.nodesource.com/node_10.x focal main" | tee /etc/apt/sources.list.d/nodesource.list && \
