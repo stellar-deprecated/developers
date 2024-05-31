@@ -19,7 +19,7 @@
     "handlebars": "^4.0.2",
     "jquery": "~3.0.0",
     "load-metalsmith-plugins": "^0.1.1",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.21",
     "markdown-it-anchor": "^2.5.0",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-implicit-figures": "^0.3.2",
