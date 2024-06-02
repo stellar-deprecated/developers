@@ -43,7 +43,7 @@
     "tether-drop": "1.4.2"
   },
   "devDependencies": {
-    "eslint": "^3.3.1",
+    "eslint": "^4.18.2",
     "gulp-debug": "^2.1.0"
   },
   "scripts": {
